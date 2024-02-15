@@ -1,2 +1,3 @@
-# uawit-website
-website for Non-profit Organization Ukrainian Women in Tech 
+# UAWIT website
+
+The website for non-profit Organization Ukrainian Women in Tech in Stockholm.
