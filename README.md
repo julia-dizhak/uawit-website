@@ -1,8 +1,8 @@
 # UAWIT website
 
-The website for non-profit Organization Ukrainian Women in Tech in Stockholm.
+The website for the non-profit Organization Ukrainian Women in Tech in Stockholm.
 
-It is build using Next.js + Sanity Studio. The Sanity studio embedded in the project.
+It is built using Next.js + Sanity Studio. The Sanity studio is embedded in the project.
 
 ## Getting Started
 
@@ -19,7 +19,10 @@ yarn dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<img width="1317" alt="localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/79c4c2c2-6b50-438e-875e-002432b20a47">
+
+
+You can edit the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 > **Note**
 >
@@ -55,6 +58,9 @@ SANITY_STUDIO_DATASET="production"
 
 Open [http://localhost:3000/studio/](http://localhost:3000/studio/) with your browser to see the sanity studio.
 
+<img width="1504" alt="Cursor_and_Info_1___Project_Name" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/f4200fbe-5647-482a-aedb-563e6391faf9">
+
+
 
 ## Project Overview
 
@@ -81,10 +87,14 @@ All pages are wrapped in `pages/_app.tsx`.
 To deploy your changes to production you use `git`:
 
 ```bash
+npm run build
 git add .
 git commit
 git push
 ```
+
+<img width="605" alt="uawit-website_—_julia_dizhak_Yuliias-MBP_—_-zsh_—_187×60_and_localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/886bea60-9088-43f6-9f42-7690d526cc7c">
+
 
 Alternatively, you can deploy without a `git` hosting provider using the Vercel CLI:
 
