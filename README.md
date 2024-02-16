@@ -39,13 +39,13 @@ This will create a git-ignored `.env` file with environment variables that will 
 Alternatively you can do next: create `.env` file manually and filled it with variables
 
 ```bash
-
+SANITY_API_PROJECT_ID="xxxxxxxx" - you can find this in your sanity account
+SANITY_STUDIO_PROJECT_ID="xxxxxxxx"
+NEXT_PUBLIC_SANITY_PROJECT_ID="xxxxxxxx"
+SANITY_API_DATASET="production" - here is the name of your dataset, for example "production"
+NEXT_PUBLIC_SANITY_DATASET="production"
+SANITY_STUDIO_DATASET="production"
 ```
-
-
-
-
-
 
 ## Sanity Studio
 
