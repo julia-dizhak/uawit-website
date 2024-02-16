@@ -18,7 +18,7 @@ export default function Card({ post }: { post: Post }) {
       ) : (
         <div className="card__cover--none" />
       )}
-      <div className="card__container">
+      <div className="card__container bg-slate-100">
         <h3 className="card__title">
           <a className="card__link" href={`/post/${post.slug.current}`}>
             {post.title}
