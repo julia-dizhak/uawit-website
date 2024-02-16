@@ -6,26 +6,26 @@ import { formatDate } from '~/utils'
 
 export default function Card({ post }: { post: Post }) {
   return (
-    <div className="card">
+    <div className="flex flex-col p-2">
       {post.mainImage ? (
         <Image
-          className="card__cover"
+          className=""
           src={urlForImage(post.mainImage).width(500).height(300).url()}
           height={200}
           width={300}
           alt=""
         />
       ) : (
-        <div className="card__cover--none" />
+        <div className="bg-black w-100 h-[200]px" />
       )}
-      <div className="card__container bg-slate-100">
-        <h3 className="card__title">
-          <a className="card__link" href={`/post/${post.slug.current}`}>
+      <div className=" bg-slate-100">
+        <h3 className="">
+          <a className="" href={`/post/${post.slug.current}`}>
             {post.title}
           </a>
         </h3>
-        <p className="card__excerpt">{post.excerpt}</p>
-        <p className="card__date">{formatDate(post._createdAt)}</p>
+        <p className="">{post.excerpt}</p>
+        <p className="">{formatDate(post._createdAt)}</p>
       </div>
     </div>
   )

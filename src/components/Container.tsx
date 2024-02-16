@@ -3,16 +3,19 @@ import Link from 'next/link'
 export default function Container({ children }: { children: React.ReactNode }) {
   return (
     <div className="container">
-      <header className="header">
-        <Link className="header__title" href="/">
-          Ukrainian Women in Tech (Test)
+      <header className="flex p-2 bg-white">
+        <Link className="no-underline" href="/">
+          <h1 className="text-3xl font-bold">
+            Ukrainian Women in Tech
+          </h1>
         </Link>
       </header>
 
       <main>{children}</main>
       
-      <footer className="footer">
-        <p className="footer__text">
+      <footer className="m-4 p-4 bg-slate-500">
+        <p className='mb-2'>Footer ...</p>
+        <p className="flex mt-2 mb-2">
           Made with{' '}
           <svg
             datasanity-icon="heart-filled"

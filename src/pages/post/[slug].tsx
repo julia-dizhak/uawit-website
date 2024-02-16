@@ -53,23 +53,23 @@ export default function ProjectSlugRoute(
 
   return (
     <Container>
-      <section className="post">
+      <section className="m-2">
         {post.mainImage ? (
           <Image
-            className="post__cover"
+            className="object-fill h-200[px]"
             src={urlForImage(post.mainImage).url()}
             height={231}
             width={367}
             alt=""
           />
         ) : (
-          <div className="post__cover--none" />
+          <div className="bg-black" />
         )}
-        <div className="post__container">
-          <h1 className="post__title">{post.title}</h1>
-          <p className="post__excerpt">{post.excerpt}</p>
-          <p className="post__date">{formatDate(post._createdAt)}</p>
-          <div className="post__content">
+        <div className="p-4 mt-2">
+          <h1 className="m-4 font-bold">{post.title}</h1>
+          <p className="">{post.excerpt}</p>
+          <p className="">{formatDate(post._createdAt)}</p>
+          <div className="">
             <PortableText value={post.body} />
           </div>
         </div>
