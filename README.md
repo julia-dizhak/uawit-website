@@ -21,8 +21,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 <img width="1317" alt="localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/79c4c2c2-6b50-438e-875e-002432b20a47">
 
-
 You can edit the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+
 
 > **Note**
 >
@@ -30,6 +30,8 @@ You can edit the page by modifying `pages/index.tsx`. The page auto-updates as y
 >
 
 ### Set up the Sanity Studio
+
+Before you proceed, please be sure that you have an account on Sanity or create it using that link [Create a sanity project](https://www.sanity.io/docs/create-a-sanity-project)].
 
 This starter is a statically generated site that uses [Next.js][nextjs] for the frontend and [Sanity][sanity-homepage] to handle its content.
 It comes with a native Sanity Studio that offers features like real-time collaboration, instant side-by-side content previews, and intuitive editing.
