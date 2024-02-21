@@ -1,7 +1,7 @@
 import '~/styles/global.css'
 
 import type { AppProps } from 'next/app'
-import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
+import { IBM_Plex_Mono, Roboto, PT_Serif } from 'next/font/google'
 import { lazy } from 'react'
 
 export interface SharedPageProps {
@@ -17,10 +17,10 @@ const mono = IBM_Plex_Mono({
   weight: ['500', '700'],
 })
 
-const sans = Inter({
+const sans = Roboto({
   variable: '--font-family-sans',
   subsets: ['latin'],
-  weight: ['500', '700', '800'],
+  weight: ['500', '700', '900'],
 })
 
 const serif = PT_Serif({
