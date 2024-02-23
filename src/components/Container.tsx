@@ -2,18 +2,18 @@ import Link from 'next/link'
 
 export default function Container({ children }: { children: React.ReactNode }) {
   return (
-    <div className="container">
-      <header className="flex p-2 bg-white">
+    <div className="mx-auto max-w-screen-xl px-6">
+      {/* <header className="flex p-2 bg-white">
         <Link className="no-underline" href="/">
           <h1 className="text-3xl font-bold">
             Ukrainian Women in Tech
           </h1>
         </Link>
-      </header>
+      </header> */}
 
-      <main>{children}</main>
-      
-      <footer className="m-4 p-4 bg-slate-500">
+      {children}
+
+      {/* <footer className="m-4 p-4 bg-slate-500">
         <p className='mb-2'>Footer ...</p>
         <p className="flex mt-2 mb-2">
           Made with{' '}
@@ -34,7 +34,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
           </svg>{' '}
           at UAWIT
         </p>
-      </footer>
+      </footer> */}
     </div>
   )
 }
