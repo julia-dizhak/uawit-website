@@ -9,12 +9,12 @@ import { getClient } from '~/lib/sanity.client'
 import { urlForImage } from '~/lib/sanity.image'
 import {
   getPost,
-  type Post,
   postBySlugQuery,
   postSlugsQuery,
 } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
+import { PostType } from '~/lib/sanity.interfaces'
 
 interface Query {
   [key: string]: string
@@ -22,7 +22,7 @@ interface Query {
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-    post: Post
+    post: PostType
   },
   Query
 > = async ({ draftMode = false, params = {} }) => {
@@ -67,9 +67,9 @@ export default function ProjectSlugRoute(
         )}
         <div className="p-4 mt-2">
           <h1 className="m-4 font-bold">{post.title}</h1>
-          <p className="">{post.excerpt}</p>
-          <p className="">{formatDate(post._createdAt)}</p>
-          <div className="">
+          <p>{post.excerpt}</p>
+          <p>{formatDate(post._createdAt)}</p>
+          <div>
             <PortableText value={post.body} />
           </div>
         </div>

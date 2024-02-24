@@ -4,14 +4,6 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'logo',
-      title: 'Logo',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
       name: 'languages',
       type: 'array',
       title: 'Switch Languages Options',

@@ -1,7 +1,7 @@
 import type { ImageAsset, Slug } from '@sanity/types'
 import type { PortableTextBlock } from '@portabletext/types'
 
-export interface Post {
+export type PostType = {
   _type: 'post'
   _id: string
   _createdAt: string
@@ -12,8 +12,16 @@ export interface Post {
   body: PortableTextBlock[]
 }
 
-export interface NavigationI {
-  logo: ImageAsset
+export type PostsType = PostType[];
+
+export type LogoType = {
+  _type: 'logo'
+  logoImage: ImageAsset
+  caption?: string
+  href?: string
+}
+
+export type NavigationType = {
   items: NavigationItem[]
   languages: Language[]
   buttonName: ButtonName
@@ -36,7 +44,7 @@ interface ButtonName {
 }
 
 
-export interface HeroI {
+export interface HeroType {
   backgroundImage: ImageAsset;
   title: string;
   description: string;

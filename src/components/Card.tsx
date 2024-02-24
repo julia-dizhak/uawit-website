@@ -1,15 +1,14 @@
+import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
-
 import { urlForImage } from '~/lib/sanity.image'
-import { type Post } from '~/lib/sanity.queries'
+import { PostType } from '~/lib/sanity.interfaces'
 import { formatDate } from '~/utils'
 
-export default function Card({ post }: { post: Post }) {
+export default function Card({ post }: { post: PostType }) {
   return (
-    <div className="flex flex-col p-2">
+    <div className="flex flex-col p-2 mt-10">
       {post.mainImage ? (
         <Image
-          className=""
           src={urlForImage(post.mainImage).width(500).height(300).url()}
           height={200}
           width={300}
@@ -18,14 +17,17 @@ export default function Card({ post }: { post: Post }) {
       ) : (
         <div className="bg-black w-100 h-[200]px" />
       )}
-      <div className=" bg-slate-100">
-        <h3 className="">
-          <a className="" href={`/post/${post.slug.current}`}>
+      <div className="bg-slate-100">
+        <h3>
+          <a href={`/post/${post.slug.current}`}>
             {post.title}
           </a>
         </h3>
-        <p className="">{post.excerpt}</p>
-        <p className="">{formatDate(post._createdAt)}</p>
+        <div>
+          <PortableText value={post.body} />
+        </div>
+        <p>{post.excerpt}</p>
+        <p>{formatDate(post._createdAt)}</p>
       </div>
     </div>
   )
