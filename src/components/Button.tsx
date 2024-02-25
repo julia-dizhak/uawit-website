@@ -1,12 +1,10 @@
-import React from 'react'
-
-interface ButtonProps {
+type ButtonProps = {
   buttonText: string
   className?: string
   handleClick: () => void
 }
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   buttonText,
   handleClick,
   className,
@@ -27,5 +25,3 @@ const Button: React.FC<ButtonProps> = ({
     </button>
   )
 }
-
-export default Button

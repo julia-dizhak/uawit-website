@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
-import { urlForImage } from '~/lib/sanity.image'
-import { NavigationI } from '~/lib/interfaces'
-import Button from './Button'
+import { Button } from './Button'
 import Container from './Container'
+import { Logo } from './Logo'
 
 type MenuItemsProps = {
   path: string
@@ -34,8 +32,8 @@ const Dropdown = ({ languages, className }) => {
     const newLanguage = event.target.value
     setLanguage(newLanguage)
   }
+  
   return (
-
     <div
       id="dropdownNavbar"
       className={`z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg  w-fit dark:bg-gray-700 dark:divide-gray-600 ${className}`}
@@ -48,6 +46,7 @@ const Dropdown = ({ languages, className }) => {
       >
         {languages.map((lang) => (
           <option
+            key={lang.key}
             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             value={lang.key}
           >
@@ -56,11 +55,12 @@ const Dropdown = ({ languages, className }) => {
         ))}
       </select>
     </div>
-
   )
 }
 
-const Navigation = ({ buttonName, items, logo, languages }: NavigationI) => {
+
+const Navigation = ({navbar, logo}) => {
+  const { buttonName, items, languages } = navbar;
   const [isExpanded, setIsExpanded] = useState(false)
 
   const toggleMenu = () => {
@@ -75,18 +75,13 @@ const Navigation = ({ buttonName, items, logo, languages }: NavigationI) => {
     toggleMenu()
   }
 
+
   return (
     <Container>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900 mt-4">
+      <nav className="bg-white border-gray-200 mt-4">
         <div className="flex flex-wrap items-center justify-between mx-auto">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
-            <Image
-              className=""
-              src={urlForImage(logo).url()}
-              height={50}
-              width={50}
-              alt="logo UAWIT"
-            />
+            <Logo logo={logo} />
           </div>
           {/* mobile view => burger menu */}
           <button
@@ -120,20 +115,21 @@ const Navigation = ({ buttonName, items, logo, languages }: NavigationI) => {
               } w-full md:flex items-center gap-20 md:w-auto`}
             id="navbar-default"
           >
-            <ul className="font-medium md:flex flex-col items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              {items.map((menuItem) => (
+            <ul className="font-medium md:flex flex-col items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white ">
+              {items?.length && items.map((menuItem) => (
                 <li key={menuItem.id}>
                   <MenuItems path={menuItem.path} title={menuItem.title} onClick={handleMenuClick} />
                 </li>
               ))}
 
               <div className="md:flex items-center gap-2 md:pl-8">
-                <Dropdown languages={languages} className="py-4 md:p-0" />
-                <Button buttonText={buttonName.buttonText} handleClick={handleButtonClick} />
+                {languages?.length && <Dropdown languages={languages} className="py-4 md:p-0" />}
+                <Button
+                  buttonText={buttonName?.buttonText}
+                  handleClick={handleButtonClick}
+                />
               </div>
             </ul>
-
-
           </div>
         </div>
       </nav>
