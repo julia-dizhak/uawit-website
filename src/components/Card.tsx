@@ -4,7 +4,11 @@ import { urlForImage } from '~/lib/sanity.image'
 import { type Post } from '~/lib/sanity.queries'
 import { formatDate } from '~/utils'
 
-export default function Card({ post }: { post: Post }) {
+interface CardProps {
+  post: Post
+}
+
+export default function Card({ post }: CardProps) {
   return (
     <div className="flex flex-col p-2">
       {post.mainImage ? (

@@ -11,6 +11,22 @@ export async function getPosts(client: SanityClient): Promise<Post[]> {
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
 
+//#TODO : type - schema type
+//Event: events - create a query,  export events; 
+export const eventsQuery = groq`*[_type == "events"] {
+  "image": image,
+  "title": title
+}`
+
+//-step2: get events data
+
+export async function getEvents(
+  client: SanityClient,
+  // slug: string,
+): Promise<EventType[]> {
+  return await client.fetch(eventsQuery, {})
+}
+
 export async function getPost(
   client: SanityClient,
   slug: string,
@@ -23,6 +39,21 @@ export async function getPost(
 export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
 `
+
+//Step 3 - create an Interface: - Sanity types for fields!
+
+export interface EventType {
+  _type: 'event'
+  _id: string
+  title?: string
+  slug: Slug
+  image?: ImageAsset
+}
+
+//#TODO - for the eventlist type.  List, [] - type!;  
+export type EventsListType = EventType[];
+
+
 
 export interface Post {
   _type: 'post'

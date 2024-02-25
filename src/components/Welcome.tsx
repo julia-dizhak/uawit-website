@@ -5,8 +5,7 @@ import SanityLogo from './sanity.svg'
 
 export default function Welcome() {
   return (
-    <div className="flex flex-col aligns-center p-2">
-      
+    <div className="flex flex-col p-2 aligns-center">
       <div className="flex-col">
         <p>Welcome page</p>
         <h2 className="">Next steps</h2>
@@ -32,7 +31,6 @@ export default function Welcome() {
               to learn more about Sanity.
             </p>
           </li>
-
         </ul>
       </div>
     </div>
