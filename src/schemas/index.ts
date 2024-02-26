@@ -15,6 +15,7 @@ export const schemaTypes = [
   newsContent,
   navbar,
   hero,
+  logo
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
