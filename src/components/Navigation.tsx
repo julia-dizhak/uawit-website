@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { Button } from './ButtonComponent'
-import Container from './Container'
-import { Logo } from './Logo'
+import React, { useState } from 'react';
+import { Button } from './Button';
+import Container from './Container';
+import { Logo } from './Logo';
 
 type MenuItemsProps = {
-  path: string
-  title: string
-  onClick: () => void
-}
+  path: string;
+  title: string;
+  onClick: () => void;
+};
 
 const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
   const handleClick = () => {
-    onClick && onClick()
-  }
+    onClick && onClick();
+  };
   return (
     <a
       href={`#${path}`}
@@ -22,16 +22,16 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
     >
       {title}
     </a>
-  )
-}
+  );
+};
 
 const Dropdown = ({ languages, className }) => {
-  const [language, setLanguage] = useState(languages[0].key)
+  const [language, setLanguage] = useState(languages[0].key);
 
   const handleLanguageChange = (event) => {
-    const newLanguage = event.target.value
-    setLanguage(newLanguage)
-  }
+    const newLanguage = event.target.value;
+    setLanguage(newLanguage);
+  };
 
   return (
     <div
@@ -55,24 +55,24 @@ const Dropdown = ({ languages, className }) => {
         ))}
       </select>
     </div>
-  )
-}
+  );
+};
 
 const Navigation = ({ navbar, logo }) => {
-  const { buttonName, items, languages } = navbar
-  const [isExpanded, setIsExpanded] = useState(false)
+  const { buttonName, items, languages } = navbar;
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleMenu = () => {
-    setIsExpanded((prev) => !prev)
-  }
+    setIsExpanded((prev) => !prev);
+  };
 
   const handleButtonClick = () => {
-    window.open(buttonName.redirectTo, '_blank')
-  }
+    window.open(buttonName.redirectTo, '_blank');
+  };
 
   const handleMenuClick = () => {
-    toggleMenu()
-  }
+    toggleMenu();
+  };
 
   return (
     <Container>
@@ -142,7 +142,7 @@ const Navigation = ({ navbar, logo }) => {
         </div>
       </nav>
     </Container>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
