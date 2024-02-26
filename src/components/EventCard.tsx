@@ -1,26 +1,10 @@
 import React from 'react'
-import { Post } from '~/lib/sanity.queries';
-import { EventType } from '~/lib/sanity.queries'
 
-//#TODO: create a generic wrapper;
-/*
-- pull request; 
-- 
-
--
-
-*/
-
-
-
-
-
-
-export default function EventCard({event}) {
+export default function EventCard({ event }) {
   return (
     <li className="flex flex-col border cursor-pointer group rounded-xl font-roboto ">
       <div className="relative w-full transition-transform duration-200 ease-out border rounded-xl h-80 drop-shadow-xl group-hover:scale-105">
-      <img src={event.image} alt={event.title} />
+        <img src={event.image} alt={event.title} />
       </div>
       <div className="flex-1 my-[1.125rem] mx-5 ">
         <p className="text-xl font-medium"> {event.title}</p>
@@ -33,5 +17,3 @@ export default function EventCard({event}) {
     </li>
   )
 }
-
-

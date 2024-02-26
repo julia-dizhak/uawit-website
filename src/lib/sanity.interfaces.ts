@@ -12,7 +12,7 @@ export type PostType = {
   body: PortableTextBlock[]
 }
 
-export type PostsType = PostType[];
+export type PostsType = PostType[]
 
 export type LogoType = {
   _type: 'logo'
@@ -43,13 +43,22 @@ interface ButtonName {
   redirectTo: string
 }
 
-
 export interface HeroType {
-  backgroundImage: ImageAsset;
-  title: string;
-  description: string;
+  backgroundImage: ImageAsset
+  title: string
+  description: string
   buttonName: {
-    buttonText: string;
-    redirectTo: string;
-  };
+    buttonText: string
+    redirectTo: string
+  }
 }
+
+export interface EventType {
+  _type: 'event'
+  _id: string
+  title?: string
+  slug: Slug
+  image?: ImageAsset
+}
+
+export type EventsListType = EventType[]
