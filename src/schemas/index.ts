@@ -14,7 +14,8 @@ export const schemaTypes = [
   eventsContent,
   newsContent,
   navbar,
-  hero
+  hero,
+  logo
 ];
 
 export const schema: { types: SchemaTypeDefinition[] } = {

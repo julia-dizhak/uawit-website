@@ -53,7 +53,10 @@ export const getStaticProps: GetStaticProps<
       token: draftMode ? readToken : '',
       // data
       posts,
-      events
+      events,
+      logoData,
+      heroData,
+      navbarData
     }
   };
 };
@@ -67,13 +70,13 @@ export default function HomePage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery);
 
-  const [navbarArray] = useLiveQuery(navbarData || null, navbarQuery);
+  const [navbarArray] = useLiveQuery(navbarData, navbarQuery);
   const navbar = navbarArray?.[0] || {};
 
-  const [heroArray] = useLiveQuery(heroData || null, heroQuery);
+  const [heroArray] = useLiveQuery(heroData, heroQuery);
   const hero = heroArray?.[0] || {};
 
-  const [logoArray] = useLiveQuery(logoData || null, logoQuery);
+  const [logoArray] = useLiveQuery(logoData, logoQuery);
   const logo = logoArray?.[0] || {};
 
   const [eventsData] = useLiveQuery(events, eventsQuery);
