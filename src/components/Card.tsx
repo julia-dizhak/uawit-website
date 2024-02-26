@@ -4,7 +4,11 @@ import { urlForImage } from '~/lib/sanity.image'
 import { PostType } from '~/lib/sanity.interfaces'
 import { formatDate } from '~/utils'
 
-export default function Card({ post }: { post: PostType }) {
+interface CardProps {
+  post: PostType
+}
+
+export default function Card({ post }: CardProps) {
   return (
     <div className="flex flex-col p-2 mt-10">
       {post.mainImage ? (
@@ -19,9 +23,7 @@ export default function Card({ post }: { post: PostType }) {
       )}
       <div className="bg-slate-100">
         <h3>
-          <a href={`/post/${post.slug.current}`}>
-            {post.title}
-          </a>
+          <a href={`/post/${post.slug.current}`}>{post.title}</a>
         </h3>
         <div>
           <PortableText value={post.body} />

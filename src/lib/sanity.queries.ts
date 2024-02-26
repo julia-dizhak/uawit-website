@@ -1,19 +1,21 @@
 import groq from 'groq'
 import { SanityClient } from 'next-sanity'
-import { HeroType, LogoType, NavigationType, PostsType } from './sanity.interfaces'
+import {
+  HeroType,
+  LogoType,
+  NavigationType,
+  PostsType,
+  EventType,
+  EventsListType,
+} from './sanity.interfaces'
 
 // Posts Query
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
 
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
+export const postSlugsQuery = groq`*[_type == "post" && defined(slug.current)][].slug.current
 `
-
-export async function getPosts(client: SanityClient): Promise<PostsType> {
-  return await client.fetch(postsQuery)
-}
 
 export async function getPost(
   client: SanityClient,
@@ -24,6 +26,23 @@ export async function getPost(
   })
 }
 
+export async function getPosts(client: SanityClient): Promise<PostsType> {
+  return await client.fetch(postsQuery)
+}
+
+// Event Query
+export const eventsQuery = groq`*[_type == "events"] {
+  "image": image,
+  "title": title
+}`
+
+export async function getEvents(
+  client: SanityClient,
+  // slug: string,
+): Promise<EventType[]> {
+  return await client.fetch(eventsQuery, {})
+}
+
 // Logo Query
 export const logoQuery = groq`
   *[_type == "logo"] {
@@ -32,9 +51,7 @@ export const logoQuery = groq`
     "href": href,
   }
 `
-export async function getLogoData(
-  client: SanityClient,
-): Promise<LogoType> {
+export async function getLogoData(client: SanityClient): Promise<LogoType> {
   return await client.fetch(logoQuery)
 }
 
@@ -75,9 +92,6 @@ export const heroQuery = groq`
   }
 `
 
-export async function getHeroData(
-  client: SanityClient,
-): Promise<HeroType> {
+export async function getHeroData(client: SanityClient): Promise<HeroType> {
   return await client.fetch(heroQuery)
 }
-

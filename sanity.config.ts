@@ -19,7 +19,7 @@ import {
   previewSecretId,
   projectId,
 } from '~/lib/sanity.api'
-import { schema } from '~/schemas'
+import { schema, schemaTypes } from '~/schemas'
 
 const iframeOptions = {
   url: defineUrlResolver({
@@ -37,7 +37,9 @@ export default defineConfig({
   projectId,
   dataset,
   //edit schemas in './src/schemas'
-  schema,
+  schema: {
+    types: schemaTypes,
+  },
   plugins: [
     deskTool({
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
