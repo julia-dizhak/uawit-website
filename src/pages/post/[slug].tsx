@@ -7,11 +7,7 @@ import Container from '~/components/Container'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { urlForImage } from '~/lib/sanity.image'
-import {
-  getPost,
-  postBySlugQuery,
-  postSlugsQuery,
-} from '~/lib/sanity.queries'
+import { getPost, postBySlugQuery, postSlugsQuery } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
 import { PostType } from '~/lib/sanity.interfaces'

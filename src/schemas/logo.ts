@@ -22,10 +22,10 @@ export default {
       type: 'url',
       title: 'Link',
       description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`,
-      validation: Rule => Rule.uri({
-        scheme: ['https']
-      })
-    }
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['https'],
+        }),
+    },
   ],
 }
-  
