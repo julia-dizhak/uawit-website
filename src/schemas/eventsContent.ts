@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity';
 
 //#TODO - add   validation: (Rule) => Rule.required(),
 
@@ -13,13 +13,13 @@ export default defineType({
       type: 'image',
       validation: (Rule) => Rule.required(),
       options: {
-        hotspot: true,
-      },
+        hotspot: true
+      }
     }),
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'string',
+      type: 'string'
     }),
     defineField({
       name: 'slug',
@@ -28,8 +28,8 @@ export default defineType({
       validation: (Rule) => Rule.required(),
       options: {
         source: 'title',
-        maxLength: 96,
-      },
+        maxLength: 96
+      }
     }),
     defineField({
       name: 'dateAndTime',
@@ -39,8 +39,8 @@ export default defineType({
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
         timeStep: 15,
-        calendarTodayLabel: 'Today',
-      },
+        calendarTodayLabel: 'Today'
+      }
     }),
 
     defineField({
@@ -51,22 +51,22 @@ export default defineType({
         defineField({
           name: 'address',
           title: 'Address',
-          type: 'string',
+          type: 'string'
         }),
         defineField({
           name: 'city',
           title: 'City',
-          type: 'string',
+          type: 'string'
         }),
         defineField({
           name: 'googleMapsUrl',
           title: 'Google Maps URL',
           type: 'url',
-          description: 'This could be location url',
+          description: 'This could be location url'
           // validation: (Rule) =>
           //   Rule.required().uri({ scheme: ['http', 'https'] }),
-        }),
-      ],
+        })
+      ]
     }),
 
     defineField({
@@ -75,7 +75,7 @@ export default defineType({
       type: 'object',
       initialValue: {
         type: 'Free',
-        priceSek: 0,
+        priceSek: 0
       },
       fields: [
         defineField({
@@ -85,18 +85,18 @@ export default defineType({
           options: {
             list: [
               { title: 'Free', value: 'Free' },
-              { title: 'Paid', value: 'Paid' },
-            ],
-          },
+              { title: 'Paid', value: 'Paid' }
+            ]
+          }
         }),
         defineField({
           name: 'priceSek',
           title: 'Price (SEK)',
           type: 'number',
-          validation: (Rule) => Rule.min(0),
-        }),
-      ],
-    }),
+          validation: (Rule) => Rule.min(0)
+        })
+      ]
+    })
   ],
 
   preview: {
@@ -107,7 +107,7 @@ export default defineType({
       entranceFeeType: 'entranceFee.type',
       entranceFeePrice: 'entranceFee?.priceSek',
       locationCity: 'location.city',
-      locationAddress: 'location.address',
+      locationAddress: 'location.address'
     },
     prepare(selection) {
       const {
@@ -116,26 +116,26 @@ export default defineType({
         entranceFeeType,
         entranceFeePrice,
         locationCity,
-        locationAddress,
-      } = selection
+        locationAddress
+      } = selection;
       const formattedDate = new Date(date).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
-        day: 'numeric',
-      })
+        day: 'numeric'
+      });
 
       const entranceFeeText =
         entranceFeeType === 'Free'
           ? 'Free'
           : entranceFeePrice
             ? `SEK ${entranceFeePrice}`
-            : 'Price not available'
+            : 'Price not available';
 
       const subtitle = `
      ${formattedDate} - ${title} -${locationCity}-${locationAddress} - ${entranceFeeText} 
-                `
+                `;
 
-      return { ...selection, subtitle }
-    },
-  },
-})
+      return { ...selection, subtitle };
+    }
+  }
+});

@@ -1,11 +1,11 @@
-import { PortableText } from '@portabletext/react'
-import Image from 'next/image'
-import { urlForImage } from '~/lib/sanity.image'
-import { PostType } from '~/lib/sanity.interfaces'
-import { formatDate } from '~/utils'
+import { PortableText } from '@portabletext/react';
+import Image from 'next/image';
+import { urlForImage } from '~/lib/sanity.image';
+import { PostType } from '~/lib/sanity.interfaces';
+import { formatDate } from '~/utils';
 
 interface CardProps {
-  post: PostType
+  post: PostType;
 }
 
 export default function Card({ post }: CardProps) {
@@ -32,5 +32,5 @@ export default function Card({ post }: CardProps) {
         <p>{formatDate(post._createdAt)}</p>
       </div>
     </div>
-  )
+  );
 }

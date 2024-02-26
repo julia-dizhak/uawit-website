@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { Button } from './Button'
-import Container from './Container'
-import { Logo } from './Logo'
+import React, { useState } from 'react';
+import { Button } from './Button';
+import Container from './Container';
+import { Logo } from './Logo';
 
 type MenuItemsProps = {
-  path: string
-  title: string
-  onClick: () => void
-}
+  path: string;
+  title: string;
+  onClick: () => void;
+};
 
 const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
   const handleClick = () => {
-    onClick && onClick()
-  }
+    onClick && onClick();
+  };
   return (
     <a
       href={`#${path}`}
@@ -22,17 +22,17 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
     >
       {title}
     </a>
-  )
-}
+  );
+};
 
 const Dropdown = ({ languages, className }) => {
-  const [language, setLanguage] = useState(languages[0].key)
+  const [language, setLanguage] = useState(languages[0].key);
 
   const handleLanguageChange = (event) => {
-    const newLanguage = event.target.value
-    setLanguage(newLanguage)
-  }
-  
+    const newLanguage = event.target.value;
+    setLanguage(newLanguage);
+  };
+
   return (
     <div
       id="dropdownNavbar"
@@ -55,26 +55,24 @@ const Dropdown = ({ languages, className }) => {
         ))}
       </select>
     </div>
-  )
-}
+  );
+};
 
-
-const Navigation = ({navbar, logo}) => {
+const Navigation = ({ navbar, logo }) => {
   const { buttonName, items, languages } = navbar;
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleMenu = () => {
-    setIsExpanded((prev) => !prev)
-  }
+    setIsExpanded((prev) => !prev);
+  };
 
   const handleButtonClick = () => {
     window.open(buttonName.redirectTo, '_blank');
-  }
+  };
 
   const handleMenuClick = () => {
-    toggleMenu()
-  }
-
+    toggleMenu();
+  };
 
   return (
     <Container>
@@ -111,19 +109,29 @@ const Navigation = ({navbar, logo}) => {
           </button>
           {/* ./mobile view => burger menu */}
           <div
-            className={`${isExpanded ? 'block z-50 absolute top-16 right-4 left-4' : 'hidden'
-              } w-full md:flex items-center gap-20 md:w-auto`}
+            className={`${
+              isExpanded
+                ? 'block z-50 absolute top-16 right-4 left-4'
+                : 'hidden'
+            } w-full md:flex items-center gap-20 md:w-auto`}
             id="navbar-default"
           >
             <ul className="font-medium md:flex flex-col items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white ">
-              {items?.length && items.map((menuItem) => (
-                <li key={menuItem.id}>
-                  <MenuItems path={menuItem.path} title={menuItem.title} onClick={handleMenuClick} />
-                </li>
-              ))}
+              {items?.length &&
+                items.map((menuItem) => (
+                  <li key={menuItem.id}>
+                    <MenuItems
+                      path={menuItem.path}
+                      title={menuItem.title}
+                      onClick={handleMenuClick}
+                    />
+                  </li>
+                ))}
 
               <div className="md:flex items-center gap-2 md:pl-8">
-                {languages?.length && <Dropdown languages={languages} className="py-4 md:p-0" />}
+                {languages?.length && (
+                  <Dropdown languages={languages} className="py-4 md:p-0" />
+                )}
                 <Button
                   buttonText={buttonName?.buttonText}
                   handleClick={handleButtonClick}
@@ -134,7 +142,7 @@ const Navigation = ({navbar, logo}) => {
         </div>
       </nav>
     </Container>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

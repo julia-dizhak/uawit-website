@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import Container from './Container';
 
 export default function NoData() {
@@ -6,16 +6,26 @@ export default function NoData() {
     <Container>
       <div className="flex flex-col aligns-center p-2">
         <div className="flex-col">
-          <h1 className="text-3xl font-bold pt-10 pb-10 text-center">No Data</h1>
-          <h2 className="text-2xl max-w-[750px] text-center pb-10">Please provide data in Sanity studio</h2>
+          <h1 className="text-3xl font-bold pt-10 pb-10 text-center">
+            No Data
+          </h1>
+          <h2 className="text-2xl max-w-[750px] text-center pb-10">
+            Please provide data in Sanity studio
+          </h2>
 
           <h3 className="pb-2 text-1xl">Next steps</h3>
           <ul>
             <li>
               <h3 className="text-1xl pb-2">Publish a post in your Studio</h3>
               <p className="pb-10">
-                Visit the <Link href="/studio" className="text-blue-700 hover:text-blue-800">Sanity Studio</Link> and publish a
-                new document of type post.
+                Visit the{' '}
+                <Link
+                  href="/studio"
+                  className="text-blue-700 hover:text-blue-800"
+                >
+                  Sanity Studio
+                </Link>{' '}
+                and publish a new document of type post.
               </p>
             </li>
             <li>
@@ -37,5 +47,5 @@ export default function NoData() {
         </div>
       </div>
     </Container>
-  )
+  );
 }

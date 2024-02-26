@@ -17,17 +17,16 @@ npm run dev
 # or
 yarn dev
 ```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 <img width="1317" alt="localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/79c4c2c2-6b50-438e-875e-002432b20a47">
 
 You can edit the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-
 > **Note**
 >
 > This starter uses the `/pages` directory for Next.js routing.
->
 
 ### Set up the Sanity Studio
 
@@ -62,8 +61,6 @@ Open [http://localhost:3000/studio/](http://localhost:3000/studio/) with your br
 
 <img width="1504" alt="Cursor_and_Info_1___Project_Name" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/f4200fbe-5647-482a-aedb-563e6391faf9">
 
-
-
 ## Project Overview
 
 Important files and folders
@@ -97,13 +94,11 @@ git push
 
 <img width="605" alt="uawit-website_—_julia_dizhak_Yuliias-MBP_—_-zsh_—_187×60_and_localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/886bea60-9088-43f6-9f42-7690d526cc7c">
 
-
 Alternatively, you can deploy without a `git` hosting provider using the Vercel CLI:
 
 ```bash
 npx vercel --prod
 ```
-
 
 ## Deploy on Vercel
 
@@ -124,5 +119,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## TODO
 
-* setup tailwind
-
+- setup tailwind

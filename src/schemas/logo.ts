@@ -8,24 +8,24 @@ export default {
       type: 'image',
       title: 'Logo Image',
       options: {
-        hotspot: true,
-      },
+        hotspot: true
+      }
     },
     {
       name: 'caption',
       type: 'string',
       title: 'Caption',
-      description: 'alt text',
+      description: 'alt text'
     },
     {
       name: 'href',
       type: 'url',
       title: 'Link',
       description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`,
-      validation: Rule => Rule.uri({
-        scheme: ['https']
-      })
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['https']
+        })
     }
-  ],
-}
-  
+  ]
+};

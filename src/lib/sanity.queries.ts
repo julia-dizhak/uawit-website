@@ -1,46 +1,46 @@
-import groq from 'groq'
-import { SanityClient } from 'next-sanity'
+import groq from 'groq';
+import { SanityClient } from 'next-sanity';
 import {
   HeroType,
   LogoType,
   NavigationType,
   PostsType,
   EventType,
-  EventsListType,
-} from './sanity.interfaces'
+  EventsListType
+} from './sanity.interfaces';
 
 // Posts Query
-export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
+export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`;
 
-export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
+export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`;
 
 export const postSlugsQuery = groq`*[_type == "post" && defined(slug.current)][].slug.current
-`
+`;
 
 export async function getPost(
   client: SanityClient,
-  slug: string,
+  slug: string
 ): Promise<PostsType> {
   return await client.fetch(postBySlugQuery, {
-    slug,
-  })
+    slug
+  });
 }
 
 export async function getPosts(client: SanityClient): Promise<PostsType> {
-  return await client.fetch(postsQuery)
+  return await client.fetch(postsQuery);
 }
 
 // Event Query
 export const eventsQuery = groq`*[_type == "events"] {
   "image": image,
   "title": title
-}`
+}`;
 
 export async function getEvents(
-  client: SanityClient,
+  client: SanityClient
   // slug: string,
 ): Promise<EventType[]> {
-  return await client.fetch(eventsQuery, {})
+  return await client.fetch(eventsQuery, {});
 }
 
 // Logo Query
@@ -50,9 +50,9 @@ export const logoQuery = groq`
     "caption": caption,
     "href": href,
   }
-`
+`;
 export async function getLogoData(client: SanityClient): Promise<LogoType> {
-  return await client.fetch(logoQuery)
+  return await client.fetch(logoQuery);
 }
 
 // Navigation
@@ -72,11 +72,11 @@ export const navbarQuery = groq`
     "redirectTo": redirectTo,
   }
 }
-`
+`;
 export async function getNavbarData(
-  client: SanityClient,
+  client: SanityClient
 ): Promise<NavigationType> {
-  return await client.fetch(navbarQuery)
+  return await client.fetch(navbarQuery);
 }
 
 // Hero block
@@ -90,8 +90,8 @@ export const heroQuery = groq`
       "redirectTo": redirectTo,
     }
   }
-`
+`;
 
 export async function getHeroData(client: SanityClient): Promise<HeroType> {
-  return await client.fetch(heroQuery)
+  return await client.fetch(heroQuery);
 }
