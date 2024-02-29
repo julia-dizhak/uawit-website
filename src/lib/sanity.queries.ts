@@ -5,8 +5,7 @@ import {
   LogoType,
   NavigationType,
   PostsType,
-  EventType,
-  EventsListType
+  EventType
 } from './sanity.interfaces';
 
 // Posts Query
@@ -38,9 +37,9 @@ export const eventsQuery = groq`*[_type == "events"] {
 
 export async function getEvents(
   client: SanityClient
-  // slug: string,
+  // TODO: slug: string,
 ): Promise<EventType[]> {
-  return await client.fetch(eventsQuery, {});
+  return await client.fetch(eventsQuery);
 }
 
 // Logo Query

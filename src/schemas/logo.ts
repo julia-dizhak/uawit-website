@@ -24,7 +24,7 @@ export default {
       description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`,
       validation: (Rule) =>
         Rule.uri({
-          scheme: ['https']
+          scheme: ['/', 'https']
         })
     }
   ]

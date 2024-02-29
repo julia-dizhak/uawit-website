@@ -10,12 +10,25 @@ This project bootstrapped with [`create-next-app`](https://github.com/vercel/nex
 
 ### Set up the project locally
 
+Before running a project, please always do `git pull`.
+
 Clone the repository and install dependencies `npm install` and run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm run dev or yarn dev
+```
+
+Run prettier
+
+```bash
+npm run format
+```
+
+Run eslint
+
+```bash
+npm run lint
+npm run lint:fix
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -119,4 +132,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## TODO
 
-- setup tailwind
+- add pre-commit hook
+- setup github actions
