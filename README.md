@@ -41,6 +41,8 @@ You can edit the page by modifying `pages/index.tsx`. The page auto-updates as y
 >
 > This starter uses the `/pages` directory for Next.js routing.
 
+You can collect a build 
+
 ```bash
 npm run build
 ```
@@ -79,6 +81,23 @@ SANITY_STUDIO_DATASET="production"
 Open [http://localhost:3000/studio/](http://localhost:3000/studio/) with your browser to see the sanity studio.
 
 <img width="1504" alt="Cursor_and_Info_1___Project_Name" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/f4200fbe-5647-482a-aedb-563e6391faf9">
+
+
+### Sanity Schema
+
+The schema for queries is following
+```
+~/lib/sanity.queries/
+  logo/
+   queries.ts
+   types.ts
+  posts/
+   queries.ts
+   types.ts
+```
+
+<img width="246" alt="Navigation_tsx_—_uawit-website" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/54ebc6c7-7eed-438d-a459-9b0853adfa41">
+
 
 ## Project Overview
 
