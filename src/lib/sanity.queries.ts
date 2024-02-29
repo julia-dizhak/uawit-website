@@ -42,13 +42,13 @@ export async function getEvents(
   return await client.fetch(eventsQuery);
 }
 
-// Logo Query
+// Logo Query: always fetch first
 export const logoQuery = groq`
   *[_type == "logo"] {
     "logoImage": logoImage,
     "caption": caption,
     "href": href,
-  }
+  }[0]
 `;
 export async function getLogoData(client: SanityClient): Promise<LogoType> {
   return await client.fetch(logoQuery);
@@ -70,7 +70,7 @@ export const navbarQuery = groq`
     "buttonText": buttonText,
     "redirectTo": redirectTo,
   }
-}
+}[0]
 `;
 export async function getNavbarData(
   client: SanityClient
@@ -88,7 +88,7 @@ export const heroQuery = groq`
       "buttonText": buttonText,
       "redirectTo": redirectTo,
     }
-  }
+  }[0]
 `;
 
 export async function getHeroData(client: SanityClient): Promise<HeroType> {
