@@ -14,13 +14,6 @@ export type PostType = {
 
 export type PostsType = PostType[]
 
-export type LogoType = {
-  _type: 'logo'
-  logoImage: ImageAsset
-  caption?: string
-  href?: string
-}
-
 export type NavigationType = {
   items: NavigationItem[]
   languages: Language[]

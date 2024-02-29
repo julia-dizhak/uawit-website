@@ -42,18 +42,6 @@ export async function getEvents(
   return await client.fetch(eventsQuery)
 }
 
-// Logo Query: always fetch first
-export const logoQuery = groq`
-  *[_type == "logo"] {
-    "logoImage": logoImage,
-    "caption": caption,
-    "href": href,
-  }[0]
-`
-export async function getLogoData(client: SanityClient): Promise<LogoType> {
-  return await client.fetch(logoQuery)
-}
-
 // Navigation
 export const navbarQuery = groq`
 *[_type == "navigation"] {

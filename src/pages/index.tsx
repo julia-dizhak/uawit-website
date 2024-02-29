@@ -10,15 +10,11 @@ import {
   getNavbarData,
   getHeroData,
   heroQuery,
-  logoQuery,
-  getLogoData,
 } from '~/lib/sanity.queries'
 import {
   HeroType,
-  LogoType,
   NavigationType,
   PostsType,
-  EventsListType,
   EventType,
 } from '~/lib/sanity.interfaces'
 import {
@@ -30,6 +26,8 @@ import {
 import type { SharedPageProps } from '~/pages/_app'
 import { Posts } from '~/components/Posts'
 import NoData from '~/components/NoData'
+import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
+import { LogoType } from '~/lib/sanity.queries/logo/types'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
