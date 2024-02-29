@@ -1,20 +1,20 @@
-import '~/styles/global.css';
-import type { AppProps } from 'next/app';
-import { lazy } from 'react';
-import { mono, sans, serif } from './fonts';
+import '~/styles/global.css'
+import type { AppProps } from 'next/app'
+import { lazy } from 'react'
+import { mono, sans, serif } from './fonts'
 
 export type SharedPageProps = {
-  draftMode: boolean;
-  token: string;
-};
+  draftMode: boolean
+  token: string
+}
 
-const PreviewProvider = lazy(() => import('~/components/PreviewProvider'));
+const PreviewProvider = lazy(() => import('~/components/PreviewProvider'))
 
 export default function App({
   Component,
-  pageProps
+  pageProps,
 }: AppProps<SharedPageProps>) {
-  const { draftMode, token } = pageProps;
+  const { draftMode, token } = pageProps
   return (
     <>
       <style jsx global>
@@ -34,5 +34,5 @@ export default function App({
         <Component {...pageProps} />
       )}
     </>
-  );
+  )
 }

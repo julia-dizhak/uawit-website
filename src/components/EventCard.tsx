@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default function EventCard({ event }) {
   return (
@@ -15,5 +15,5 @@ export default function EventCard({ event }) {
       </div>
       <p className="flex items-center mx-5 font-bold ">Entrance Fee</p>
     </li>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import Container from './Container';
-import Card from './Card';
-import { PostType } from '~/lib/sanity.interfaces';
+import Container from './Container'
+import Card from './Card'
+import { PostType } from '~/lib/sanity.interfaces'
 
 export const Posts = ({ posts }) => {
   return (
@@ -9,5 +9,5 @@ export const Posts = ({ posts }) => {
         <Card key={post._id} post={post} />
       ))}
     </Container>
-  );
-};
+  )
+}

@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import { urlForImage } from '~/lib/sanity.image';
+import Image from 'next/image'
+import { urlForImage } from '~/lib/sanity.image'
 
 export const Logo = ({ logo }) => {
-  const { logoImage, href, caption } = logo;
+  const { logoImage, href, caption } = logo
 
   return (
     <a href={`#${href}`} className="block" aria-current="page">
@@ -15,5 +15,5 @@ export const Logo = ({ logo }) => {
         />
       )}
     </a>
-  );
-};
+  )
+}

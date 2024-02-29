@@ -8,18 +8,18 @@ export default {
       title: 'Background Image',
       type: 'image',
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     },
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'buttonName',
@@ -30,16 +30,16 @@ export default {
           name: 'buttonText',
           type: 'string',
           title: 'Button Text',
-          validation: (Rule) => Rule.required()
+          validation: (Rule) => Rule.required(),
         },
         {
           name: 'redirectTo',
           type: 'url',
           title: 'Redirect To',
           validation: (Rule) =>
-            Rule.required().uri({ scheme: ['http', 'https'] })
-        }
-      ]
-    }
-  ]
-};
+            Rule.required().uri({ scheme: ['http', 'https'] }),
+        },
+      ],
+    },
+  ],
+}
