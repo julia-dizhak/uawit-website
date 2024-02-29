@@ -38,6 +38,6 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'no-console': 'error',
+    'no-console': 'error'
   }
 };
