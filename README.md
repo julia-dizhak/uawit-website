@@ -94,15 +94,21 @@ Important files and folders
 
 All pages are wrapped in `pages/_app.tsx`.
 
-### Deploy to production
+### How to open a pull-request
 
-To deploy your changes to production you use `git`:
+To open a new pull-request, you can do next
 
 ```bash
-npm run build
+clone repo
+add origin
+open a new branch => git checkout -b 
+add you changes
+npm run lint:fix
+npm run format
 git add .
 git commit
 git push
+open a pr from github
 ```
 
 <img width="605" alt="uawit-website_—_julia_dizhak_Yuliias-MBP_—_-zsh_—_187×60_and_localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/886bea60-9088-43f6-9f42-7690d526cc7c">
