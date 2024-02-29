@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps<
     props: {
       draftMode,
       token: draftMode ? readToken : '',
-      // data
+      // fetched data
       posts,
       events,
       logoData,
@@ -69,7 +69,6 @@ export default function HomePage({
   events
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery);
-
   const [navbarArray] = useLiveQuery(navbarData, navbarQuery);
   const navbar = navbarArray?.[0] || {};
 
@@ -96,7 +95,7 @@ export default function HomePage({
             title={title}
             buttonName={buttonName}
           />
-          <Posts posts={postsData} />
+          {postsData.length && <Posts posts={postsData} />}
           {eventsData.length && <ContentSection events={eventsData} />}
         </>
       ) : (
