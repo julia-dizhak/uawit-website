@@ -41,6 +41,12 @@ You can edit the page by modifying `pages/index.tsx`. The page auto-updates as y
 >
 > This starter uses the `/pages` directory for Next.js routing.
 
+```bash
+npm run build
+```
+
+<img width="605" alt="uawit-website_—_julia_dizhak_Yuliias-MBP_—_-zsh_—_187×60_and_localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/886bea60-9088-43f6-9f42-7690d526cc7c">
+
 ### Set up the Sanity Studio
 
 Before you proceed, please be sure that you have an account on Sanity or create it using that link [Create a sanity project](https://www.sanity.io/docs/create-a-sanity-project)].
@@ -101,7 +107,7 @@ To open a new pull-request, you can do next
 ```bash
 clone repo
 add origin
-open a new branch => git checkout -b 
+open a new branch => git checkout -b
 add you changes
 npm run lint:fix
 npm run format
@@ -111,11 +117,13 @@ git push
 open a pr from github
 ```
 
-<img width="605" alt="uawit-website_—_julia_dizhak_Yuliias-MBP_—_-zsh_—_187×60_and_localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/886bea60-9088-43f6-9f42-7690d526cc7c">
+### Deploy on production
 
 Alternatively, you can deploy without a `git` hosting provider using the Vercel CLI:
 
 ```bash
+npm run build
+or
 npx vercel --prod
 ```
 

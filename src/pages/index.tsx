@@ -5,31 +5,19 @@ import ContentSection from '~/components/ContentSection'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import {
-  navbarQuery,
-  getNavbarData,
-  getHeroData,
-  heroQuery,
-  logoQuery,
-  getLogoData,
-} from '~/lib/sanity.queries'
-import {
-  HeroType,
-  LogoType,
-  NavigationType,
-  PostsType,
-  EventsListType,
-  EventType,
-} from '~/lib/sanity.interfaces'
-import {
-  getPosts,
-  postsQuery,
-  getEvents,
-  eventsQuery,
-} from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 import { Posts } from '~/components/Posts'
 import NoData from '~/components/NoData'
+import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
+import { LogoType } from '~/lib/sanity.queries/logo/types'
+import { HeroType } from '~/lib/sanity.queries/hero/types'
+import { getHeroData, heroQuery } from '~/lib/sanity.queries/hero/queries'
+import { PostsType } from '~/lib/sanity.queries/posts/types'
+import { getPosts, postsQuery } from '~/lib/sanity.queries/posts/queries'
+import { eventsQuery, getEvents } from '~/lib/sanity.queries/events/queries'
+import { EventsListType } from '~/lib/sanity.queries/events/types'
+import { getNavbarData, navbarQuery } from '~/lib/sanity.queries/navbar/queries'
+import { NavigationType } from '~/lib/sanity.queries/navbar/types'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -37,14 +25,14 @@ export const getStaticProps: GetStaticProps<
     navbarData: NavigationType
     logoData: LogoType
     heroData: HeroType
-    events: EventType[]
+    events: EventsListType
   }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
   const navbarData = await getNavbarData(client)
   const heroData = await getHeroData(client)
   const logoData = await getLogoData(client)
-  const posts = await getPosts(client)
+  const posts = await getPosts(client) // or news
   const events = await getEvents(client)
 
   return {
