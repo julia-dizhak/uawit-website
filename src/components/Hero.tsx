@@ -1,18 +1,18 @@
-import Image from 'next/image';
-import { urlForImage } from '~/lib/sanity.image';
-import { HeroType } from '~/lib/sanity.interfaces';
-import { Button } from './Button';
-import Container from './Container';
+import Image from 'next/image'
+import { urlForImage } from '~/lib/sanity.image'
+import { HeroType } from '~/lib/sanity.interfaces'
+import { Button } from './Button'
+import Container from './Container'
 
 const Hero = ({
   backgroundImage,
   description,
   title,
-  buttonName
+  buttonName,
 }: HeroType) => {
   const handleButtonClick = () => {
-    window.open(buttonName.redirectTo, '_blank');
-  };
+    window.open(buttonName.redirectTo, '_blank')
+  }
 
   return (
     <div className="relative bg-cover bg-center md:h-[40vh] flex flex-col justify-center items-center gap-4">
@@ -41,7 +41,7 @@ const Hero = ({
         </div>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

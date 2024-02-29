@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import Container from './Container';
+import Link from 'next/link'
+import Container from './Container'
 
 export default function NoData() {
   return (
@@ -47,5 +47,5 @@ export default function NoData() {
         </div>
       </div>
     </Container>
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import EventCard from './EventCard';
-import { EventsListType } from '~/lib/sanity.interfaces';
+import EventCard from './EventCard'
+import { EventsListType } from '~/lib/sanity.interfaces'
 
 export default function ContentSection({ events }: EventsListType) {
   // console.log('events n component', events, typeof events);
@@ -24,5 +24,5 @@ export default function ContentSection({ events }: EventsListType) {
       </ul>
       <button className="mt-[3.75rem]">See more Events </button>
     </section>
-  );
+  )
 }

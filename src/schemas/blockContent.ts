@@ -1,4 +1,4 @@
-import { defineArrayMember, defineType } from 'sanity';
+import { defineArrayMember, defineType } from 'sanity'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -28,7 +28,7 @@ export default defineType({
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
-        { title: 'Quote', value: 'blockquote' }
+        { title: 'Quote', value: 'blockquote' },
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
       // Marks let you mark up inline text in the block editor.
@@ -37,7 +37,7 @@ export default defineType({
         // preference or highlighting by editors.
         decorators: [
           { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' }
+          { title: 'Emphasis', value: 'em' },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -49,12 +49,12 @@ export default defineType({
               {
                 title: 'URL',
                 name: 'href',
-                type: 'url'
-              }
-            ]
-          }
-        ]
-      }
-    })
-  ]
-});
+                type: 'url',
+              },
+            ],
+          },
+        ],
+      },
+    }),
+  ],
+})

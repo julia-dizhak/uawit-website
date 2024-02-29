@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 interface ButtonProps {
-  buttonText: string;
-  className?: string;
-  handleClick: () => void;
+  buttonText: string
+  className?: string
+  handleClick: () => void
 }
 
 export const Button = ({
@@ -12,9 +12,9 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    handleClick();
-  };
+    e.preventDefault()
+    handleClick()
+  }
 
   return (
     <button
@@ -24,5 +24,5 @@ export const Button = ({
     >
       {buttonText}
     </button>
-  );
-};
+  )
+}
