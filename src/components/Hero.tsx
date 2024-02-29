@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { urlForImage } from '~/lib/sanity.image'
-import { HeroType } from '~/lib/sanity.interfaces'
 import { Button } from './Button'
 import Container from './Container'
+import { HeroType } from '~/lib/sanity.queries/hero/types'
 
 const Hero = ({
   backgroundImage,

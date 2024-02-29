@@ -3,7 +3,7 @@ import { Button } from './Button'
 import Container from './Container'
 import { Logo } from './Logo'
 
-type MenuItemsProps = {
+interface MenuItemsProps {
   path: string
   title: string
   onClick: () => void
@@ -117,7 +117,7 @@ const Navigation = ({ navbar, logo }) => {
             id="navbar-default"
           >
             <ul className="font-medium md:flex flex-col items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white ">
-              {items?.length &&
+              {items.length > 0 &&
                 items.map((menuItem) => (
                   <li key={menuItem.id}>
                     <MenuItems
@@ -129,7 +129,7 @@ const Navigation = ({ navbar, logo }) => {
                 ))}
 
               <div className="md:flex items-center gap-2 md:pl-8">
-                {languages?.length && (
+                {languages.length > 0 && (
                   <Dropdown languages={languages} className="py-4 md:p-0" />
                 )}
                 <Button

@@ -1,9 +1,12 @@
 import React from 'react'
 
 import EventCard from './EventCard'
-import { EventsListType } from '~/lib/sanity.interfaces'
+import { EventType, EventsListType } from '~/lib/sanity.queries/events/types'
 
-export default function ContentSection({ events }: EventsListType) {
+type Props = {
+  events: EventsListType
+}
+export default function ContentSection({ events }: Props) {
   // console.log('events n component', events, typeof events);
   // TODO: sort - > cards by date;
   return (
@@ -18,7 +21,7 @@ export default function ContentSection({ events }: EventsListType) {
       </p>
 
       <ul className="container   grid grid-cols-1 gap-[3.75rem]  md:grid-cols-2 lg:grid-cols-3  ">
-        {events.map((event: EventsListType) => (
+        {events.map((event: EventType) => (
           <EventCard event={event} key={event.title} />
         ))}
       </ul>

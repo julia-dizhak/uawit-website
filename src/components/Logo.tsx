@@ -1,17 +1,22 @@
 import Image from 'next/image'
 import { urlForImage } from '~/lib/sanity.image'
+import { LogoType } from '~/lib/sanity.queries/logo/types'
 
-export const Logo = ({ logo }) => {
+type Props = {
+  logo: LogoType
+}
+
+export const Logo = ({ logo }: Props) => {
   const { logoImage, href, caption } = logo
 
   return (
     <a href={`#${href}`} className="block" aria-current="page">
-      {logoImage && (
+      {Boolean(logoImage) && (
         <Image
           src={urlForImage(logoImage).url()}
           height={50}
           width={50}
-          alt={caption}
+          alt={caption || 'ogo UA WIT'}
         />
       )}
     </a>

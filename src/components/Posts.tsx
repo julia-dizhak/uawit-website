@@ -1,8 +1,12 @@
 import Container from './Container'
 import Card from './Card'
-import { PostType } from '~/lib/sanity.interfaces'
+import { PostType, PostsType } from '~/lib/sanity.queries/posts/types'
 
-export const Posts = ({ posts }) => {
+type Props = {
+  posts: PostsType
+}
+
+export const Posts = ({ posts }: Props) => {
   return (
     <Container>
       {posts.map((post: PostType) => (
