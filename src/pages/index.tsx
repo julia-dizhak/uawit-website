@@ -1,7 +1,8 @@
+/* eslint-disable spaced-comment */
+/* eslint-disable @typescript-eslint/consistent-type-imports */
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
 import Navigation from '~/components/Navigation'
-import ContentSection from '~/components/ContentSection'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
@@ -18,6 +19,7 @@ import { eventsQuery, getEvents } from '~/lib/sanity.queries/events/queries'
 import { EventsListType } from '~/lib/sanity.queries/events/types'
 import { getNavbarData, navbarQuery } from '~/lib/sanity.queries/navbar/queries'
 import { NavigationType } from '~/lib/sanity.queries/navbar/types'
+import EventsSection from '~/components/eventsSection/EventSection'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -59,8 +61,9 @@ export default function HomePage({
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
 
-  const [hero] = useLiveQuery(heroData, heroQuery)
-  const { backgroundImage, description, title, buttonName } = hero
+  // const [hero] = useLiveQuery(heroData, heroQuery)
+
+  // const { backgroundImage, description, title, buttonName } = hero
 
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [eventsData] = useLiveQuery(events, eventsQuery)
@@ -72,16 +75,16 @@ export default function HomePage({
       {dataShouldBePresent ? (
         <>
           {(navbar || logo) && <Navigation logo={logo} navbar={navbar} />}
-          {hero && (
+          {/*  {hero && (
             <Hero
               backgroundImage={backgroundImage}
               description={description}
               title={title}
               buttonName={buttonName}
             />
-          )}
+          )}*/}
           {postsData.length && <Posts posts={postsData} />}
-          {eventsData.length && <ContentSection events={eventsData} />}
+          {eventsData.length && <EventsSection events={eventsData} />}
         </>
       ) : (
         <NoData />
