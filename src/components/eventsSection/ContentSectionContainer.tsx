@@ -23,7 +23,7 @@ export default function ContentSectionContainer<T>({
     .slice(0, 3)
 
   return (
-    <section className="py-16 px-[6.563rem]">
+    <section className=" py-16 px-6 sm:px-[6.563rem]">
       <h2 className="font-bold text-center text-[42px] text-[#21272A] font-roboto">
         {title}
       </h2>

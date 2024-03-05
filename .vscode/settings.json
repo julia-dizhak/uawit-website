@@ -1,3 +1,7 @@
 {
-  "editor.formatOnSave": true
+  "editor.formatOnSave": false,
+  "cSpell.words": [
+    "hotspot"
+  ],
+  "prettier.bracketSameLine": true
 }

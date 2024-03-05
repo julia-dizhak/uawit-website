@@ -1,6 +1,5 @@
 import { defineField, defineType } from 'sanity'
-
-//#TODO - add   validation: (Rule) => Rule.required(),
+import { formatDateTime } from '~/lib/sanity.queries/events/utility'
 
 export default defineType({
   name: 'events',
@@ -9,17 +8,25 @@ export default defineType({
   fields: [
     defineField({
       name: 'image',
-      title: 'Image',
+      title: 'Event Card Image',
       type: 'image',
       validation: (Rule) => Rule.required(),
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alt',
+          type: 'string',
+        },
+      ],
     }),
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -31,10 +38,12 @@ export default defineType({
         maxLength: 96,
       },
     }),
+
     defineField({
       name: 'dateAndTime',
       title: 'Date and Time',
       type: 'datetime',
+      validation: (Rule) => Rule.required(),
       options: {
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
@@ -47,6 +56,7 @@ export default defineType({
       name: 'location',
       title: 'Location',
       type: 'object',
+      validation: (Rule) => Rule.required(),
       fields: [
         defineField({
           name: 'address',
@@ -63,8 +73,6 @@ export default defineType({
           title: 'Google Maps URL',
           type: 'url',
           description: 'This could be location url',
-          // validation: (Rule) =>
-          //   Rule.required().uri({ scheme: ['http', 'https'] }),
         }),
       ],
     }),
@@ -97,43 +105,28 @@ export default defineType({
         }),
       ],
     }),
+    {
+      name: 'buttonLink',
+      title: 'Button Link',
+      type: 'url',
+      validation: (Rule) => Rule.required().uri({ scheme: ['http', 'https'] }),
+    },
   ],
 
   preview: {
     select: {
       title: 'title',
-      media: 'Image',
-      date: 'dateAndTime',
-      entranceFeeType: 'entranceFee.type',
-      entranceFeePrice: 'entranceFee?.priceSek',
+      media: 'image',
+      dateAndTime: 'dateAndTime',
       locationCity: 'location.city',
       locationAddress: 'location.address',
     },
     prepare(selection) {
-      const {
-        title,
-        date,
-        entranceFeeType,
-        entranceFeePrice,
-        locationCity,
-        locationAddress,
-      } = selection
-      const formattedDate = new Date(date).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
+      const { dateAndTime, locationCity, locationAddress } = selection
 
-      const entranceFeeText =
-        entranceFeeType === 'Free'
-          ? 'Free'
-          : entranceFeePrice
-            ? `SEK ${entranceFeePrice}`
-            : 'Price not available'
+      const { formattedDate, formattedTime } = formatDateTime(dateAndTime)
 
-      const subtitle = `
-     ${formattedDate} - ${title} -${locationCity}-${locationAddress} - ${entranceFeeText} 
-                `
+      const subtitle = `${formattedDate} • ${formattedTime} •  ${locationCity}, ${locationAddress} `
 
       return { ...selection, subtitle }
     },
