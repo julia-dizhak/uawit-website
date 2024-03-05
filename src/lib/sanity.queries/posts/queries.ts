@@ -1,5 +1,6 @@
 import groq from 'groq'
 import { SanityClient } from 'next-sanity'
+import { PostsType } from './types'
 
 // Posts Query
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`

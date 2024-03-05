@@ -19,20 +19,10 @@ Clone the repository, install dependencies `npm install` and run the development
 ```bash
 npm run dev (or yarn dev)
 ```
-Before running a project, please always do `git pull`. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Before running a project, please always do `git pull`.
 
-<img width="1317" alt="localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/79c4c2c2-6b50-438e-875e-002432b20a47">
-
-When you first time run a project and don't have local data, you should see the following screen:
-<img width="661" alt="localhost_3000-5" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/1a1432c5-c962-4010-9174-24e79c420af3">
-
-
-You can edit the page by modifying `pages/index.tsx`.The page auto-updates as you edit the file.
-Add your changes and run lint and format.
-
-Run eslint
+Clone the repository and install dependencies `npm install` and run the development server:
 
 ```bash
 npm run lint (or npm run lint:fix)
@@ -44,13 +34,47 @@ Run prettier
 npm run format
 ```
 
-You can compose a build if you want to prepare the code for production.
+Run eslint
+
+```bash
+npm run lint
+npm run lint:fix
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+<img width="1317" alt="localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/79c4c2c2-6b50-438e-875e-002432b20a47">
+
+You can edit the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+
+> **Note**
+>
+> This starter uses the `/pages` directory for Next.js routing.
+
+You can collect a build
 
 ```bash
 npm run build
 ```
 
 <img width="605" alt="uawit-website_—_julia_dizhak_Yuliias-MBP_—_-zsh_—_187×60_and_localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/886bea60-9088-43f6-9f42-7690d526cc7c">
+
+### How to open a pull-request
+
+To open a new pull-request, you can do next
+
+```bash
+clone repo
+add origin
+open a new branch => git checkout -b
+add you changes
+npm run lint:fix
+npm run format
+git add .
+git commit
+git push
+open a pr from github
+```
 
 ### Set up the Sanity Studio
 
@@ -85,6 +109,7 @@ Open [http://localhost:3000/studio/](http://localhost:3000/studio/) with your br
 
 <img width="902" alt="Post___Project_Name_🔊" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/6a8ef86a-59f8-4176-827a-5af572bdc34e">
 
+<img width="1504" alt="Cursor_and_Info_1___Project_Name" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/f4200fbe-5647-482a-aedb-563e6391faf9">
 
 ## Project Overview
 
@@ -94,8 +119,6 @@ Important files and folders
 | -------------------------------- | ------------------------------------------------------------------------------------- |
 | `sanity.config.ts`               | Config file for Sanity Studio                                                         |
 | `/pages/index.tsx`               | Landing page for `/`.                                                                 |
-| `/pages/studio/[[...index]].tsx` | Where Sanity Studio is mounted                                                        |
-| `/pages/api/draft.ts`            | Serverless route for triggering Draft mode                                            |
 | `/sanity/schemas.ts`             | Where Sanity Studio gets its content types from                                       |
 | `/sanity/env.ts`                 | Configuration for the Sanity project and dataset                                      |
 | `/sanity/schemas.ts`             | Where Sanity Studio gets its content types from                                       |
@@ -110,9 +133,10 @@ Below are instructions on How to work with different schemas.
 
 To create and see a new type in the sanity studio, you have to do the next steps:
 
-* Before creating a new type: please think it if it is needed first or data can be static in the template. Create a new type for schema if data is dynamic.
+* Before creating a new type, think it if it is needed or data can be static in the template. Create a new type for schema if data is dynamic.
 * Think more abstractly when you create a new schema so we can reuse types better in the future.
 * Create a new type in the folder `src/schemas/` and import it to `schemaTypes` in file`src/schemas/index.ts`. For example, if you need to create a `Logo type` with fields `logoImage, caption, link`:
+
 ```bash
 const logo = {
   name: 'logo',
@@ -137,13 +161,16 @@ const logo = {
       name: 'href',
       type: 'url',
       title: 'Link',
-      description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`,
+      description: `Can be a path starting with a ...`,
     },
   ],
 }
-* Note: It is always good idea to add description for your schema fields
 ```
+
+* **Note**: It is always good idea to add description for your schema fields
+
 * Update `sanity.queries` and provide your query
+
 ```bash
 ~/lib/sanity.queries/
   logo/
@@ -154,9 +181,11 @@ const logo = {
    types.ts
   ...
 ```
+
 <img width="246" alt="Navigation_tsx_—_uawit-website" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/54ebc6c7-7eed-438d-a459-9b0853adfa41">
 
 * For example if you need to fetch Logo with image, link, alt. The schema will be next
+
 ```bash
 export const logoQuery = groq`
   *[_type == "logo"] {
@@ -169,25 +198,8 @@ export async function getLogoData(client: SanityClient): Promise<LogoType> {
   return await client.fetch(logoQuery)
 }
 ```
-* Note: Always fetch the first array, as you can create many logos.
 
-
-### How to open a pull-request
-
-To open a new pull-request, you can do next
-
-```bash
-clone repo
-add origin
-open a new branch => git checkout -b
-add you changes
-npm run lint:fix
-npm run format
-git add .
-git commit
-git push
-open a pr from github
-```
+* **Note**: Always fetch the first array, as you can create many logos.
 
 ### Deploy on production
 
@@ -211,12 +223,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+* [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## TODO
 
-- add pre-commit hook
-- setup github actions
-- use graphQL
+* add pre-commit hook
+* setup github actions
+* add GraphQL

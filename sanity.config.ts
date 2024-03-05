@@ -8,7 +8,7 @@ import { deskTool } from 'sanity/desk'
 import {
   defineUrlResolver,
   Iframe,
-  IframeOptions,
+  type IframeOptions,
 } from 'sanity-plugin-iframe-pane'
 import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
 
@@ -19,7 +19,7 @@ import {
   previewSecretId,
   projectId,
 } from '~/lib/sanity.api'
-import { schema, schemaTypes } from '~/schemas'
+import { schemaTypes } from '~/schemas'
 
 const iframeOptions = {
   url: defineUrlResolver({
@@ -36,7 +36,7 @@ export default defineConfig({
   title: 'Project Name',
   projectId,
   dataset,
-  //edit schemas in './src/schemas'
+  // edit schemas in './src/schemas'
   schema: {
     types: schemaTypes,
   },
