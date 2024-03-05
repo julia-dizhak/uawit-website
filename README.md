@@ -8,14 +8,34 @@ It is built using Next.js + Sanity Studio. The Sanity studio is embedded in the 
 
 This project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+> **Note**
+>
+> This starter uses the `/pages` directory for Next.js routing.
+
 ### Set up the project locally
 
-Before running a project, please always do `git pull`.
-
-Clone the repository and install dependencies `npm install` and run the development server:
+Clone the repository, install dependencies `npm install` and run the development server:
 
 ```bash
-npm run dev or yarn dev
+npm run dev (or yarn dev)
+```
+Before running a project, please always do `git pull`. 
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+<img width="1317" alt="localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/79c4c2c2-6b50-438e-875e-002432b20a47">
+
+When you first time run a project and don't have local data, you should see the following screen:
+<img width="661" alt="localhost_3000-5" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/1a1432c5-c962-4010-9174-24e79c420af3">
+
+
+You can edit the page by modifying `pages/index.tsx`.The page auto-updates as you edit the file.
+Add your changes and run lint and format.
+
+Run eslint
+
+```bash
+npm run lint (or npm run lint:fix)
 ```
 
 Run prettier
@@ -24,24 +44,7 @@ Run prettier
 npm run format
 ```
 
-Run eslint
-
-```bash
-npm run lint
-npm run lint:fix
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-<img width="1317" alt="localhost_3000" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/79c4c2c2-6b50-438e-875e-002432b20a47">
-
-You can edit the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-> **Note**
->
-> This starter uses the `/pages` directory for Next.js routing.
-
-You can collect a build 
+You can compose a build if you want to prepare the code for production.
 
 ```bash
 npm run build
@@ -53,11 +56,10 @@ npm run build
 
 Before you proceed, please be sure that you have an account on Sanity or create it using that link [Create a sanity project](https://www.sanity.io/docs/create-a-sanity-project)].
 
-This starter is a statically generated site that uses [Next.js][nextjs] for the frontend and [Sanity][sanity-homepage] to handle its content.
+This starter is a statically generated site that uses Next.js for the frontend and Sanity to handle its content.
 It comes with a native Sanity Studio that offers features like real-time collaboration, instant side-by-side content previews, and intuitive editing.
 
 The Studio connects to Sanity Content Lake, which gives you hosted content APIs with a flexible query language, on-demand image transformations, powerful patching, and more.
-You can use this starter to kick-start a clean slate site or learn these technologies.
 
 Download the environment variables needed to connect Next.js and the Studio to your Sanity project:
 
@@ -79,24 +81,9 @@ SANITY_STUDIO_DATASET="production"
 ```
 
 Open [http://localhost:3000/studio/](http://localhost:3000/studio/) with your browser to see the sanity studio.
+(Below is a screenshot for the current data we have on production sanity)
 
-<img width="1504" alt="Cursor_and_Info_1___Project_Name" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/f4200fbe-5647-482a-aedb-563e6391faf9">
-
-
-### Sanity Schema
-
-The schema for queries is following
-```
-~/lib/sanity.queries/
-  logo/
-   queries.ts
-   types.ts
-  posts/
-   queries.ts
-   types.ts
-```
-
-<img width="246" alt="Navigation_tsx_—_uawit-website" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/54ebc6c7-7eed-438d-a459-9b0853adfa41">
+<img width="902" alt="Post___Project_Name_🔊" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/6a8ef86a-59f8-4176-827a-5af572bdc34e">
 
 
 ## Project Overview
@@ -106,7 +93,6 @@ Important files and folders
 | File(s)                          | Description                                                                           |
 | -------------------------------- | ------------------------------------------------------------------------------------- |
 | `sanity.config.ts`               | Config file for Sanity Studio                                                         |
-| `sanity.cli.ts`                  | Config file for Sanity CLI                                                            |
 | `/pages/index.tsx`               | Landing page for `/`.                                                                 |
 | `/pages/studio/[[...index]].tsx` | Where Sanity Studio is mounted                                                        |
 | `/pages/api/draft.ts`            | Serverless route for triggering Draft mode                                            |
@@ -114,10 +100,77 @@ Important files and folders
 | `/sanity/env.ts`                 | Configuration for the Sanity project and dataset                                      |
 | `/sanity/schemas.ts`             | Where Sanity Studio gets its content types from                                       |
 | `/sanity/lib/client.ts`          | Sanity client configured based on `env.ts`                                            |
-| `/sanity/lib/image.ts`           | Sanity image builder - unused in this template, but is needed to render Sanity images |
 | `tailwind.config.js`             | Tailwind config. Only applies to files listed under `content`                         |
 
 All pages are wrapped in `pages/_app.tsx`.
+
+### Sanity Schema
+
+Below are instructions on How to work with different schemas.
+
+To create and see a new type in the sanity studio, you have to do the next steps:
+
+* Before creating a new type: please think it if it is needed first or data can be static in the template. Create a new type for schema if data is dynamic.
+* Think more abstractly when you create a new schema so we can reuse types better in the future.
+* Create a new type in the folder `src/schemas/` and import it to `schemaTypes` in file`src/schemas/index.ts`. For example, if you need to create a `Logo type` with fields `logoImage, caption, link`:
+```bash
+const logo = {
+  name: 'logo',
+  type: 'document',
+  title: 'Logo',
+  fields: [
+    {
+      name: 'logoImage',
+      type: 'image',
+      title: 'Logo Image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'caption',
+      type: 'string',
+      title: 'Caption',
+      description: 'alt text',
+    },
+    {
+      name: 'href',
+      type: 'url',
+      title: 'Link',
+      description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`,
+    },
+  ],
+}
+* Note: It is always good idea to add description for your schema fields
+```
+* Update `sanity.queries` and provide your query
+```bash
+~/lib/sanity.queries/
+  logo/
+   queries.ts
+   types.ts
+  posts/
+   queries.ts
+   types.ts
+  ...
+```
+<img width="246" alt="Navigation_tsx_—_uawit-website" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/54ebc6c7-7eed-438d-a459-9b0853adfa41">
+
+* For example if you need to fetch Logo with image, link, alt. The schema will be next
+```bash
+export const logoQuery = groq`
+  *[_type == "logo"] {
+    "logoImage": logoImage,
+    "caption": caption,
+    "href": href,
+  }[0] // Logo Query: always fetch first
+`
+export async function getLogoData(client: SanityClient): Promise<LogoType> {
+  return await client.fetch(logoQuery)
+}
+```
+* Note: Always fetch the first array, as you can create many logos.
+
 
 ### How to open a pull-request
 
@@ -161,9 +214,9 @@ To learn more about Next.js, take a look at the following resources:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## TODO
 
 - add pre-commit hook
 - setup github actions
+- use graphQL
