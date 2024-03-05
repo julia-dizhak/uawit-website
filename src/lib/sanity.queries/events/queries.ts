@@ -9,8 +9,7 @@ export const eventsQuery = groq`*[_type == "events"] {
   "image": coalesce(image.asset->url, null),
   "title": title,
   "slug": slug.current,
-  "date": dateAndTime->date | date('yyyy-MM-dd'),
-  "time": dateAndTime->time | time('HH:mm'),
+  "dateAndTime": dateAndTime, 
   "location": {
       "address": location.address,
       "city": location.city,

@@ -7,7 +7,6 @@ interface EventsSectionProps {
 }
 
 export default function EventsSection({ events }: EventsSectionProps) {
-  console.log('events n component', events, typeof events)
 
   return (
     <ContentSectionContainer

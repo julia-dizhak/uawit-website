@@ -12,17 +12,12 @@ export interface EntranceFeeType {
 }
 
 export interface EventType {
-  time: string
-  date: string
   _type: 'event'
   _id: string
   title?: string
   slug: Slug
   image?: ImageAsset
-  dateAndTime?: {
-    date: string
-    time: string
-  }
+  dateAndTime?: string
   location?: LocationType
   entranceFee?: EntranceFeeType
   buttonLink?: string
