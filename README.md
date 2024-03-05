@@ -115,15 +115,15 @@ Open [http://localhost:3000/studio/](http://localhost:3000/studio/) with your br
 
 Important files and folders
 
-| File(s)                          | Description                                                                           |
-| -------------------------------- | ------------------------------------------------------------------------------------- |
-| `sanity.config.ts`               | Config file for Sanity Studio                                                         |
-| `/pages/index.tsx`               | Landing page for `/`.                                                                 |
-| `/sanity/schemas.ts`             | Where Sanity Studio gets its content types from                                       |
-| `/sanity/env.ts`                 | Configuration for the Sanity project and dataset                                      |
-| `/sanity/schemas.ts`             | Where Sanity Studio gets its content types from                                       |
-| `/sanity/lib/client.ts`          | Sanity client configured based on `env.ts`                                            |
-| `tailwind.config.js`             | Tailwind config. Only applies to files listed under `content`                         |
+| File(s)                 | Description                                                   |
+| ----------------------- | ------------------------------------------------------------- |
+| `sanity.config.ts`      | Config file for Sanity Studio                                 |
+| `/pages/index.tsx`      | Landing page for `/`.                                         |
+| `/sanity/schemas.ts`    | Where Sanity Studio gets its content types from               |
+| `/sanity/env.ts`        | Configuration for the Sanity project and dataset              |
+| `/sanity/schemas.ts`    | Where Sanity Studio gets its content types from               |
+| `/sanity/lib/client.ts` | Sanity client configured based on `env.ts`                    |
+| `tailwind.config.js`    | Tailwind config. Only applies to files listed under `content` |
 
 All pages are wrapped in `pages/_app.tsx`.
 
@@ -133,9 +133,9 @@ Below are instructions on How to work with different schemas.
 
 To create and see a new type in the sanity studio, you have to do the next steps:
 
-* Before creating a new type, think it if it is needed or data can be static in the template. Create a new type for schema if data is dynamic.
-* Think more abstractly when you create a new schema so we can reuse types better in the future.
-* Create a new type in the folder `src/schemas/` and import it to `schemaTypes` in file`src/schemas/index.ts`. For example, if you need to create a `Logo type` with fields `logoImage, caption, link`:
+- Before creating a new type, think it if it is needed or data can be static in the template. Create a new type for schema if data is dynamic.
+- Think more abstractly when you create a new schema so we can reuse types better in the future.
+- Create a new type in the folder `src/schemas/` and import it to `schemaTypes` in file`src/schemas/index.ts`. For example, if you need to create a `Logo type` with fields `logoImage, caption, link`:
 
 ```bash
 const logo = {
@@ -167,9 +167,9 @@ const logo = {
 }
 ```
 
-* **Note**: It is always good idea to add description for your schema fields
+- **Note**: It is always good idea to add description for your schema fields
 
-* Update `sanity.queries` and provide your query
+- Update `sanity.queries` and provide your query
 
 ```bash
 ~/lib/sanity.queries/
@@ -184,7 +184,7 @@ const logo = {
 
 <img width="246" alt="Navigation_tsx_—_uawit-website" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/54ebc6c7-7eed-438d-a459-9b0853adfa41">
 
-* For example if you need to fetch Logo with image, link, alt. The schema will be next
+- For example if you need to fetch Logo with image, link, alt. The schema will be next
 
 ```bash
 export const logoQuery = groq`
@@ -199,7 +199,7 @@ export async function getLogoData(client: SanityClient): Promise<LogoType> {
 }
 ```
 
-* **Note**: Always fetch the first array, as you can create many logos.
+- **Note**: Always fetch the first array, as you can create many logos.
 
 ### Deploy on production
 
@@ -223,13 +223,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 To learn more about Next.js, take a look at the following resources:
 
-* [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-* [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## TODO
 
-* add pre-commit hook
-* setup github actions
-* add GraphQL
+- add pre-commit hook
+- setup github actions
+- add GraphQL
