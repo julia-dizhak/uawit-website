@@ -1,5 +1,4 @@
 import React, { type ReactNode } from 'react'
-import ContentSectionButton from './ContentSecctionButton'
 
 interface ContentSectionContainerProps<T> {
   title: string
@@ -8,6 +7,7 @@ interface ContentSectionContainerProps<T> {
   children: (item: T) => ReactNode
   sortFunction?: (a: T, b: T) => number
   getDateProperty?: (item: T) => string | undefined
+  button?: ReactNode
 }
 
 export default function ContentSectionContainer<T>({
@@ -17,6 +17,7 @@ export default function ContentSectionContainer<T>({
   children,
   sortFunction,
   getDateProperty,
+  button,
 }: ContentSectionContainerProps<T>) {
   const currentDate = new Date()
 
@@ -39,13 +40,11 @@ export default function ContentSectionContainer<T>({
       </p>
 
       <div className="grid grid-cols-1 gap-[3.75rem] md:grid-cols-2 lg:grid-cols-3">
-        {sortedItems.map((item, index) => (
+        {sortedItems.flatMap((item, index) => (
           <div key={index}>{children(item)}</div>
         ))}
       </div>
-      {/* <ContentSectionButton redirectUrl={`/events/${event.slug}`}>{`See more ${title}`}</ContentSectionButton> */}
-
-      <ContentSectionButton>See more {title}</ContentSectionButton>
+      {button}
     </section>
   )
 }
