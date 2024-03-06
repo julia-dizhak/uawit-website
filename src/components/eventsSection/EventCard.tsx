@@ -8,8 +8,6 @@ interface EventCardProps {
 }
 
 export default function EventCard({ event }: EventCardProps) {
-  console.log(event, 'This is event')
-
   const { formattedDate, formattedTime } = formatDateTime(event.dateAndTime)
 
   const renderLocationLink = () => {

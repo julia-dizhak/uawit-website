@@ -11,17 +11,15 @@ interface EventsSectionProps {
 }
 
 export default function EventsSection({ events }: EventsSectionProps) {
-
   const sortEventsByDate = (a: EventType, b: EventType) => {
     const dateA = new Date(a.eventCard.dateAndTime ?? '')
     const dateB = new Date(b.eventCard.dateAndTime ?? '')
- 
-    if (isNaN(dateA.getTime())) return -1;
-    if (isNaN(dateB.getTime())) return 1;
+
+    if (isNaN(dateA.getTime())) return -1
+    if (isNaN(dateB.getTime())) return 1
 
     return dateA.getTime() - dateB.getTime()
   }
-
 
   const buttonContent = (
     <ContentSectionButton
@@ -44,8 +42,9 @@ export default function EventsSection({ events }: EventsSectionProps) {
       getDateProperty={(event) => event.eventCard.dateAndTime}
       button={buttonContent}
     >
-      {(event: EventType) =><EventCard event={event.eventCard} key={event._id} />
-      }
+      {(event: EventType) => (
+        <EventCard event={event.eventCard} key={event._id} />
+      )}
     </ContentSectionContainer>
   )
 }
