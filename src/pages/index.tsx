@@ -76,7 +76,6 @@ export default function HomePage({
   const [eventsData] = useLiveQuery(events, eventsQuery)
 
   const [partnersData] = useLiveQuery(partners, partnersQuery)
-  console.log({ partnersData })
 
   const dataShouldBePresent = postsData.length || events.length
 
@@ -93,9 +92,9 @@ export default function HomePage({
               buttonName={buttonName}
             />
           )}
-          {postsData.length && <Posts posts={postsData} />}
-          {eventsData.length && <ContentSection events={eventsData} />}
-          {partnersData.length && <Partners partners={partnersData} />}
+          {postsData.length > 0 && <Posts posts={postsData} />}
+          {eventsData.length > 0 && <ContentSection events={eventsData} />}
+          {partnersData.length > 0 && <Partners partners={partnersData} />}
         </>
       ) : (
         <NoData />

@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { urlForImage } from '~/lib/sanity.image'
-import { PostType } from '~/lib/sanity.interfaces'
+import { PostType } from '~/lib/sanity.queries/posts/types'
 import { formatDate } from '~/utils'
 
 interface CardProps {
@@ -10,13 +10,13 @@ interface CardProps {
 
 export default function Card({ post }: CardProps) {
   return (
-    <div className="flex flex-col p-2 mt-10">
+    <div className="flex flex-col mt-10 w-1/3 p-4">
       {post.mainImage ? (
         <Image
           src={urlForImage(post.mainImage).width(500).height(300).url()}
           height={200}
           width={300}
-          alt=""
+          alt={post.title || 'image of post'}
         />
       ) : (
         <div className="bg-black w-100 h-[200]px" />
@@ -25,7 +25,7 @@ export default function Card({ post }: CardProps) {
         <h3>
           <a href={`/post/${post.slug.current}`}>{post.title}</a>
         </h3>
-        <div>
+        <div className="line-clamp-3">
           <PortableText value={post.body} />
         </div>
         <p>{post.excerpt}</p>
