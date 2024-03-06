@@ -12,6 +12,7 @@ export interface EntranceFeeType {
 }
 
 export interface EventType {
+  [x: string]: any
   _type: 'event'
   _id: string
   title?: string

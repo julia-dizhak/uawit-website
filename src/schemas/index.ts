@@ -7,8 +7,9 @@ import blockContent from './blockContent'
 import post from './post'
 import eventsContent from './eventsContent'
 import newsContent from './newsContent'
+import partners from './partner'
 
-export const schemaTypes = [
+export const schemaTypes: SchemaTypeDefinition[] = [
   post,
   blockContent,
   eventsContent,
@@ -16,8 +17,5 @@ export const schemaTypes = [
   navbar,
   hero,
   logo,
+  partners,
 ]
-
-export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [logo, post, navbar, hero, blockContent, eventsContent, newsContent],
-}
