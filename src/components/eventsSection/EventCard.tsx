@@ -32,7 +32,7 @@ export default function EventCard({ event }: EventCardProps) {
     <li className="flex flex-col overflow-hidden border shadow-md cursor-pointer group rounded-xl font-roboto">
       <div className="relative w-full overflow-hidden min-h-[183px] transition-transform duration-200 ease-out border rounded-xl group-hover:scale-105">
         <img
-          src={event.image}
+          src={event.image ?? ''}
           alt={event.title}
           className="object-cover w-full h-full"
         />
