@@ -1,7 +1,6 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
 import Navigation from '~/components/Navigation'
-import ContentSection from '~/components/ContentSection'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
@@ -9,16 +8,17 @@ import type { SharedPageProps } from '~/pages/_app'
 import { Posts } from '~/components/Posts'
 import NoData from '~/components/NoData'
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
-import { LogoType } from '~/lib/sanity.queries/logo/types'
-import { HeroType } from '~/lib/sanity.queries/hero/types'
+import { type LogoType } from '~/lib/sanity.queries/logo/types'
+import { type HeroType } from '~/lib/sanity.queries/hero/types'
 import { getHeroData, heroQuery } from '~/lib/sanity.queries/hero/queries'
-import { PostsType } from '~/lib/sanity.queries/posts/types'
+import { type PostsType } from '~/lib/sanity.queries/posts/types'
 import { getPosts, postsQuery } from '~/lib/sanity.queries/posts/queries'
 import { eventsQuery, getEvents } from '~/lib/sanity.queries/events/queries'
-import { EventsListType } from '~/lib/sanity.queries/events/types'
+import { type EventsListType } from '~/lib/sanity.queries/events/types'
 import { getNavbarData, navbarQuery } from '~/lib/sanity.queries/navbar/queries'
-import { NavigationType } from '~/lib/sanity.queries/navbar/types'
-import { Partner } from '~/lib/sanity.queries/partners/types'
+import { type NavigationType } from '~/lib/sanity.queries/navbar/types'
+import { type Partner } from '~/lib/sanity.queries/partners/types'
+import EventsSection from '~/components/eventsSection/EventSection'
 import {
   getPartnersData,
   partnersQuery,
@@ -77,7 +77,7 @@ export default function HomePage({
 
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 
-  const dataShouldBePresent = postsData.length || events.length
+  const dataShouldBePresent = postsData.length > 0 || events.length
 
   return (
     <>
@@ -93,7 +93,7 @@ export default function HomePage({
             />
           )}
           {postsData.length > 0 && <Posts posts={postsData} />}
-          {eventsData.length > 0 && <ContentSection events={eventsData} />}
+          {eventsData.length > 0 && <EventsSection events={eventsData} />}
           {partnersData.length > 0 && <Partners partners={partnersData} />}
         </>
       ) : (
