@@ -1,3 +1,4 @@
+import React from 'react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
 import Navigation from '~/components/Navigation'
@@ -7,6 +8,7 @@ import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import type { SharedPageProps } from '~/pages/_app'
 import { Posts } from '~/components/Posts'
+import About from '~/components/About'
 import NoData from '~/components/NoData'
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
@@ -18,12 +20,8 @@ import { eventsQuery, getEvents } from '~/lib/sanity.queries/events/queries'
 import { EventsListType } from '~/lib/sanity.queries/events/types'
 import { getNavbarData, navbarQuery } from '~/lib/sanity.queries/navbar/queries'
 import { NavigationType } from '~/lib/sanity.queries/navbar/types'
-import { Partner } from '~/lib/sanity.queries/partners/types'
-import {
-  getPartnersData,
-  partnersQuery,
-} from '~/lib/sanity.queries/partners/queries'
-import { Partners } from '~/components/Partners'
+import { AboutType } from '~/lib/sanity.queries/about/types'
+import { getAbout, aboutQuery } from '~/lib/sanity.queries/about/queries'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -32,7 +30,7 @@ export const getStaticProps: GetStaticProps<
     logoData: LogoType
     heroData: HeroType
     events: EventsListType
-    partners: Partner[]
+    about: AboutType
   }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
@@ -41,19 +39,19 @@ export const getStaticProps: GetStaticProps<
   const logoData = await getLogoData(client)
   const posts = await getPosts(client) // or news
   const events = await getEvents(client)
-  const partners = await getPartnersData(client)
+  const about = await getAbout(client)
 
   return {
     props: {
       draftMode,
       token: draftMode ? readToken : '',
-      // fetched data from schema
+      // fetched data
       posts,
       events,
       logoData,
       heroData,
       navbarData,
-      partners,
+      about,
     },
   }
 }
@@ -64,7 +62,7 @@ export default function HomePage({
   heroData,
   logoData,
   events,
-  partners,
+  about,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
@@ -75,7 +73,7 @@ export default function HomePage({
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [eventsData] = useLiveQuery(events, eventsQuery)
 
-  const [partnersData] = useLiveQuery(partners, partnersQuery)
+  const [aboutData] = useLiveQuery(about, aboutQuery)
 
   const dataShouldBePresent = postsData.length || events.length
 
@@ -92,9 +90,9 @@ export default function HomePage({
               buttonName={buttonName}
             />
           )}
-          {postsData.length > 0 && <Posts posts={postsData} />}
-          {eventsData.length > 0 && <ContentSection events={eventsData} />}
-          {partnersData.length > 0 && <Partners partners={partnersData} />}
+          {aboutData && <About about={aboutData} />}
+          {postsData.length && <Posts posts={postsData} />}
+          {eventsData.length && <ContentSection events={eventsData} />}
         </>
       ) : (
         <NoData />
