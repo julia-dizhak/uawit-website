@@ -18,6 +18,12 @@ import { eventsQuery, getEvents } from '~/lib/sanity.queries/events/queries'
 import { EventsListType } from '~/lib/sanity.queries/events/types'
 import { getNavbarData, navbarQuery } from '~/lib/sanity.queries/navbar/queries'
 import { NavigationType } from '~/lib/sanity.queries/navbar/types'
+import { Partner } from '~/lib/sanity.queries/partners/types'
+import {
+  getPartnersData,
+  partnersQuery,
+} from '~/lib/sanity.queries/partners/queries'
+import { Partners } from '~/components/Partners'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -26,6 +32,7 @@ export const getStaticProps: GetStaticProps<
     logoData: LogoType
     heroData: HeroType
     events: EventsListType
+    partners: Partner[]
   }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
@@ -34,17 +41,19 @@ export const getStaticProps: GetStaticProps<
   const logoData = await getLogoData(client)
   const posts = await getPosts(client) // or news
   const events = await getEvents(client)
+  const partners = await getPartnersData(client)
 
   return {
     props: {
       draftMode,
       token: draftMode ? readToken : '',
-      // fetched data
+      // fetched data from schema
       posts,
       events,
       logoData,
       heroData,
       navbarData,
+      partners,
     },
   }
 }
@@ -55,6 +64,7 @@ export default function HomePage({
   heroData,
   logoData,
   events,
+  partners,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
@@ -64,6 +74,9 @@ export default function HomePage({
 
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [eventsData] = useLiveQuery(events, eventsQuery)
+
+  const [partnersData] = useLiveQuery(partners, partnersQuery)
+  console.log({ partnersData })
 
   const dataShouldBePresent = postsData.length || events.length
 
@@ -82,6 +95,7 @@ export default function HomePage({
           )}
           {postsData.length && <Posts posts={postsData} />}
           {eventsData.length && <ContentSection events={eventsData} />}
+          {partnersData.length && <Partners partners={partnersData} />}
         </>
       ) : (
         <NoData />

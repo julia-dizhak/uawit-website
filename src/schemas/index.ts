@@ -7,6 +7,7 @@ import blockContent from './blockContent'
 import post from './post'
 import eventsContent from './eventsContent'
 import newsContent from './newsContent'
+import partners from './partner'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   post,
@@ -16,4 +17,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   navbar,
   hero,
   logo,
+  partners,
 ]
