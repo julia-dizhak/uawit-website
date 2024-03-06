@@ -7,7 +7,8 @@ export default {
       name: 'partnerLogo',
       type: 'image',
       title: 'Partner Logo',
-      description: 'Upload here partners or sponsors logo or image. Avoid format svg, it might not working',
+      description:
+        'Upload here partners or sponsors logo or image. Avoid format svg, it might not working',
       options: {
         hotspot: true,
       },
