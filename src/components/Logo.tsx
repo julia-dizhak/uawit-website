@@ -16,7 +16,7 @@ export const Logo = ({ logo }: Props) => {
           src={urlForImage(logoImage).url()}
           height={50}
           width={50}
-          alt={caption || 'ogo UA WIT'}
+          alt={caption || 'Logo UA WIT in Stockholm'}
         />
       )}
     </a>

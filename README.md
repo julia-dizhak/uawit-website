@@ -109,8 +109,6 @@ Open [http://localhost:3000/studio/](http://localhost:3000/studio/) with your br
 
 <img width="902" alt="Post___Project_Name_🔊" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/6a8ef86a-59f8-4176-827a-5af572bdc34e">
 
-<img width="1504" alt="Cursor_and_Info_1___Project_Name" src="https://github.com/julia-dizhak/uawit-website/assets/1140769/f4200fbe-5647-482a-aedb-563e6391faf9">
-
 ## Project Overview
 
 Important files and folders
