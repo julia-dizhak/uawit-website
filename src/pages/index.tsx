@@ -4,18 +4,17 @@ import Navigation from '~/components/Navigation'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import type { SharedPageProps } from '~/pages/_app'
 import { Posts } from '~/components/Posts'
 import About from '~/components/About'
 import NoData from '~/components/NoData'
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
-import { type LogoType } from '~/lib/sanity.queries/logo/types'
-import { type HeroType } from '~/lib/sanity.queries/hero/types'
+import { LogoType } from '~/lib/sanity.queries/logo/types'
+import { HeroType } from '~/lib/sanity.queries/hero/types'
 import { getHeroData, heroQuery } from '~/lib/sanity.queries/hero/queries'
-import { type PostsType } from '~/lib/sanity.queries/posts/types'
+import { PostsType } from '~/lib/sanity.queries/posts/types'
 import { getPosts, postsQuery } from '~/lib/sanity.queries/posts/queries'
 import { eventsQuery, getEvents } from '~/lib/sanity.queries/events/queries'
-import { type EventsListType } from '~/lib/sanity.queries/events/types'
+import { EventsListType } from '~/lib/sanity.queries/events/types'
 import { getNavbarData, navbarQuery } from '~/lib/sanity.queries/navbar/queries'
 import { NavigationType } from '~/lib/sanity.queries/navbar/types'
 import { AboutType } from '~/lib/sanity.queries/about/types'
@@ -26,6 +25,8 @@ import {
   partnersQuery,
 } from '~/lib/sanity.queries/partners/queries'
 import { Partners } from '~/components/Partners'
+import { SharedPageProps } from './_app'
+import { Partner } from '~/lib/sanity.queries/partners/types'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -35,9 +36,11 @@ export const getStaticProps: GetStaticProps<
     heroData: HeroType
     events: EventsListType
     about: AboutType
+    partners: Partner[]
   }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
+
   const navbarData = await getNavbarData(client)
   const heroData = await getHeroData(client)
   const logoData = await getLogoData(client)
@@ -45,8 +48,6 @@ export const getStaticProps: GetStaticProps<
   const events = await getEvents(client)
   const about = await getAbout(client)
   const partners = await getPartnersData(client)
-
-
 
   return {
     props: {
@@ -59,7 +60,7 @@ export const getStaticProps: GetStaticProps<
       heroData,
       navbarData,
       about,
-      partners
+      partners,
     },
   }
 }
