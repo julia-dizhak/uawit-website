@@ -44,18 +44,22 @@ export const getStaticProps: GetStaticProps<
   const posts = await getPosts(client) // or news
   const events = await getEvents(client)
   const about = await getAbout(client)
+  const partners = await getPartnersData(client)
+
+
 
   return {
     props: {
       draftMode,
       token: draftMode ? readToken : '',
-      // fetched data
+      // fetched data from sanity
       posts,
       events,
       logoData,
       heroData,
       navbarData,
       about,
+      partners
     },
   }
 }
@@ -67,6 +71,7 @@ export default function HomePage({
   logoData,
   events,
   about,
+  partners,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
@@ -76,8 +81,8 @@ export default function HomePage({
 
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [eventsData] = useLiveQuery(events, eventsQuery)
-
   const [aboutData] = useLiveQuery(about, aboutQuery)
+  const [partnersData] = useLiveQuery(partners, partnersQuery)
 
   const dataShouldBePresent = postsData.length > 0 || events.length
 
