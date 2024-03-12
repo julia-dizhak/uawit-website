@@ -21,7 +21,7 @@ export const navbarQuery = groq`
 }[0]
 `
 export async function getNavbarData(
-  client: SanityClient,
+  client: SanityClient
 ): Promise<NavigationType> {
   return await client.fetch(navbarQuery)
 }
