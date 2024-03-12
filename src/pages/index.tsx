@@ -27,6 +27,7 @@ import {
 import { Partners } from '~/components/Partners'
 import { SharedPageProps } from './_app'
 import { Partner } from '~/lib/sanity.queries/partners/types'
+import {Footer} from '~/components/Footer'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -104,6 +105,7 @@ export default function HomePage({
           {partnersData.length > 0 && <Partners partners={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
           {events.length > 0 && <EventsSection events={eventsData} />}
+          <Footer logo={logo} navbar={navbar} />
         </>
       ) : (
         <NoData />
