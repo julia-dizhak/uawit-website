@@ -8,6 +8,7 @@ import post from './post'
 import eventsContent from './eventsContent'
 import newsContent from './newsContent'
 import partners from './partner'
+import about from './about'
 import widgets from './widget'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
@@ -19,5 +20,6 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   hero,
   logo,
   partners,
+  about,
   widgets,
 ]
