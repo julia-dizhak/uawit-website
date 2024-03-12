@@ -51,7 +51,11 @@ export default function EventCard({ event }: EventCardProps) {
       </div>
       {event.entranceFee && (
         <p
-          className={`flex items-center mx-5 mb-5 font-medium ${event.entranceFee.type === 'Free' ? 'text-[#057910]' : 'text-[#0F62FE]'}`}
+          className={`flex items-center mx-5 mb-5 font-medium ${
+            event.entranceFee.type === 'Free'
+              ? 'text-[#057910]'
+              : 'text-[#0F62FE]'
+          }`}
         >
           {event.entranceFee.type === 'Free'
             ? 'Free'
