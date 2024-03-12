@@ -67,6 +67,7 @@ To open a new pull-request, you can do next
 clone repo
 add origin
 open a new branch => git checkout -b
+run npm install
 add you changes
 npm run lint:fix
 npm run format
