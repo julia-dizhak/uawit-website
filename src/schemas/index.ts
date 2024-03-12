@@ -19,5 +19,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   hero,
   logo,
   partners,
-  about
+  about,
 ]
