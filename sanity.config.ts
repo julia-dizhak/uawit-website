@@ -20,6 +20,7 @@ import {
   projectId,
 } from '~/lib/sanity.api'
 import { schemaTypes } from '~/schemas'
+import {uawitStructure} from '~/utils/deskStructure'
 
 const iframeOptions = {
   url: defineUrlResolver({
@@ -55,6 +56,7 @@ export default defineConfig({
           S.view.component(Iframe).options(iframeOptions).title('Preview'),
         ])
       },
+      structure: uawitStructure,
     }),
     // Add the "Open preview" action
     previewUrl({
