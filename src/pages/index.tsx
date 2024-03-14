@@ -101,9 +101,9 @@ export default function HomePage({
             />
           )}
           {aboutData && <About about={aboutData} />}
+          {partnersData.length > 0 && <Partners partners={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
           {events.length > 0 && <EventsSection events={eventsData} />}
-          {partnersData.length > 0 && <Partners partners={partnersData} />}
         </>
       ) : (
         <NoData />
