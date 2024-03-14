@@ -32,10 +32,10 @@ export default function ContentSectionContainer<T>({
 
   return (
     <section className="py-16 px-6 sm:px-[6.563rem]">
-      <h2 className="font-bold text-center text-[42px] text-[#21272A] font-roboto">
+      <h2 className="font-bold text-center text-[42px] text-[#21272A] ">
         {title}
       </h2>
-      <p className="text-center font-roboto color-[#21272A] mt-4 font-normal text-lg mb-[3.75rem]">
+      <p className="text-center color-[#21272A] mt-4 font-normal text-lg mb-[3.75rem]">
         {description}
       </p>
 
