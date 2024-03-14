@@ -1,7 +1,4 @@
-import {
-  type EventType,
-  type EventsListType,
-} from '~/lib/sanity.queries/events/types'
+import { EventType, EventsListType } from '~/lib/sanity.queries/events/types'
 import ContentSectionContainer from './ContentSectionContainer'
 import EventCard from './EventCard'
 import ContentSectionButton from './ContentSectionButton'

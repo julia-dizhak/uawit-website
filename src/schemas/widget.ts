@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'widget',
@@ -7,8 +7,8 @@ export default defineType({
   groups: [
     {
       name: 'settings',
-      title: 'Settings'
-    }
+      title: 'Settings',
+    },
   ],
   fields: [
     defineField({
@@ -27,10 +27,10 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Button', value: 'Button'},
-          {title: 'Logo', value: 'Logo'}
-        ]
-      }
+          { title: 'Button', value: 'Button' },
+          { title: 'Logo', value: 'Logo' },
+        ],
+      },
     }),
     defineField({
       name: 'Button',
@@ -49,8 +49,8 @@ export default defineType({
           name: 'redirectTo',
           type: 'url',
           title: 'Redirect To',
-        })
-      ]
+        }),
+      ],
     }),
     defineField({
       name: 'Logo',
@@ -64,14 +64,14 @@ export default defineType({
           type: 'reference',
           title: 'Logo',
           description: 'Select one of the existing logos or add new.',
-          to: [{type: 'logo'}],
+          to: [{ type: 'logo' }],
         }),
-      ]
+      ],
     }),
   ],
   preview: {
     select: {
-      title: 'title'
-    }
-  }
-});
+      title: 'title',
+    },
+  },
+})
