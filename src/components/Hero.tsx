@@ -19,7 +19,7 @@ const Hero = ({
       {backgroundImage && (
         <Image
           className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
-          src={urlForImage(backgroundImage).url()}
+          src={urlForImage(backgroundImage)?.url() || ''}
           fill={true}
           objectFit="cover"
           alt="Logo UAWIT"

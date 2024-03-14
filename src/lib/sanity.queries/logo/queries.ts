@@ -1,5 +1,6 @@
 import groq from 'groq'
 import { SanityClient } from 'next-sanity'
+import { LogoType } from './types'
 
 export const logoQuery = groq`
   *[_type == "logo"] {

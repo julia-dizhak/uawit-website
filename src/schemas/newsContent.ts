@@ -19,7 +19,7 @@ export default defineType({
       type: 'date',
       options: {
         dateFormat: 'YYYY-MM-DD',
-        calendarTodayLabel: 'Today',
+        // calendarTodayLabel: 'Today',
       },
     }),
     defineField({

@@ -11,7 +11,7 @@ import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
 import { HeroType } from '~/lib/sanity.queries/hero/types'
 import { getHeroData, heroQuery } from '~/lib/sanity.queries/hero/queries'
-import { PostsType } from '~/lib/sanity.queries/posts/types'
+import { PostType, PostsType } from '~/lib/sanity.queries/posts/types'
 import { getPosts, postsQuery } from '~/lib/sanity.queries/posts/queries'
 import { eventsQuery, getEvents } from '~/lib/sanity.queries/events/queries'
 import { EventsListType } from '~/lib/sanity.queries/events/types'
@@ -30,7 +30,7 @@ import { Partner } from '~/lib/sanity.queries/partners/types'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-    posts: PostsType
+    posts: PostType[]
     navbarData: NavigationType
     logoData: LogoType
     heroData: HeroType

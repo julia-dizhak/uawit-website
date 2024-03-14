@@ -63,7 +63,7 @@ export default defineType({
             dateFormat: 'YYYY-MM-DD',
             timeFormat: 'HH:mm',
             timeStep: 15,
-            calendarTodayLabel: 'Today',
+            // calendarTodayLabel: 'Today',
           },
         }),
         defineField({
