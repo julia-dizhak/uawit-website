@@ -17,7 +17,6 @@ import {
   postSlugsQuery,
 } from '~/lib/sanity.queries/posts/queries'
 
-
 interface Query {
   [key: string]: string
 }

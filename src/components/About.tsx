@@ -12,22 +12,22 @@ type Props = {
 export default function About({ about }: Props) {
   const handleButtonClick = () => {}
   return (
-    <Container>
-    <div className="items-center flex flex-wrap">
-      <div className="w-full md:w-5/12 ml-auto mr-auto">
-        <h3 className="mb-8 text-4xl font-bold leading-none tracking-tight text-gray-900">
-          <a className="" href="">
-            {about.title}
-          </a>
-        </h3>
-        <PortableText value={about.shortDescription} />
-        <Button
-          buttonText="Learn More"
-          handleClick={handleButtonClick}
-          className="border border-blue-700 text-blue-700 py-2 my-4 px-4 rounded-full "
-        />
-      </div>
-      {about.mainImage &&  (
+    <Container className="pt-16">
+      <div className="items-center flex flex-wrap">
+        <div className="w-full md:w-5/12 ml-auto mr-auto">
+          <h3 className="mb-8 text-4xl font-bold leading-none tracking-tight text-gray-900">
+            <a className="" href="">
+              {about.title}
+            </a>
+          </h3>
+          <PortableText value={about.shortDescription} />
+          <Button
+            buttonText="Learn More"
+            handleClick={handleButtonClick}
+            className="border border-blue-700 text-blue-700 py-2 my-4 px-4 rounded-full "
+          />
+        </div>
+        {about.mainImage && (
           <div className="w-full md:w-5/12 ml-auto mr-auto">
             <Image
               src={urlForImage(about.mainImage)?.url() || ''}
