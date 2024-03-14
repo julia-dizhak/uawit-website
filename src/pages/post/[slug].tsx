@@ -12,7 +12,6 @@ import { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
 import { PostType } from '~/lib/sanity.queries/posts/types'
 
-
 interface Query {
   [key: string]: string
 }
