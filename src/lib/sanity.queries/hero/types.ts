@@ -1,4 +1,4 @@
-import type { ImageAsset } from '@sanity/types'
+import { ImageAsset } from '@sanity/types'
 
 export interface HeroType {
   backgroundImage: ImageAsset

@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
 import { isValidSecret } from 'sanity-plugin-iframe-pane/is-valid-secret'
 
 import { previewSecretId, readToken } from '~/lib/sanity.api'

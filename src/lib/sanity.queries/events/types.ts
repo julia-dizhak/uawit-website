@@ -1,4 +1,4 @@
-import type { ImageAsset, Slug } from '@sanity/types'
+import { ImageAsset, Slug } from '@sanity/types'
 
 export interface LocationType {
   address?: string

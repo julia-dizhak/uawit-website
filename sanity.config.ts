@@ -20,7 +20,7 @@ import {
   projectId,
 } from '~/lib/sanity.api'
 import { schemaTypes } from '~/schemas'
-import {uawitStructure} from '~/utils/deskStructure'
+import { uawitStructure } from '~/utils/deskStructure'
 
 const iframeOptions = {
   url: defineUrlResolver({

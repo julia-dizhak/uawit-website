@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<
     navbarData: NavigationType
     logoData: LogoType
     heroData: HeroType
-    events: EventsListType
+    eventsData: EventsListType
     about: AboutType
     partners: Partner[]
   }
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps<
   const heroData = await getHeroData(client)
   const logoData = await getLogoData(client)
   const posts = await getPosts(client) // or news
-  const events = await getEvents(client)
+  const eventsData = await getEvents(client)
   const about = await getAbout(client)
   const partners = await getPartnersData(client)
 
@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps<
       token: draftMode ? readToken : '',
       // fetched data from sanity
       posts,
-      events,
+      eventsData,
       logoData,
       heroData,
       navbarData,
@@ -70,7 +70,7 @@ export default function HomePage({
   navbarData,
   heroData,
   logoData,
-  events,
+  eventsData,
   about,
   partners,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -81,7 +81,7 @@ export default function HomePage({
   const { backgroundImage, description, title, buttonName } = hero
 
   const [logo] = useLiveQuery(logoData, logoQuery)
-  const [eventsData] = useLiveQuery(events, eventsQuery)
+  const [events] = useLiveQuery(eventsData, eventsQuery)
   const [aboutData] = useLiveQuery(about, aboutQuery)
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 
@@ -102,7 +102,7 @@ export default function HomePage({
           )}
           {aboutData && <About about={aboutData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
-          {eventsData.length > 0 && <EventsSection events={eventsData} />}
+          {events.length > 0 && <EventsSection events={eventsData} />}
           {partnersData.length > 0 && <Partners partners={partnersData} />}
         </>
       ) : (

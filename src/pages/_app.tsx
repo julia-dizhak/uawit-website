@@ -1,5 +1,5 @@
 import '~/styles/global.css'
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app'
 import { lazy } from 'react'
 import { mono, sans, serif } from './fonts'
 
