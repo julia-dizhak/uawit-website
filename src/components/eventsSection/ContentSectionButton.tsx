@@ -1,4 +1,4 @@
-import React, { type ReactNode, type ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 interface ContentSectionButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {

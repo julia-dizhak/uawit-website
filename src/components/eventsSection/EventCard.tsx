@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
-import { type EventType } from '~/lib/sanity.queries/events/types'
+import { EventType } from '~/lib/sanity.queries/events/types'
 import { formatDateTime } from '~/lib/sanity.queries/events/utility'
 
 interface EventCardProps {

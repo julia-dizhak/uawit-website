@@ -1,4 +1,4 @@
-import type { ImageAsset } from '@sanity/types'
+import { ImageAsset } from '@sanity/types'
 
 export interface LogoType {
   _type: 'logo'

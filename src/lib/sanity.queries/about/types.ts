@@ -1,5 +1,5 @@
-import type { PortableTextBlock } from '@portabletext/types'
-import type { ImageAsset, Slug } from '@sanity/types'
+import { PortableTextBlock } from '@portabletext/types'
+import { ImageAsset, Slug } from '@sanity/types'
 
 export interface AboutType {
   _type: 'about'

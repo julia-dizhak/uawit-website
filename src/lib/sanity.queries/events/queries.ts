@@ -1,6 +1,6 @@
 import groq from 'groq'
-import { type SanityClient } from 'next-sanity'
-import { type EventsListType } from './types'
+import { SanityClient } from 'next-sanity'
+import { EventsListType } from './types'
 
 export const eventsQuery = groq`*[_type == "events"] {
   _id,

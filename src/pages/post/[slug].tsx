@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react'
-import type { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 
@@ -8,9 +8,10 @@ import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { urlForImage } from '~/lib/sanity.image'
 import { getPost, postBySlugQuery, postSlugsQuery } from '~/lib/sanity.queries'
-import type { SharedPageProps } from '~/pages/_app'
+import { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
-import { PostType } from '~/lib/sanity.interfaces'
+import { PostType } from '~/lib/sanity.queries/posts/types'
+
 
 interface Query {
   [key: string]: string
