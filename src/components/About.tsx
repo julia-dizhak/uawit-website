@@ -30,7 +30,7 @@ export default function About({ about }: Props) {
         {about.mainImage && (
           <div className="w-full md:w-5/12 ml-auto mr-auto">
             <Image
-              src={urlForImage(about.mainImage).url()}
+              src={urlForImage(about.mainImage)?.url() || ''}
               layout="responsive"
               height={500}
               width={500}

@@ -30,11 +30,11 @@ export default function EventCard({ event }: EventCardProps) {
   return (
     <li className="flex flex-col overflow-hidden border shadow-md cursor-pointer group rounded-xl font-roboto">
       <div className="relative w-full overflow-hidden min-h-[183px] transition-transform duration-200 ease-out border rounded-xl group-hover:scale-105">
-        <img
+        {/* <img
           src={event.image ?? ''}
           alt={event.title}
           className="object-cover w-full h-full"
-        />
+        /> */}
       </div>
       <div className="flex-1 mx-5 my-3 ">
         <p className="text-xl font-medium text-[#21272A]"> {event.title}</p>
