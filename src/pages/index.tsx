@@ -78,7 +78,7 @@ export default function HomePage({
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
 
   const [hero] = useLiveQuery(heroData, heroQuery)
-  const { backgroundImage, description, title, buttonName } = hero
+  const { backgroundImage, description, title, fontColor } = hero
 
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [events] = useLiveQuery(eventsData, eventsQuery)
@@ -86,7 +86,7 @@ export default function HomePage({
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 
   const dataShouldBePresent = postsData.length > 0 || events.length
-
+  
   return (
     <>
       {dataShouldBePresent ? (
@@ -97,7 +97,7 @@ export default function HomePage({
               backgroundImage={backgroundImage}
               description={description}
               title={title}
-              buttonName={buttonName}
+              fontColor={fontColor}
             />
           )}
           {aboutData && <About about={aboutData} />}
