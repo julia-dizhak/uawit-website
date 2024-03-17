@@ -1,6 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
-import Navigation from '~/components/Navigation'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
@@ -91,13 +90,14 @@ export default function HomePage({
     <>
       {dataShouldBePresent ? (
         <>
-          {(navbar || logo) && <Navigation logo={logo} navbar={navbar} />}
           {hero && (
             <Hero
               backgroundImage={backgroundImage}
               description={description}
               title={title}
               fontColor={fontColor}
+              navbar={navbar}
+              logo={logo}
             />
           )}
           {aboutData && <About about={aboutData} />}

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { urlForImage } from '~/lib/sanity.image';
-import { Button } from './Button';
+import Navigation from '~/components/Navigation'
 import Container from './Container';
 import { HeroType } from '~/lib/sanity.queries/hero/types';
 
@@ -9,6 +9,8 @@ const Hero = ({
   description,
   title,
   fontColor,
+  navbar,
+  logo
 }: HeroType) => {
 ;
   const renderRestOfHeader = (title) => {
@@ -20,6 +22,8 @@ const Hero = ({
   const restOfTitle = renderRestOfHeader(title);
 
   return (
+    <>
+    {(navbar || logo) && <Navigation logo={logo} navbar={navbar} />}
     <div className='relative bg-cover bg-center md:h-[40vh] flex flex-col justify-center items-center gap-4'>
       {backgroundImage && (
         <div className=''>
@@ -45,6 +49,7 @@ const Hero = ({
         </div>
       </Container>
     </div>
+    </>
   );
 };
 
