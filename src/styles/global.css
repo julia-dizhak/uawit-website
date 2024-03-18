@@ -46,6 +46,16 @@ main {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), linear-gradient(180deg, rgba(255, 255, 255, 255) 0%, rgba(255, 255, 255, 0.38885) 46.93%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22));
 }
 
+
+select {
+  margin-left: .2em;
+  border: 0 none;
+  background-color: inherit;
+  color: inherit;
+  font-size: inherit;
+  vertical-align: middle;
+}
+
 @media (min-width: 575px) {
   .container {
     max-width: var(--max-width-1);

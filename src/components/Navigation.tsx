@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Button } from './Button';
 import Container from './Container';
 import { Logo } from './Logo';
+import { MdLanguage } from 'react-icons/md';
+import { FaLinkedinIn } from 'react-icons/fa';
+import { CgSearch } from 'react-icons/cg';
+import Select from 'react-select';
 
 interface MenuItemsProps {
   path: string;
@@ -13,7 +17,7 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
   return (
     <a
       href={`#${path}`}
-      className='block py-2 px-3 text-black font-medium rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500'
+      className='block py-2 px-3 text-slate-600 font-bold rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500'
       aria-current='page'
       onClick={onClick}
     >
@@ -22,42 +26,11 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
   );
 };
 
-const Dropdown = ({ languages, className }) => {
-  const [language, setLanguage] = useState(languages[0].key);
-
-  const handleLanguageChange = (event) => {
-    const newLanguage = event.target.value;
-    setLanguage(newLanguage);
-  };
-
-  return (
-    <div
-      id='dropdownNavbar'
-      className={`z-10  font-normal bg-transparent divide-y divide-gray-100 rounded-lg  w-fit dark:bg-gray-700 dark:divide-gray-600 ${className}`}
-    >
-      <select
-        value={language}
-        onChange={handleLanguageChange}
-        className='py-2 pl-2 text-sm text-gray-700 dark:text-gray-400 bg-transparent'
-        aria-labelledby='dropdownLargeButton'
-      >
-        {languages.map((lang) => (
-          <option
-            key={lang.key}
-            className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-            value={lang.key}
-          >
-            {lang.name}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-};
-
 const Navigation = ({ navbar, logo }) => {
   const { buttonName, items, languages } = navbar;
+
   const [isExpanded, setIsExpanded] = useState(false);
+  const [language, setLanguage] = useState(null);
 
   const toggleMenu = () => {
     setIsExpanded((prev) => !prev);
@@ -109,12 +82,12 @@ const Navigation = ({ navbar, logo }) => {
           <div
             className={`${
               isExpanded
-                ? 'block z-50 bg-white absolute top-16 right-0 left-0'
+                ? 'block z-50 bg-white absolute top-16 right-0 left-0 h-screen md:h-fit'
                 : 'hidden  '
             }  md:static md:w-full md:shrink md:flex md:items-center md:justify-between gap-20 md:bg-transparent`}
             id='navbar-default'
           >
-            <ul className='bg-white p-4  mt-4 rounded-lg  md:bg-transparent md:flex md:items-center  md:p-0     md:flex-row md:space-x-8  md:mt-0 md:border-0 '>
+            <ul className='p-4 mt-4 rounded-lg   md:bg-transparent md:flex md:items-center  md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 '>
               {items.length > 0 &&
                 items.map((menuItem) => (
                   <li key={menuItem.id}>
@@ -127,19 +100,37 @@ const Navigation = ({ navbar, logo }) => {
                 ))}
             </ul>
 
-            <div className='p-4 md:flex items-center gap-2 md:pl-8 '>
-              {languages.length > 0 && (
-                <Dropdown languages={languages} className='py-4 md:p-0' />
-              )}
+            <div className='p-4 md:flex items-center gap-4'>
+              <FaLinkedinIn 
+              className='text-primaryBlue cursor-pointer my-3 hover:opacity-75 transition duration-300' 
+              size={20}  
+              onClick={handleButtonClick}
+              />
+
               <Button
                 buttonText={buttonName?.buttonText}
                 handleClick={handleButtonClick}
+                className="m-0 bg-primaryBlue text-red my-3  hover:opacity-75 transition duration-300"
               />
+
+              {languages.length > 0 && (
+                <Select
+                  value={language}
+                  onChange={setLanguage}
+                  options={languages.map((language) => ({
+                    value: language.key,
+                    label: language.name,
+                  }))}
+                  placeholder={<MdLanguage className='text-slate-600' />}
+                  isSearchable={false}
+                  className='w-32'
+                />
+              )}
+
+              <CgSearch className="text-slate-600 cursor-pointer my-3" size={18}/>
             </div>
           </div>
         </div>
-
-        {/* </div> */}
       </Container>
     </nav>
   );
