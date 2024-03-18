@@ -23,8 +23,8 @@ const Hero = ({
 
   return (
     <>
-    {(navbar || logo) && <Navigation logo={logo} navbar={navbar} />}
-    <div className='relative bg-cover bg-center md:h-[40vh] flex flex-col justify-center items-center gap-4'>
+   
+    <div className='relative bg-cover bg-center'>
       {backgroundImage && (
         <div className=''>
           <Image
@@ -34,12 +34,13 @@ const Hero = ({
             objectFit='cover'
             alt='Logo UAWIT'
           />
-          <div className='absolute inset-0 bg-black opacity-20 z-[-1]'></div>
+          <div className='absolute inset-0 z-[-1] hero-overlay'></div>
         </div>
       )}
-      <Container>
+       {(navbar || logo) && <Navigation logo={logo} navbar={navbar} />}
+     
         <div
-          className={`mt-10 flex flex-col justify-center items-center md:mt-0 text-${fontColor}`}
+          className={`pt-[180px] pb-[140px] flex flex-col justify-center items-center gap-4 md:mt-0 text-${fontColor} `}
         >
           <h1 className='text-6xl font-bold mb-10 text-center'>
             {firstWord} <br />
@@ -47,10 +48,13 @@ const Hero = ({
           </h1>
           <p className='text-2xl max-w-[750px] text-center'>{description}</p>
         </div>
-      </Container>
+     
     </div>
     </>
   );
 };
 
-export default Hero;
+
+export default Hero
+
+

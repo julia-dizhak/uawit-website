@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --space-0: 0;
   --space-1: 4px;
@@ -13,13 +12,10 @@
   --space-7: 84px;
   --space-8: 136px;
   --space-9: 220px;
-
   --font-family-sans: Manrope;
   --font-family-serif: PT Serif;
   --font-family-mono: IMB Plex Mono;
-
   --white: #fff;
-
   --max-width-0: 320px;
   --max-width-1: 768px;
 }
@@ -37,6 +33,7 @@ body {
 }
 
 /* Layout */
+
 .container {
   margin: 0 auto;
 }
@@ -45,12 +42,15 @@ main {
   margin-top: 45px;
 }
 
+.hero-overlay {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), linear-gradient(180deg, rgba(255, 255, 255, 255) 0%, rgba(255, 255, 255, 0.38885) 46.93%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22));
+}
+
 @media (min-width: 575px) {
   .container {
     max-width: var(--max-width-1);
     padding: 0 var(--space-4);
   }
-
   main {
     margin-top: unset;
   }
