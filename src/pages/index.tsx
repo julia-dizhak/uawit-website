@@ -24,7 +24,6 @@ import {
   getPartnersData,
   partnersQuery,
 } from '~/lib/sanity.queries/partners/queries'
-import { Partners } from '~/components/Partners'
 import { SharedPageProps } from './_app'
 import { Partner } from '~/lib/sanity.queries/partners/types'
 import {Footer} from '~/components/Footer'
@@ -101,8 +100,7 @@ export default function HomePage({
               buttonName={buttonName}
             />
           )}
-          {aboutData && <About about={aboutData} />}
-          {partnersData.length > 0 && <Partners partners={partnersData} />}
+          {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
           {events.length > 0 && <EventsSection events={eventsData} />}
           <Footer logo={logo} navbar={navbar} />
