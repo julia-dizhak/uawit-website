@@ -34,8 +34,8 @@ export const Footer = ({ navbar, logo }) => {
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
               {items.length > 0 && (
                 <div>
-                  <h2 className="mb-4 font-bold">Categories</h2>
-                  <ul className="text-sm">
+                  <h2 className="mb-3 font-bold">Categories</h2>
+                  <ul>
                     {items.map((menuItem) => (
                       <li key={menuItem.id} className="mb-2 hover:underline">
                         <MenuItems
@@ -48,8 +48,8 @@ export const Footer = ({ navbar, logo }) => {
                 </div>
               )}
               <div>
-                <h2 className="mb-4 font-bold">Regulations</h2>
-                <ul className="text-sm">
+                <h2 className="mb-3 font-bold">Regulations</h2>
+                <ul>
                   <li className="mb-2">
                     <a href="#" className="hover:underline">
                       Privacy Policy
@@ -68,8 +68,8 @@ export const Footer = ({ navbar, logo }) => {
                 </ul>
               </div>
               <div>
-                <h2 className="mb-4 font-bold">Contacts</h2>
-                <ul className="text-sm">
+                <h2 className="mb-3 font-bold">Contacts</h2>
+                <ul>
                   <li className="mb-2">
                     <a
                       href="mailto:someone@example.com"
@@ -86,7 +86,8 @@ export const Footer = ({ navbar, logo }) => {
                 </ul>
               </div>
               <div className="invisible lg:visible">
-                <label
+                {/* We can add search later */}
+                {/* <label
                   htmlFor="default-search"
                   className="mb-2 text-sm font-medium text-gray-900 sr-only"
                 >
@@ -117,7 +118,7 @@ export const Footer = ({ navbar, logo }) => {
                     placeholder="Search here..."
                     required
                   />
-                </div>
+                </div> */}
                 <div className="text-sm text-gray-500 sm:text-center">
                   © 2024. All Rights Reserved.
                 </div>
@@ -125,7 +126,8 @@ export const Footer = ({ navbar, logo }) => {
             </div>
           </div>
           <div className="visible lg:invisible">
-            <label
+            {/* We can add search later */}
+            {/* <label
               htmlFor="default-search"
               className="mb-2 text-sm font-medium text-gray-900 sr-only"
             >
@@ -156,7 +158,7 @@ export const Footer = ({ navbar, logo }) => {
                 placeholder="Search here..."
                 required
               />
-            </div>
+            </div> */}
             <hr className="my-2 border-gray-100 sm:mx-auto lg:my-8" />
             <div className="text-sm text-gray-500 sm:text-center">
               © 2024. All Rights Reserved.
