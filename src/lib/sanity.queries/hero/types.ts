@@ -1,11 +1,12 @@
 import { ImageAsset } from '@sanity/types'
+import { LogoType } from '../logo/types';
+import {NavigationType} from '../navbar/types'
 
 export interface HeroType {
   backgroundImage: ImageAsset
   title: string
   description: string
-  buttonName: {
-    buttonText: string
-    redirectTo: string
-  }
+  fontColor: string
+  navbar: NavigationType
+  logo: LogoType
 }

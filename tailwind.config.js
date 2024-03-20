@@ -1,9 +1,14 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
-    fontFamily: {
-      manrope: ['Manrope', 'sans-serif'],
+    extend: {
+      fontFamily: {
+        manrope: ['Manrope', 'sans-serif'],
+      },
+      colors: {
+        primaryBlue: '#204F88',
+      },
     },
   },
   plugins: [],
-}
+};

@@ -1,6 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
-import Navigation from '~/components/Navigation'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
@@ -78,7 +77,7 @@ export default function HomePage({
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
 
   const [hero] = useLiveQuery(heroData, heroQuery)
-  const { backgroundImage, description, title, buttonName } = hero
+  const { backgroundImage, description, title, fontColor } = hero
 
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [events] = useLiveQuery(eventsData, eventsQuery)
@@ -86,18 +85,19 @@ export default function HomePage({
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 
   const dataShouldBePresent = postsData.length > 0 || events.length
-
+  
   return (
     <>
       {dataShouldBePresent ? (
         <>
-          {(navbar || logo) && <Navigation logo={logo} navbar={navbar} />}
           {hero && (
             <Hero
               backgroundImage={backgroundImage}
               description={description}
               title={title}
-              buttonName={buttonName}
+              fontColor={fontColor}
+              navbar={navbar}
+              logo={logo}
             />
           )}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
