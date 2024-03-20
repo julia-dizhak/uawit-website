@@ -21,7 +21,7 @@ export default {
       title: 'Description',
       type: 'string',
     },
-      {
+    {
       name: 'fontColor',
       title: 'Font Color',
       type: 'string',

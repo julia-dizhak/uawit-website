@@ -1,6 +1,6 @@
 import { ImageAsset } from '@sanity/types'
-import { LogoType } from '../logo/types';
-import {NavigationType} from '../navbar/types'
+import { LogoType } from '../logo/types'
+import { NavigationType } from '../navbar/types'
 
 export interface HeroType {
   backgroundImage: ImageAsset

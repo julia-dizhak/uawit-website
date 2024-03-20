@@ -43,12 +43,18 @@ main {
 }
 
 .hero-overlay {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), linear-gradient(180deg, rgba(255, 255, 255, 255) 0%, rgba(255, 255, 255, 0.38885) 46.93%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 255) 0%,
+      rgba(255, 255, 255, 0.38885) 46.93%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22));
 }
 
-
 select {
-  margin-left: .2em;
+  margin-left: 0.2em;
   border: 0 none;
   background-color: inherit;
   color: inherit;

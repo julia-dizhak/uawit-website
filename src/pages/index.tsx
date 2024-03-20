@@ -85,7 +85,7 @@ export default function HomePage({
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 
   const dataShouldBePresent = postsData.length > 0 || events.length
-  
+
   return (
     <>
       {dataShouldBePresent ? (
