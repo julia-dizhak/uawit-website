@@ -5,9 +5,9 @@ export interface AboutType {
   _type: 'about'
   _id: string
   _createdAt: string
-  title?: string
+  title: string
   slug: Slug
-  mainImage?: ImageAsset
+  mainImage: ImageAsset
   shortDescription: PortableTextBlock[]
   longDescription: PortableTextBlock[]
 }
