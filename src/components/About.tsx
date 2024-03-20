@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
-// import { Button } from './Button'
 import { urlForImage } from '~/lib/sanity.image'
 import { AboutType } from '~/lib/sanity.queries/about/types'
 import { Partner } from '~/lib/sanity.queries/partners/types'
@@ -13,8 +12,6 @@ type Props = {
 }
 
 export default function About({ about, partnersData }: Props) {
-  // const handleButtonClick = () => {}
-
   return (
     <div className="bg-white rounded-[28px] -mt-6">
       <Container className="flex flex-col gap-y-4 md:gap-y-20">
@@ -43,15 +40,10 @@ export default function About({ about, partnersData }: Props) {
           </div>
           <div className="w-full md:w-[48%] text-lg">
             <PortableText value={about.shortDescription} />
-            {/* <Button
-            buttonText="Learn More"
-            handleClick={handleButtonClick}
-            className="border border-blue-700 text-blue-700 py-2 my-4 px-4 rounded-full "
-          /> */}
           </div>
         </div>
         {partnersData.length > 0 && (
-          <div className='w-full'>
+          <div className="w-full">
             <Partners partners={partnersData} />
           </div>
         )}

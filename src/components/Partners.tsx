@@ -10,7 +10,6 @@ type Props = {
 export const Partners = ({ partners }: Props) => {
   return (
     <Container className="text-center">
-      {/* <h2 className="text-2xl font-bold my-4">Our Partners</h2> */}
       <div className="flex flex-wrap justify-center text-center align-center">
         {partners.map((partner: Partner, index) => (
           <a href={partner.href} key={index} className="block m-auto w-1/6 p-4">
