@@ -26,7 +26,7 @@ import {
 } from '~/lib/sanity.queries/partners/queries'
 import { SharedPageProps } from './_app'
 import { Partner } from '~/lib/sanity.queries/partners/types'
-import {Footer} from '~/components/Footer'
+import { Footer } from '~/components/Footer'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
