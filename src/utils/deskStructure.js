@@ -26,6 +26,7 @@ export const uawitStructure = (S) =>
             .items([
               S.listItem()
                 .title('General Configuration')
+                .id("general")
                 .child(
                   S.document()
                     .title('General Configuration')
