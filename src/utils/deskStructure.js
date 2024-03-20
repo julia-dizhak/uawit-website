@@ -13,7 +13,7 @@ export const uawitStructure = (S) =>
             .title('Content')
             .items([
               ...S.documentTypeListItems().filter(
-                (listItem) => !['widget'].includes(listItem.getId())
+                (listItem) => !['settings'].includes(listItem.getId())
               ),
             ])
         ),
@@ -22,11 +22,16 @@ export const uawitStructure = (S) =>
         .icon(ControlsIcon)
         .child(
           S.list()
-            .title('Configuration')
+            .title('Settings')
             .items([
-              ...S.documentTypeListItems().filter((listItem) =>
-                ['widget'].includes(listItem.getId())
-              ),
+              S.listItem()
+                .title('General Configuration')
+                .child(
+                  S.document()
+                    .title('General Configuration')
+                    .schemaType('settings')
+                    .documentId('general')
+                )
             ])
         ),
     ])

@@ -10,6 +10,7 @@ import newsContent from './newsContent'
 import partners from './partner'
 import about from './about'
 import widgets from './widget'
+import settings from './settings'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   post,
@@ -22,4 +23,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   partners,
   about,
   widgets,
+  settings,
 ]
