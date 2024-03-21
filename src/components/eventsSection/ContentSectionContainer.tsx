@@ -27,8 +27,8 @@ export default function ContentSectionContainer<T>({
   })
 
   const sortedItems = sortFunction
-    ? [...filteredItems].sort(sortFunction).slice(0, 3)
-    : filteredItems.slice(0, 3)
+    ? [...items].sort(sortFunction).slice(0, 3)
+    : items.slice(0, 3)
 
   return (
     <section className="py-16 px-6 sm:px-[6.563rem]">
