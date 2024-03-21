@@ -14,8 +14,9 @@ const MenuItems = ({ path, title }: MenuItemsProps) => {
   )
 }
 
-export const Footer = ({ navbar, logo }) => {
+export const Footer = ({ navbar, logo, contacts }) => {
   const { items } = navbar
+  const { linkedIn, email } = contacts[0]
 
   return (
     <Container>
@@ -46,19 +47,19 @@ export const Footer = ({ navbar, logo }) => {
                 <h2 className="mb-3 font-bold">Regulations</h2>
                 <ul>
                   <li className="mb-2">
-                    <a href="#" className="hover:underline">
-                      Privacy Policy
-                    </a>
+                    {/* <a href="#" className="hover:underline"> */}
+                    Privacy Policy
+                    {/* </a> */}
                   </li>
                   <li className="mb-2">
-                    <a href="#" className="hover:underline">
-                      Terms &amp; Conditions
-                    </a>
+                    {/* <a href="#" className="hover:underline"> */}
+                    Terms &amp; Conditions
+                    {/* </a> */}
                   </li>
                   <li>
-                    <a href="#" className="hover:underline">
-                      Cookie settings
-                    </a>
+                    {/* <a href="#" className="hover:underline"> */}
+                    Cookie settings
+                    {/* </a> */}
                   </li>
                 </ul>
               </div>
@@ -66,15 +67,12 @@ export const Footer = ({ navbar, logo }) => {
                 <h2 className="mb-3 font-bold">Contacts</h2>
                 <ul>
                   <li className="mb-2">
-                    <a
-                      href="mailto:someone@example.com"
-                      className="hover:underline "
-                    >
+                    <a href={`mailto:${email}`} className="hover:underline ">
                       Email
                     </a>
                   </li>
                   <li>
-                    <a href="" className="hover:underline">
+                    <a href={linkedIn} className="hover:underline">
                       LinkedIn
                     </a>
                   </li>

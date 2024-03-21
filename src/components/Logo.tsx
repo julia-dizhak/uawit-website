@@ -14,8 +14,8 @@ export const Logo = ({ logo }: Props) => {
       {Boolean(logoImage) && (
         <Image
           src={urlForImage(logoImage)?.url() || ''}
-          height={50}
-          width={50}
+          height={70}
+          width={70}
           alt={caption || 'Logo UA WIT in Stockholm'}
         />
       )}

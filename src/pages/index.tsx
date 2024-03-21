@@ -26,6 +26,8 @@ import {
 import { SharedPageProps } from './_app'
 import { Partner } from '~/lib/sanity.queries/partners/types'
 import { Footer } from '~/components/Footer'
+import { ContactType } from '~/lib/sanity.queries/general/types'
+import { getContact, contactQuery } from '~/lib/sanity.queries/general/queries'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -36,6 +38,7 @@ export const getStaticProps: GetStaticProps<
     eventsData: EventsListType
     about: AboutType
     partners: Partner[]
+    contacts: ContactType
   }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
@@ -47,6 +50,7 @@ export const getStaticProps: GetStaticProps<
   const eventsData = await getEvents(client)
   const about = await getAbout(client)
   const partners = await getPartnersData(client)
+  const contacts = await getContact(client)
 
   return {
     props: {
@@ -60,6 +64,7 @@ export const getStaticProps: GetStaticProps<
       navbarData,
       about,
       partners,
+      contacts,
     },
   }
 }
@@ -72,6 +77,7 @@ export default function HomePage({
   eventsData,
   about,
   partners,
+  contacts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
@@ -85,6 +91,8 @@ export default function HomePage({
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 
   const dataShouldBePresent = postsData.length > 0 || events.length
+
+  const contactsData = useLiveQuery(contacts, contactQuery)
 
   return (
     <>
@@ -103,7 +111,7 @@ export default function HomePage({
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
           {events.length > 0 && <EventsSection events={eventsData} />}
-          <Footer logo={logo} navbar={navbar} />
+          <Footer logo={logo} navbar={navbar} contacts={contactsData} />
         </>
       ) : (
         <NoData />

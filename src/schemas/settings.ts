@@ -28,6 +28,12 @@ export default defineType({
       group: 'contacts',
     }),
     defineField({
+      name: 'linkedIn',
+      title: 'LinkedIn',
+      type: 'string',
+      group: 'contacts',
+    }),
+    defineField({
       name: 'Logo',
       title: 'Logo',
       type: 'object',
@@ -42,5 +48,5 @@ export default defineType({
         }),
       ],
     }),
-  ]
+  ],
 })
