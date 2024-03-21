@@ -16,6 +16,7 @@ const MenuItems = ({ path, title }: MenuItemsProps) => {
 
 export const Footer = ({ navbar, logo, contacts }) => {
   const { items } = navbar
+  const { email, linkedIn } = contacts[0]
 
   return (
     <Container>
@@ -66,12 +67,12 @@ export const Footer = ({ navbar, logo, contacts }) => {
                 <h2 className="mb-3 font-bold">Contacts</h2>
                 <ul>
                   <li className="mb-2">
-                    <a href={`mailto:${contacts[0]?.email}`} className="hover:underline ">
+                    <a href={`mailto:${email}`} className="hover:underline ">
                       Email
                     </a>
                   </li>
                   <li>
-                    <a href={contacts[0]?.linkedIn} className="hover:underline">
+                    <a href={linkedIn} className="hover:underline">
                       LinkedIn
                     </a>
                   </li>
