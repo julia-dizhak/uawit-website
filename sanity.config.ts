@@ -32,10 +32,10 @@ const iframeOptions = {
 } satisfies IframeOptions
 
 // Define the actions that should be available for singleton documents
-const singletonActions = new Set(["publish", "discardChanges", "restore"])
+const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 
 // Define the singleton document types
-const singletonTypes = new Set(["settings"])
+const singletonTypes = new Set(['settings'])
 
 export default defineConfig({
   basePath: '/studio',

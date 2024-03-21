@@ -13,8 +13,8 @@ type Props = {
 
 export default function About({ about, partnersData }: Props) {
   return (
-    <div className="bg-white rounded-[28px] -mt-6">
-      <Container className="flex flex-col gap-y-4 md:gap-y-20">
+    <div className="bg-white rounded-[28px] -my-6" id="about">
+      <Container className="flex flex-col py-20 gap-y-4 md:gap-y-20">
         {about.mainImage && (
           <div className="w-full">
             <Image
@@ -23,19 +23,14 @@ export default function About({ about, partnersData }: Props) {
               height={500}
               width={500}
               alt="Our comunity"
-              className="rounded-lg"
+              className="rounded-2xl"
             />
           </div>
         )}
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-[48%]">
-            <h3 className="mb-8 text-5xl font-bold leading-none tracking-tight text-gray-900">
-              <a
-                className="block ml-auto mr-auto text-center md:text-left"
-                href=""
-              >
-                {about.title}
-              </a>
+            <h3 className="mb-8 text-5xl font-bold leading-none tracking-tight text-gray-900 block ml-auto mr-auto text-center md:text-left">
+              {about.title}
             </h3>
           </div>
           <div className="w-full md:w-[48%] text-lg">

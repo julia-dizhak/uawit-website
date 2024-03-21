@@ -26,13 +26,13 @@ export const uawitStructure = (S) =>
             .items([
               S.listItem()
                 .title('General Configuration')
-                .id("general")
+                .id('general')
                 .child(
                   S.document()
                     .title('General Configuration')
                     .schemaType('settings')
                     .documentId('general')
-                )
+                ),
             ])
         ),
     ])
