@@ -11,18 +11,21 @@ interface CardProps {
 
 export default function Card({ post }: CardProps) {
   return (
-    <div className="flex flex-col mt-10 w-1/3 p-4">
+    <div className="flex flex-col mt-10 w-1/4 p-4">
       {post.mainImage ? (
-        <Image
-          src={urlForImage(post.mainImage)?.url() || ''}
-          height={300}
-          width={500}
-          alt={post.title || 'image of post'}
-        />
+        <div className="w-full">
+          <Image
+            className="rounded-2xl"
+            src={urlForImage(post.mainImage)?.url() || ''}
+            height={180}
+            width={200}
+            alt={post.title || 'image of post'}
+          />
+        </div>
       ) : (
         <div className="bg-black w-100 h-[200]px" />
       )}
-      <div className="bg-slate-100">
+      <div className="mt-4 text-left">
         <h3>
           {post.slug && <a href={`/post/${post.slug.current}`}>{post.title}</a>}
         </h3>
