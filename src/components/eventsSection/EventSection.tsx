@@ -1,7 +1,7 @@
 import { EventType, EventsListType } from '~/lib/sanity.queries/events/types'
 import ContentSectionContainer from './ContentSectionContainer'
 import EventCard from './EventCard'
-import ContentSectionButton from './ContentSectionButton'
+import SecondaryButton from '../SecondaryButton'
 
 interface EventsSectionProps {
   events: EventsListType
@@ -9,8 +9,8 @@ interface EventsSectionProps {
 
 export default function EventsSection({ events }: EventsSectionProps) {
   const sortEventsByDate = (a: EventType, b: EventType) => {
-    const dateA = new Date(a.eventCard.dateAndTime ?? '')
-    const dateB = new Date(b.eventCard.dateAndTime ?? '')
+    const dateA = new Date(a.dateAndTime ?? '')
+    const dateB = new Date(b.dateAndTime ?? '')
 
     if (isNaN(dateA.getTime())) return -1
     if (isNaN(dateB.getTime())) return 1
@@ -19,11 +19,9 @@ export default function EventsSection({ events }: EventsSectionProps) {
   }
 
   const buttonContent = (
-    <ContentSectionButton
-      buttonLink={events[0]?.eventSectionButton?.buttonLink}
-    >
-      See more events
-    </ContentSectionButton>
+    <SecondaryButton buttonLink={events[0]?.eventsButton?.buttonLink}>
+      {events[0]?.eventsButton?.buttonText}
+    </SecondaryButton>
   )
 
   if (events.length === 0) {
@@ -32,16 +30,14 @@ export default function EventsSection({ events }: EventsSectionProps) {
 
   return (
     <ContentSectionContainer
-      title="Events"
-      description="Check out our upcoming events or events outside of our community that will help you find new information and expand your networking."
+      title={events[0]?.sectionTitle}
+      description={events[0]?.sectionDescription}
       items={events}
       sortFunction={sortEventsByDate}
-      getDateProperty={(event) => event.eventCard.dateAndTime}
+      getDateProperty={(event) => event.dateAndTime}
       button={buttonContent}
     >
-      {(event: EventType) => (
-        <EventCard event={event.eventCard} key={event._id} />
-      )}
+      {(event: EventType) => <EventCard event={event} key={event._id} />}
     </ContentSectionContainer>
   )
 }
