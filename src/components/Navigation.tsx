@@ -15,7 +15,7 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
   return (
     <a
       href={`#${path}`}
-      className="block py-2 px-3 text-slate-600 font-bold rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500"
+      className="block py-2 text-slate-600 font-bold rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500"
       aria-current="page"
       onClick={onClick}
     >
@@ -42,9 +42,8 @@ const Navigation = ({ navbar, logo }) => {
   }
 
   return (
-    <nav className="pt-4">
       <Container>
-        <div className="flex items-center  justify-between mx-auto">
+        <nav className="flex items-center  justify-between mx-auto">
           <div className="flex items-center space-x-3 rtl:space-x-reverse pr-20">
             <Logo logo={logo} />
           </div>
@@ -79,12 +78,12 @@ const Navigation = ({ navbar, logo }) => {
           <div
             className={`${
               isExpanded
-                ? 'block z-50 bg-white absolute top-16 right-0 left-0 h-screen md:h-fit'
-                : 'hidden  '
+                ? 'block z-50 bg-white absolute top-16 right-0 left-0 py-6 rounded-md md:p-0'
+                : 'hidden'
             }  md:static md:w-full md:shrink md:flex md:items-center md:justify-between gap-20 md:bg-transparent`}
             id="navbar-default"
           >
-            <ul className="p-4 mt-4 rounded-lg md:bg-transparent md:flex md:items-center md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
+            <ul className="px-6 mb-6 rounded-lg md:bg-transparent md:flex md:items-center md:p-0 md:flex-row md:space-x-8 md:m-0  ">
               {navigationItems.map((menuItem) => (
                 <li key={menuItem.id}>
                   <MenuItems
@@ -96,7 +95,7 @@ const Navigation = ({ navbar, logo }) => {
               ))}
             </ul>
 
-            <div className="p-4 md:flex items-center gap-4">
+            <div className="px-6 md:flex items-center gap-4">
               <FaLinkedinIn
                 className="text-primaryBlue cursor-pointer my-3 hover:opacity-75 transition duration-300"
                 size={20}
@@ -110,9 +109,8 @@ const Navigation = ({ navbar, logo }) => {
               />
             </div>
           </div>
-        </div>
+        </nav>
       </Container>
-    </nav>
   )
 }
 
