@@ -34,19 +34,11 @@ export default defineType({
       group: 'contacts',
     }),
     defineField({
-      name: 'Logo',
+      name: 'logo',
+      type: 'reference',
       title: 'Logo',
-      type: 'object',
-      group: 'general',
-      fields: [
-        defineField({
-          name: 'logo',
-          type: 'reference',
-          title: 'Logo',
-          description: 'Select one of the existing logos or add new.',
-          to: [{ type: 'logo' }],
-        }),
-      ],
+      description: 'Select one of the existing logos or add new.',
+      to: [{ type: 'logo' }],
     }),
   ],
 })
