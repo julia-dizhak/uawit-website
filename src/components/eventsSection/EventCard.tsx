@@ -27,7 +27,7 @@ export default function EventCard({ event }: EventCardProps) {
     )
   }
 
-  const imageUrl = typeof event.image === 'string' ? event.image : '' 
+  const imageUrl = typeof event.image === 'string' ? event.image : ''
 
   return (
     <li className="flex flex-col overflow-hidden cursor-pointer group ">
@@ -51,9 +51,8 @@ export default function EventCard({ event }: EventCardProps) {
             </>
           )}
         </p>
-        {renderLocationLink()}  
+        {renderLocationLink()}
       </div>
     </li>
   )
 }
-

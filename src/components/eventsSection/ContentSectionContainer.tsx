@@ -20,7 +20,6 @@ export default function ContentSectionContainer<T>({
 }: ContentSectionContainerProps<T>) {
   const currentDate = new Date()
 
-
   const sortedItems = sortFunction
     ? [...items].sort(sortFunction).slice(0, 3)
     : items.slice(0, 3)
@@ -33,7 +32,6 @@ export default function ContentSectionContainer<T>({
       <p className="text-center text-primaryGray mt-3 font-light text-base leading-[22px] mb-[56px]  max-w-[611px]  mx-auto">
         {description}
       </p>
-  
 
       <div className="grid grid-cols-1 gap-[24px] md:grid-cols-2 lg:grid-cols-3">
         {sortedItems.flatMap((item, index) => (
