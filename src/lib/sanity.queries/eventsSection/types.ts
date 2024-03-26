@@ -5,8 +5,8 @@ export interface EventsButtonType {
   buttonLink: string;
 }
 
-export interface SectionType {
-  _type: 'section';
+export interface EventsSectionType {
+  _type: 'eventsSection';
   _id: string;
   sectionTitle: string;
   sectionDescription: string;

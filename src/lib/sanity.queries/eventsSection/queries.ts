@@ -1,9 +1,9 @@
 import groq from 'groq';
 import { SanityClient } from 'next-sanity';
-import { SectionType } from './types';
+import { EventsSectionType } from './types';
 
 
-const sectionQuery = groq`*[_type == "section"]{
+export const eventsSectionQuery = groq`*[_type == "eventsSection"]{
   _id,
   sectionTitle,
   sectionDescription,
@@ -12,12 +12,6 @@ const sectionQuery = groq`*[_type == "section"]{
 }[0]`;
 
 
-export async function getSection(client: SanityClient): Promise<SectionType | null> {
-  try {
-    const sectionData = await client.fetch(sectionQuery);
-    return sectionData;
-  } catch (error) {
-    console.error('Error fetching section data:', error.message);
-    return null;
-  }
+export async function getEventsSectionData(client: SanityClient): Promise<EventsSectionType> {
+  return  await client.fetch(eventsSectionQuery)
 }
