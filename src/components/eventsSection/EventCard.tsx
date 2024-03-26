@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { EventType } from '~/lib/sanity.queries/events/types'
-import { formatDateTime } from '~/lib/sanity.queries/events/utility'
+import formatDateTime from '~/utils/index'
 
 interface EventCardProps {
   event: EventType
+  isEventPassed: boolean
 }
 
-export default function EventCard({ event }: EventCardProps) {
+export default function EventCard({ event,isEventPassed }: EventCardProps) {
   const { formattedDate, formattedTime } = formatDateTime(event.dateAndTime)
 
   const renderLocationLink = () => {
@@ -31,7 +32,7 @@ export default function EventCard({ event }: EventCardProps) {
 
   return (
     <li className="flex flex-col overflow-hidden cursor-pointer group ">
-      <div className="relative w-full overflow-hidden min-h-[183px]  border rounded-xl ">
+      <div className={`relative w-full overflow-hidden min-h-[183px]  border rounded-xl ${isEventPassed ? 'opacity-60  saturate-[.35]' : ''}`}>
         {event.image && (
           <Image
             src={imageUrl}

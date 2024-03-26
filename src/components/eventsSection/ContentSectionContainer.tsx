@@ -4,25 +4,25 @@ interface ContentSectionContainerProps<T> {
   title: string
   description: string
   items: T[]
-  children: (item: T) => ReactNode
+  children: (item: T, isEventPassed: boolean) => ReactNode
   sortFunction?: (a: T, b: T) => number
-  getDateProperty?: (item: T) => string | undefined
   button?: ReactNode
+  currentDate: Date
 }
 
-export default function ContentSectionContainer<T>({
+export default function ContentSectionContainer<T extends { dateAndTime: string }>({
   title,
   description,
   items,
   children,
   sortFunction,
   button,
+  currentDate
 }: ContentSectionContainerProps<T>) {
-  const currentDate = new Date()
 
   const sortedItems = sortFunction
-    ? [...items].sort(sortFunction).slice(0, 3)
-    : items.slice(0, 3)
+    ? [...items].sort(sortFunction).slice(0, 4)
+    : items.slice(0, 4)
 
   return (
     <section className="py-16 px-6 sm:px-[6.563rem] font-manrope">
@@ -34,8 +34,8 @@ export default function ContentSectionContainer<T>({
       </p>
 
       <div className="grid grid-cols-1 gap-[24px] md:grid-cols-2 lg:grid-cols-3">
-        {sortedItems.flatMap((item, index) => (
-          <div key={index}>{children(item)}</div>
+        {sortedItems.map((item, index) => (
+          <div key={index}>{children(item, new Date(item.dateAndTime) < currentDate)}</div>
         ))}
       </div>
       {button}

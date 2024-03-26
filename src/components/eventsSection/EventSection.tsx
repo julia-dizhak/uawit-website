@@ -3,22 +3,14 @@ import ContentSectionContainer from './ContentSectionContainer'
 import EventCard from './EventCard'
 import SecondaryButton from '../SecondaryButton'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
+import {sortEventsByDate} from '~/utils/index'
 
 interface EventsSectionProps {
-  section: EventsSectionType 
+  section: EventsSectionType
   events: EventsListType
 }
 
 export default function EventsSection({section, events }: EventsSectionProps) {
-  const sortEventsByDate = (a: EventType, b: EventType) => {
-    const dateA = new Date(a.dateAndTime ?? '')
-    const dateB = new Date(b.dateAndTime ?? '')
-
-    if (isNaN(dateA.getTime())) return -1
-    if (isNaN(dateB.getTime())) return 1
-
-    return dateA.getTime() - dateB.getTime()
-  }
 
   const buttonContent = (
     <SecondaryButton buttonLink={section?.eventsButton?.buttonLink}> 
@@ -36,10 +28,10 @@ export default function EventsSection({section, events }: EventsSectionProps) {
       description={section?.sectionDescription}
       items={events}
       sortFunction={sortEventsByDate}
-      getDateProperty={(event) => event.dateAndTime}
       button={buttonContent}
+      currentDate={new Date()}
     >
-      {(event: EventType) => <EventCard event={event} key={event._id} />}
+      {(event: EventType, isEventPassed: boolean) => <EventCard event={event} key={event._id} isEventPassed={isEventPassed} />}
     </ContentSectionContainer>
   )
 }

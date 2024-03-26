@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { formatDateTime } from '~/lib/sanity.queries/events/utility'
+import formatDateTime from '~/utils/index'
 
 export default defineType({
   name: 'events',
