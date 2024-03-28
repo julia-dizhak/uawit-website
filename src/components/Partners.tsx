@@ -14,7 +14,7 @@ export const Partners = ({ partners }: Props) => {
         {partners.map((partner: Partner, index) => (
           <a href={partner.href} key={index} className="block m-auto w-1/6 p-4">
             <Image
-              className="block text-center m-auto grayscale opacity-80 hover:opacity-50"
+              className="block text-center m-auto "
               src={urlForImage(partner.partnerLogo)?.url() || ''}
               height={60}
               width={60}
