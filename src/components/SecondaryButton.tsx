@@ -1,21 +1,23 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+import { type ButtonHTMLAttributes } from 'react'
 
-interface ContentSectionButtonProps
+interface SecondaryButtonButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode
+  buttonText: string
   buttonLink?: string
+  btnClasses: string
   handleClick?: () => void
 }
 
-export default function ContentSectionButton({
-  children,
+export default function SecondaryButton({
   handleClick,
   buttonLink,
+  buttonText,
+  btnClasses,
   ...rest
-}: ContentSectionButtonProps) {
-  const classes = `text-primaryBlue text-base font-normal  tracking-wider  block mx-auto mt-[64px]  px-[24px] py-[13px] text-center  border border-primaryBlue rounded-xl
+}: SecondaryButtonButtonProps) {
+  const defaultClasses = `text-base font-normal tracking-wider border  block mx-auto  py-[16px] text-center    rounded-xl
    hover:scale-[1.01] hover:shadow-md transition-all duration-300
-  active:scale-[0.96] active:duration-300
+  active:scale-[0.96] active:duration-300 
   `
 
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,8 +32,12 @@ export default function ContentSectionButton({
   }
 
   return (
-    <button className={classes} onClick={handleButtonClick} {...rest}>
-      {children}
+    <button
+      className={`${btnClasses} ${defaultClasses}`}
+      onClick={handleButtonClick}
+      {...rest}
+    >
+      {buttonText}
     </button>
   )
 }

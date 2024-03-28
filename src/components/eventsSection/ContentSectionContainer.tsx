@@ -21,8 +21,8 @@ export default function ContentSectionContainer<T extends { dateAndTime: string 
 }: ContentSectionContainerProps<T>) {
 
   const sortedItems = sortFunction
-    ? [...items].sort(sortFunction).slice(0, 4)
-    : items.slice(0, 4)
+    ? [...items].sort(sortFunction).slice(0, 3)
+    : items.slice(0, 3)
 
   return (
     <section className="py-16 px-6 sm:px-[6.563rem] font-manrope">

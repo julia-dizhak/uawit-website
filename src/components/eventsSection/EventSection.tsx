@@ -4,6 +4,7 @@ import EventCard from './EventCard'
 import SecondaryButton from '../SecondaryButton'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
 import {sortEventsByDate} from '~/utils/index'
+import ActionContainer from './ActionContainer'
 
 interface EventsSectionProps {
   section: EventsSectionType
@@ -13,9 +14,8 @@ interface EventsSectionProps {
 export default function EventsSection({section, events }: EventsSectionProps) {
 
   const buttonContent = (
-    <SecondaryButton buttonLink={section?.eventsButton?.buttonLink}> 
-      {section?.eventsButton?.buttonText}
-    </SecondaryButton>
+    <SecondaryButton buttonLink={section?.eventsButton?.buttonLink} buttonText={section?.eventsButton?.buttonText} btnClasses={`text-primaryBlue  border border-primaryBlue mt-[64px] px-[24px]`}/> 
+  
   )
 
   if (events.length === 0) {
@@ -23,6 +23,8 @@ export default function EventsSection({section, events }: EventsSectionProps) {
   }
 
   return (
+    <>
+    <ActionContainer section={section} />
     <ContentSectionContainer
       title={section?.sectionTitle}
       description={section?.sectionDescription}
@@ -33,5 +35,6 @@ export default function EventsSection({section, events }: EventsSectionProps) {
     >
       {(event: EventType, isEventPassed: boolean) => <EventCard event={event} key={event._id} isEventPassed={isEventPassed} />}
     </ContentSectionContainer>
+    </>
   )
 }

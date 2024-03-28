@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'eventsSection',
-  title: 'Section',
+  title: 'Sections',
   type: 'document',
   fields: [
     defineField({
@@ -75,6 +75,14 @@ export default defineType({
       description:
         'Enter a description for the events section.Maximum 300 characters.',
       validation: (Rule) => Rule.required().max(300),
+    }),
+    defineField({
+      name: 'events',
+      title: 'Events',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'events' }] }],
+      description:
+        'View all events belonging to this section or create a new one.',
     }),
     defineField({
       name: 'eventsButton',

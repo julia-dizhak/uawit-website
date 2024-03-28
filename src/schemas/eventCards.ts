@@ -6,14 +6,6 @@ export default defineType({
   title: 'Events',
   type: 'document',
   fields: [
-    {
-      name: 'section',
-      title: 'Section',
-      type: 'reference',
-      description: 'Select the section to which this event belongs.',
-      to: [{ type: 'eventsSection' }],
-      validation: (Rule) => Rule.required(),
-    },
     defineField({
       name: 'image',
       title: 'Event Card Image',

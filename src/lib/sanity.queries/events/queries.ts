@@ -5,9 +5,6 @@ import { EventsListType } from './types'
 export const eventsQuery = groq`*[_type == "events"] {
   _id,
   _createdAt,
-  eventsSection-> {
-    _id
-  },
   "image": coalesce(image.asset->url, null),
   title,
   "slug": slug.current,

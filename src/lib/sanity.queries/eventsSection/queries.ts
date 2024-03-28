@@ -9,6 +9,9 @@ export const eventsSectionQuery = groq`*[_type == "eventsSection"]{
   "slug": slug.current,
   sectionDescription,
   ctaSubsectionDescription,
+  events-> {
+    _id
+  },
   ctaButton,
   'ctaImageOverlay': coalesce(ctaImageOverlay.asset->url, null),
   'ctaBackgroundImage': coalesce(ctaBackgroundImage.asset->url, null),

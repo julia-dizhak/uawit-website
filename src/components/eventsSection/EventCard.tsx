@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { EventType } from '~/lib/sanity.queries/events/types'
 import formatDateTime from '~/utils/index'
 
+
 interface EventCardProps {
   event: EventType
   isEventPassed: boolean
