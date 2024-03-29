@@ -25,7 +25,7 @@ export default function ContentSectionContainer<T extends { dateAndTime: string 
     : items.slice(0, 3)
 
   return (
-    <section className="py-16 px-6 sm:px-[6.563rem] font-manrope">
+    <section className="max-w-screen-xl  px-6 mx-auto font-manrope my-[100px]">
       <h2 className="font-medium text-center text-[48px] text-primaryBlack ">
         {title}
       </h2>

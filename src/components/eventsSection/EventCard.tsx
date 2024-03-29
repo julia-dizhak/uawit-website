@@ -33,13 +33,14 @@ export default function EventCard({ event,isEventPassed }: EventCardProps) {
 
   return (
     <li className="flex flex-col overflow-hidden cursor-pointer group ">
-      <div className={`relative w-full overflow-hidden min-h-[183px]  border rounded-xl ${isEventPassed ? 'opacity-60  saturate-[.35]' : ''}`}>
+      <div className={`relative w-full overflow-hidden h-[183px] border rounded-xl ${isEventPassed ? 'opacity-60  saturate-[.35]' : ''}`}>
         {event.image && (
           <Image
             src={imageUrl}
             alt={event.title}
             fill
-            className="object-cover w-full h-full transition-transform duration-200 ease-out group-hover:scale-105"
+            sizes="(min-width: 1040px) calc(33.32vw - 87px), (min-width: 780px) calc(50vw - 119px), (min-width: 640px) calc(100vw - 212px), calc(100vw - 50px)"
+            className="object-cover h-auto transition-transform duration-200 ease-out group-hover:scale-105" 
           />
         )}
       </div>

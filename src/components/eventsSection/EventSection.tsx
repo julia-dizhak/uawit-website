@@ -14,7 +14,7 @@ interface EventsSectionProps {
 export default function EventsSection({section, events }: EventsSectionProps) {
 
   const buttonContent = (
-    <SecondaryButton buttonLink={section?.eventsButton?.buttonLink} buttonText={section?.eventsButton?.buttonText} btnClasses={`text-primaryBlue  border border-primaryBlue mt-[64px] px-[24px]`}/> 
+    <SecondaryButton buttonLink={section?.eventsButton?.buttonLink} buttonText={section?.eventsButton?.buttonText} btnClasses={`text-primaryBlue  border-primaryBlue mt-[64px] px-[24px]`}/> 
   
   )
 
