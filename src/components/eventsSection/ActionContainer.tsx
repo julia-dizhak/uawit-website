@@ -9,13 +9,13 @@ interface ActionSectionProps {
 }
 
 export default function ActionContainer({ section }: ActionSectionProps) {
-  
-  const imageOverlayUrl = typeof section.ctaImageOverlay === 'string' ? section.ctaImageOverlay : ''
 
+  {/* Image Overlay is an optional element, not sure if it's should be added from the Sanity */}
+  // const imageOverlayUrl = typeof section.ctaImageOverlay === 'string' ? section.ctaImageOverlay : ''
 
   const backgroundImageUrl = typeof section.ctaBackgroundImage === 'string' ? section.ctaBackgroundImage : ''
 
-  return <div className="flex flex-wrap items-center justify-center max-w-screen-xl mx-auto sm:px-6 font-manrope mt-[100px  ] ">
+  return <div className="flex flex-wrap items-center justify-center max-w-screen-xl mx-auto sm:px-6 font-manrope pt-[100px] bg-backgroundColor ">
      
     <div className="relative z-20  w-full overflow-hidden border sm:rounded-xl max-h-[368px] 
       ">

@@ -6,6 +6,7 @@ module.exports = {
         manrope: ['Manrope', 'sans-serif'],
       },
       colors: {
+        backgroundColor: '#F6F6F6',
         primaryBlue: '#204F88',
         primaryBlack: '#222222',
         secondaryBlack:  '#261800',
