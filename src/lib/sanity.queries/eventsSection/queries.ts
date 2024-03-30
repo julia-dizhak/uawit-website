@@ -13,10 +13,10 @@ export const eventsSectionQuery = groq`*[_type == "eventsSection"]{
     _id
   },
   ctaButton,
-  'ctaImageOverlay': coalesce(ctaImageOverlay.asset->url, null),
   'ctaBackgroundImage': coalesce(ctaBackgroundImage.asset->url, null),
-   eventsButton,
+  eventsButton,
   'backgroundImage': coalesce(backgroundImage.asset->url, null)
+  'decorativeImageElement': coalesce(decorativeImageElement.asset->url, null),
 }[0]`;
 
 

@@ -29,16 +29,6 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'ctaImageOverlay',
-      title: 'CTA Image Overlay Element',
-      type: 'image',
-      description:
-        'Upload an optional image overlay element for the call-to-action subsection.',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
       name: 'ctaBackgroundImage',
       title: 'CTA Background Image',
       type: 'image',
@@ -113,6 +103,16 @@ export default defineType({
       type: 'image',
       description:
         'Upload an optional overlay image element for the events section.',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'decorativeImageElement',
+      title: 'Decorative Image Element',
+      type: 'image',
+      description:
+        'Upload an optional decorative image element to enhance the visual style of teh selected section.',
       options: {
         hotspot: true,
       },
