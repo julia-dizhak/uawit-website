@@ -41,7 +41,7 @@ export default function EventCard({ event,isEventPassed }: EventCardProps) {
             alt={event.title}
             fill
             sizes="(min-width: 1040px) calc(33.32vw - 87px), (min-width: 780px) calc(50vw - 119px), (min-width: 640px) calc(100vw - 212px), calc(100vw - 50px)"
-            className="object-cover h-auto transition-transform duration-200 ease-out group-hover:scale-105" 
+            className="object-cover w-full h-auto transition-transform duration-200 ease-out group-hover:scale-105" 
           />
         )}
       </div>
