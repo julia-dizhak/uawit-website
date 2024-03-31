@@ -28,9 +28,11 @@ import { Partner } from '~/lib/sanity.queries/partners/types'
 import { Footer } from '~/components/Footer'
 import { ContactType } from '~/lib/sanity.queries/general/types'
 import { getContact, contactQuery } from '~/lib/sanity.queries/general/queries'
-import {eventsSectionQuery,  getEventsSectionData} from '~/lib/sanity.queries/eventsSection/queries'
+import {
+  eventsSectionQuery,
+  getEventsSectionData,
+} from '~/lib/sanity.queries/eventsSection/queries'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
-
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -64,13 +66,13 @@ export const getStaticProps: GetStaticProps<
       // fetched data from sanity
       posts,
       eventsData,
-      eventsSectionData, 
+      eventsSectionData,
       logoData,
       heroData,
       navbarData,
       about,
       partners,
-      contacts, 
+      contacts,
     },
   }
 }
@@ -84,7 +86,7 @@ export default function HomePage({
   about,
   partners,
   contacts,
-  eventsSectionData
+  eventsSectionData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
@@ -94,11 +96,11 @@ export default function HomePage({
 
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [events] = useLiveQuery(eventsData, eventsQuery)
-  const [ eventsSection ]  = useLiveQuery (eventsSectionData,eventsSectionQuery )
+  const [eventsSection] = useLiveQuery(eventsSectionData, eventsSectionQuery)
   const [aboutData] = useLiveQuery(about, aboutQuery)
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 
-  const dataShouldBePresent = postsData.length > 0 || events.length 
+  const dataShouldBePresent = postsData.length > 0 || events.length
 
   const contactsData = useLiveQuery(contacts, contactQuery)
 
@@ -118,7 +120,9 @@ export default function HomePage({
           )}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
-          {events.length > 0 && <EventsSection events={eventsData} section={eventsSection} />}
+          {events.length > 0 && (
+            <EventsSection events={eventsData} section={eventsSection} />
+          )}
           <Footer logo={logo} navbar={navbar} contacts={contactsData} />
         </>
       ) : (

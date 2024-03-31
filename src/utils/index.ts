@@ -35,7 +35,7 @@ export default function formatDateTime(dateTimeString?: string): {
 
 export function sortEventsByDate<T extends { dateAndTime?: string }>(
   a: T,
-  b: T,
+  b: T
 ): number {
   const dateA = new Date(a.dateAndTime ?? '')
   const dateB = new Date(b.dateAndTime ?? '')

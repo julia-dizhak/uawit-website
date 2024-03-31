@@ -13,7 +13,6 @@ import widgets from './widget'
 import settings from './settings'
 import section from './eventsSection'
 
-
 export const schemaTypes: SchemaTypeDefinition[] = [
   post,
   blockContent,
@@ -26,5 +25,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   about,
   widgets,
   settings,
-  section
+  section,
 ]

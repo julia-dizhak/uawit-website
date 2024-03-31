@@ -89,7 +89,7 @@ export default defineType({
       const { dateAndTime, locationCity, locationAddress } = selection
 
       const { formattedDate, formattedTime } = formatDateTime(
-        dateAndTime as string,
+        dateAndTime as string
       )
 
       const subtitle = `${formattedDate} • ${formattedTime} • ${locationCity}, ${locationAddress} `
