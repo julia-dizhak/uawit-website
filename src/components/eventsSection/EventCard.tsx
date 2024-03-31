@@ -21,6 +21,7 @@ export default function EventCard({ event,isEventPassed }: EventCardProps) {
         <Link
           href={googleMapsUrl}
           rel="noopener noreferrer"
+          passHref
           className="text-base not-italic text-secondaryGray hover:text-primaryBlue hover:underline line-clamp-2 mt-1.5"
         >
           {`${address}, ${city}`}

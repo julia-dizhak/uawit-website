@@ -3,14 +3,12 @@ import { type ButtonHTMLAttributes } from 'react'
 interface SecondaryButtonButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   buttonText: string
-  buttonLink?: string
   btnClasses: string
   handleClick?: () => void
 }
 
 export default function SecondaryButton({
   handleClick,
-  buttonLink,
   buttonText,
   btnClasses,
   ...rest
@@ -24,10 +22,6 @@ export default function SecondaryButton({
     if (handleClick != null) {
       e.preventDefault()
       handleClick()
-    }
-
-    if (buttonLink != null) {
-      window.open(buttonLink, '_blank')
     }
   }
 

@@ -1,3 +1,4 @@
+'use client'
 import { EventType, EventsListType } from '~/lib/sanity.queries/events/types'
 import ContentSectionContainer from './ContentSectionContainer'
 import EventCard from './EventCard'
@@ -14,16 +15,18 @@ interface EventsSectionProps {
 export default function EventsSection({section, events }: EventsSectionProps) {
 
   const buttonContent = (
-    <SecondaryButton buttonLink={section?.eventsButton?.buttonLink} buttonText={section?.eventsButton?.buttonText} btnClasses={`text-primaryBlue  border-primaryBlue mt-[64px] px-[24px]`}/> 
-  
+    <SecondaryButton buttonText={section?.eventsButton?.buttonText} btnClasses={`text-primaryBlue  border-primaryBlue mt-[64px] px-[24px]`}
+    /> 
   )
-
   if (events.length === 0) {
     return null
   }
 
+ const decorativeImageUrl = typeof section.decorativeImageElement === 'string' ? section.decorativeImageElement : ''
+
+
   return (
-    <>
+    <div className="bg-backgroundColor">
     <ActionContainer section={section} />
     <ContentSectionContainer
       title={section?.sectionTitle}
@@ -32,9 +35,12 @@ export default function EventsSection({section, events }: EventsSectionProps) {
       sortFunction={sortEventsByDate}
       button={buttonContent}
       currentDate={new Date()}
+      image={decorativeImageUrl}
+  
     >
       {(event: EventType, isEventPassed: boolean) => <EventCard event={event} key={event._id} isEventPassed={isEventPassed} />}
     </ContentSectionContainer>
-    </>
+    </div>
   )
 }
+

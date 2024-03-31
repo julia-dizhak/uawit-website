@@ -1,4 +1,7 @@
-import { ReactNode } from 'react'
+'use client'
+import Image from 'next/image'
+import React from 'react'
+import { type ReactNode, useState } from 'react'
 
 interface ContentSectionContainerProps<T> {
   title: string
@@ -6,26 +9,35 @@ interface ContentSectionContainerProps<T> {
   items: T[]
   children: (item: T, isEventPassed: boolean) => ReactNode
   sortFunction?: (a: T, b: T) => number
-  button?: ReactNode
+  button?: React.ReactElement<{ onClick: () => void }>
   currentDate: Date
+  image: string
 }
 
-export default function ContentSectionContainer<T extends { dateAndTime: string }>({
+export default function ContentSectionContainer<
+  T extends { dateAndTime: string },
+>({
   title,
   description,
   items,
   children,
   sortFunction,
   button,
-  currentDate
+  currentDate,
+  image,
 }: ContentSectionContainerProps<T>) {
+  const [displayCount, setDisplayCount] = useState(3)
 
+  const handleLoadMore = () => {
+    setDisplayCount((prevCount) => prevCount + 3)
+  }
   const sortedItems = sortFunction
-    ? [...items].sort(sortFunction).slice(0, 3)
-    : items.slice(0, 3)
+    ? [...items].sort(sortFunction).slice(0, displayCount)
+    : items.slice(0, displayCount)
+
 
   return (
-    <section className="max-w-screen-xl  px-6 mx-auto font-manrope py-[100px] bg-backgroundColor relative">
+    <section className="max-w-screen-xl  px-6 mx-auto font-manrope py-[100px] relative ">
       <h2 className="font-medium text-center text-[48px] text-primaryBlack ">
         {title}
       </h2>
@@ -35,10 +47,15 @@ export default function ContentSectionContainer<T extends { dateAndTime: string 
 
       <div className="grid grid-cols-1 gap-[24px] md:grid-cols-2 lg:grid-cols-3">
         {sortedItems.map((item, index) => (
-          <div key={index}>{children(item, new Date(item.dateAndTime) < currentDate)}</div>
+          <div key={index}>
+            {children(item, new Date(item.dateAndTime) < currentDate)}
+          </div>
         ))}
       </div>
-      {button}
+      {button && React.cloneElement(button, { onClick: handleLoadMore })}
+      <div className="absolute bottom-0 right-0 z-10">
+        <Image src={image} alt={title} width={200} height={150} />
+      </div>
     </section>
   )
 }
