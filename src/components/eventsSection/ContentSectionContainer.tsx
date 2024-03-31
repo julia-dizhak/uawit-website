@@ -35,7 +35,7 @@ export default function ContentSectionContainer<
     ? [...items].sort(sortFunction).slice(0, displayCount)
     : items.slice(0, displayCount)
 
-
+  const showLoadMoreButton = items.length > displayCount
   return (
     <section className="max-w-screen-xl  px-6 mx-auto font-manrope py-[100px] relative ">
       <h2 className="font-medium text-center text-[48px] text-primaryBlack ">
@@ -52,7 +52,9 @@ export default function ContentSectionContainer<
           </div>
         ))}
       </div>
-      {button && React.cloneElement(button, { onClick: handleLoadMore })}
+      {showLoadMoreButton &&
+        button &&
+        React.cloneElement(button, { onClick: handleLoadMore })}
       <div className="absolute bottom-0 right-0 z-10">
         <Image src={image} alt={title} width={200} height={150} />
       </div>
