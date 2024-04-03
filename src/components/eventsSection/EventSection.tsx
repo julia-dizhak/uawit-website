@@ -24,7 +24,7 @@ export default function EventsSection({ section, events }: EventsSectionProps) {
   }
 
   const decorativeImageUrl =
-    typeof section.decorativeImageElement === 'string'
+  section?.decorativeImageElement && typeof section.decorativeImageElement === 'string'
       ? section.decorativeImageElement
       : ''
 

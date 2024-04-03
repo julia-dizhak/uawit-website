@@ -9,7 +9,7 @@ interface ActionSectionProps {
 
 export default function ActionContainer({ section }: ActionSectionProps) {
   const backgroundImageUrl =
-    typeof section.ctaBackgroundImage === 'string'
+  section?.ctaBackgroundImage && typeof section.ctaBackgroundImage === 'string'
       ? section.ctaBackgroundImage
       : ''
 
@@ -20,7 +20,7 @@ export default function ActionContainer({ section }: ActionSectionProps) {
       "
       >
         <div className="absolute inset-0 z-20 bg-white bg-opacity-20 saturate-40"></div>
-        {section.backgroundImage && (
+        {section?.backgroundImage && (
           <Image
             src={backgroundImageUrl}
             alt={section.sectionTitle}
@@ -33,7 +33,7 @@ export default function ActionContainer({ section }: ActionSectionProps) {
           <div className="absolute inset-0 z-20 bg-[#5298AB] md:rounded-br-[160px] bg-opacity-[.85] saturate-40 "></div>
           <div className="relative z-40 px-8 lg:px-[60px] py-8 lg:py-[74px] ">
             <h3 className="mb-8 text-3xl text-4xl text-center text-white sm:text-start">
-              {section.ctaSubsectionDescription}
+              {section?.ctaSubsectionDescription}
             </h3>
             <div className="flex sm:float-left">
               <SecondaryButton

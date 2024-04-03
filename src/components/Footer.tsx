@@ -1,4 +1,4 @@
-import { navigationItems } from '~/pages/constants'
+import navigationItems from '~/utils/constants'
 import Container from './Container'
 import { Logo } from './Logo'
 
