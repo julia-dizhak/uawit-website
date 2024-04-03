@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { urlForImage } from '~/lib/sanity.image'
-import Navigation from '~/components/Navigation'
+import Navigation from '~/components/navigation/Navigation'
 import Container from './Container'
 import { HeroType } from '~/lib/sanity.queries/hero/types'
 
