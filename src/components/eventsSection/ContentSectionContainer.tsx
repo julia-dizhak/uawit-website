@@ -1,5 +1,5 @@
 'use client'
-import Image from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import React from 'react'
 import { type ReactNode, useState } from 'react'
 
@@ -11,7 +11,7 @@ interface ContentSectionContainerProps<T> {
   sortFunction?: (a: T, b: T) => number
   button?: React.ReactElement<{ onClick: () => void }>
   currentDate: Date
-  image: string
+  image: StaticImageData
 }
 
 export default function ContentSectionContainer<
@@ -36,6 +36,7 @@ export default function ContentSectionContainer<
     : items.slice(0, displayCount)
 
   const showLoadMoreButton = items.length > displayCount
+
   return (
     <section className="max-w-screen-xl  px-6 mx-auto font-manrope py-[100px] relative ">
       <h2 className="font-medium text-center text-[48px] text-primaryBlack ">

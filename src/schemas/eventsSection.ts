@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'eventsSection',
-  title: 'Sections',
+  title: 'Events Sections',
   type: 'document',
   fields: [
     defineField({
@@ -103,16 +103,6 @@ export default defineType({
       type: 'image',
       description:
         'Upload an optional overlay image element for the events section.',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'decorativeImageElement',
-      title: 'Decorative Image Element',
-      type: 'image',
-      description:
-        'Upload an optional decorative image element to enhance the visual style of teh selected section.',
       options: {
         hotspot: true,
       },

@@ -2,12 +2,17 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
 import SecondaryButton from '../SecondaryButton'
+import { ContactType } from '~/lib/sanity.queries/general/types'
 
 interface ActionSectionProps {
-  section: EventsSectionType
+  section: EventsSectionType,
+  contacts: ContactType
 }
 
-export default function ActionContainer({ section }: ActionSectionProps) {
+export default function ActionContainer({ section, contacts }: ActionSectionProps) {
+
+  const { email} = contacts
+
   const backgroundImageUrl =
     typeof section.ctaBackgroundImage === 'string'
       ? section.ctaBackgroundImage
@@ -36,10 +41,12 @@ export default function ActionContainer({ section }: ActionSectionProps) {
               {section.ctaSubsectionDescription}
             </h3>
             <div className="flex sm:float-left">
+              <Link  href={`mailto:${email}`}>
               <SecondaryButton
                 buttonText={section?.ctaButton?.buttonText}
                 btnClasses={`bg-white text-secondaryBlack px-[60px]`}
               />
+              </Link>
             </div>
           </div>
         </div>

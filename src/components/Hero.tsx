@@ -22,7 +22,7 @@ const Hero = ({
 
   return (
     <>
-      <div className="relative bg-cover bg-center">
+      <div className="relative bg-center bg-cover">
         {backgroundImage && (
           <div className="">
             <Image
@@ -40,7 +40,7 @@ const Hero = ({
         <div
           className={`pt-[180px] pb-[140px] flex flex-col justify-center items-center gap-4 md:mt-0 text-${fontColor} `}
         >
-          <h1 className="text-6xl font-bold mb-10 text-center">
+          <h1 className="mb-10 text-6xl font-bold text-center">
             {firstWord} <br />
             <span>{restOfTitle}</span>
           </h1>
