@@ -9,16 +9,17 @@ import ActionContainer from './ActionContainer'
 import decorativeImage from '~/assets/bg_image2.png'
 import { ContactType } from '~/lib/sanity.queries/general/types'
 
-
 interface EventsSectionProps {
   section: EventsSectionType
   events: EventsListType
   contacts: ContactType
 }
 
-export default function EventsSection({ section, events, contacts }: EventsSectionProps) {
-
-
+export default function EventsSection({
+  section,
+  events,
+  contacts,
+}: EventsSectionProps) {
   const buttonContent = (
     <SecondaryButton
       buttonText={section?.eventsButton?.buttonText}
@@ -31,7 +32,7 @@ export default function EventsSection({ section, events, contacts }: EventsSecti
 
   return (
     <div className="bg-backgroundColor">
-      <ActionContainer section={section}  contacts={contacts}/>
+      <ActionContainer section={section} contacts={contacts} />
       <ContentSectionContainer
         title={section?.sectionTitle}
         description={section?.sectionDescription}
