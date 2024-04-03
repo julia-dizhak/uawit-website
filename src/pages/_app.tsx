@@ -1,7 +1,7 @@
 import '~/styles/global.css'
 import { AppProps } from 'next/app'
 import { lazy } from 'react'
-import { mono, sans, serif } from './fonts'
+import sans, { mono, serif } from '../utils/fonts'
 
 export type SharedPageProps = {
   draftMode: boolean

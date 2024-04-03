@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-export const navigationItems = [
+const navigationItems = [
   {
     id: uuidv4(),
     path: 'about-us',
@@ -17,3 +17,5 @@ export const navigationItems = [
     title: 'News',
   },
 ]
+
+export default navigationItems

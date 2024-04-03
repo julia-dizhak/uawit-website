@@ -3,7 +3,7 @@ import { Button } from '../Button'
 import Container from '../Container'
 import { Logo } from '../Logo'
 import { FaLinkedinIn } from 'react-icons/fa'
-import { navigationItems } from '~/pages/constants'
+import navigationItems from '~/utils/constants'
 
 interface MenuItemsProps {
   path: string
