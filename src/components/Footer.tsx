@@ -1,3 +1,4 @@
+import { navigationItems } from '~/pages/constants'
 import Container from './Container'
 import { Logo } from './Logo'
 
@@ -14,9 +15,8 @@ const MenuItems = ({ path, title }: MenuItemsProps) => {
   )
 }
 
-export const Footer = ({ navbar, logo, contacts }) => {
-  const { items } = navbar
-  const { email, linkedIn } = contacts[0]
+export const Footer = ({ logo, contacts }) => {
+  const { email, linkedIn } = contacts
 
   return (
     <Container>
@@ -28,11 +28,11 @@ export const Footer = ({ navbar, logo, contacts }) => {
               <Logo logo={logo} />
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
-              {items.length > 0 && (
+              {navigationItems.length > 0 && (
                 <div>
                   <h2 className="mb-3 font-bold">Categories</h2>
                   <ul>
-                    {items.map((menuItem) => (
+                    {navigationItems.map((menuItem) => (
                       <li key={menuItem.id} className="mb-2 hover:underline">
                         <MenuItems
                           path={menuItem.path}
