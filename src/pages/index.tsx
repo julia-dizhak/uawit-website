@@ -111,7 +111,7 @@ export default function HomePage({
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
           {events.length > 0 && <EventsSection events={eventsData} />}
-          <Footer logo={logo} navbar={navbar} contacts={contactsData} />
+          <Footer logo={logo} contacts={contactsData} />
         </>
       ) : (
         <NoData />
