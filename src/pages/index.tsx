@@ -28,6 +28,11 @@ import { Partner } from '~/lib/sanity.queries/partners/types'
 import { Footer } from '~/components/Footer'
 import { ContactType } from '~/lib/sanity.queries/general/types'
 import { getContact, contactQuery } from '~/lib/sanity.queries/general/queries'
+import {
+  eventsSectionQuery,
+  getEventsSectionData,
+} from '~/lib/sanity.queries/eventsSection/queries'
+import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -36,6 +41,7 @@ export const getStaticProps: GetStaticProps<
     logoData: LogoType
     heroData: HeroType
     eventsData: EventsListType
+    eventsSectionData: EventsSectionType
     about: AboutType
     partners: Partner[]
     contacts: ContactType
@@ -48,6 +54,7 @@ export const getStaticProps: GetStaticProps<
   const logoData = await getLogoData(client)
   const posts = await getPosts(client) // or news
   const eventsData = await getEvents(client)
+  const eventsSectionData = await getEventsSectionData(client)
   const about = await getAbout(client)
   const partners = await getPartnersData(client)
   const contacts = await getContact(client)
@@ -59,6 +66,7 @@ export const getStaticProps: GetStaticProps<
       // fetched data from sanity
       posts,
       eventsData,
+      eventsSectionData,
       logoData,
       heroData,
       navbarData,
@@ -78,6 +86,7 @@ export default function HomePage({
   about,
   partners,
   contacts,
+  eventsSectionData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
@@ -87,6 +96,7 @@ export default function HomePage({
 
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [events] = useLiveQuery(eventsData, eventsQuery)
+  const [eventsSection] = useLiveQuery(eventsSectionData, eventsSectionQuery)
   const [aboutData] = useLiveQuery(about, aboutQuery)
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 

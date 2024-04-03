@@ -5,8 +5,6 @@ import { EventsListType } from './types'
 export const eventsQuery = groq`*[_type == "events"] {
   _id,
   _createdAt,
-  sectionTitle,
-  sectionDescription,
   "image": coalesce(image.asset->url, null),
   title,
   "slug": slug.current,
@@ -16,10 +14,6 @@ export const eventsQuery = groq`*[_type == "events"] {
     city,
     googleMapsUrl
   },
-  eventsButton {
-    buttonText,
-    buttonLink,
-  }
 }
 `
 export async function getEvents(client: SanityClient): Promise<EventsListType> {

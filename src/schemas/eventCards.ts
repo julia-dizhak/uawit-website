@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { formatDateTime } from '~/lib/sanity.queries/events/utility'
+import formatDateTime from '~/utils/index'
 
 export default defineType({
   name: 'events',
@@ -7,21 +7,9 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'sectionTitle',
-      title: 'Section Title',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'sectionDescription',
-      title: 'Section Description',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
-    // events start
-    defineField({
       name: 'image',
       title: 'Event Card Image',
+      description: 'Upload an image representing the event.',
       type: 'image',
       validation: (Rule) => Rule.required(),
       options: {
@@ -31,6 +19,7 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Title',
+      description: 'Enter the title of the event.',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -38,6 +27,8 @@ export default defineType({
       name: 'slug',
       title: 'Slug',
       validation: (Rule) => Rule.required(),
+      description:
+        'A unique identifier for the event. It will be used in the URL.',
       type: 'slug',
       options: {
         source: 'title',
@@ -49,6 +40,7 @@ export default defineType({
       title: 'Date and Time',
       type: 'datetime',
       validation: (Rule) => Rule.required(),
+      description: 'Select the date and time of the event.',
       options: {
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
@@ -59,6 +51,8 @@ export default defineType({
       name: 'location',
       title: 'Location',
       type: 'object',
+      description:
+        'Enter the address and city where the event will take place.',
       fields: [
         defineField({
           name: 'address',
@@ -76,39 +70,10 @@ export default defineType({
           name: 'googleMapsUrl',
           title: 'Google Maps URL',
           type: 'url',
-          description: 'This could be location URL',
+          description: 'Provide a Google Maps URL for the event location.',
           validation: (Rule) => Rule.required(),
         }),
       ],
-    }),
-    // events end
-    defineField({
-      name: 'eventsButton',
-      title: 'Events button',
-      type: 'object',
-      fields: [
-        {
-          name: 'buttonText',
-          type: 'string',
-          title: 'Button Text',
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          name: 'buttonLink',
-          type: 'url',
-          title: 'Redirect To',
-          validation: (Rule) => Rule.required(),
-        },
-      ],
-    }),
-    defineField({
-      name: 'backgroundImage',
-      title: 'Background Image',
-      type: 'image',
-      validation: (Rule) => Rule.required(),
-      options: {
-        hotspot: true,
-      },
     }),
   ],
 

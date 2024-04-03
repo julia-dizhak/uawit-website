@@ -9,17 +9,11 @@ export interface LocationType {
 export interface EventType {
   _type: 'event'
   _id: string
-  sectionTitle: string
-  sectionDescription: string
   title: string
   slug: Slug
   image?: ImageAsset
   dateAndTime: string
   location: LocationType
-  eventsButton?: {
-    buttonText: string
-    buttonLink: string
-  }
 }
 
 export type EventsListType = EventType[]

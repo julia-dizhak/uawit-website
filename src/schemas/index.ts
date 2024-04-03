@@ -5,12 +5,13 @@ import hero from './hero'
 import { SchemaTypeDefinition } from 'sanity'
 import blockContent from './blockContent'
 import post from './post'
-import eventsContent from './eventsContent'
+import eventsContent from './eventCards'
 import newsContent from './newsContent'
 import partners from './partner'
 import about from './about'
 import widgets from './widget'
 import settings from './settings'
+import section from './eventsSection'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   post,
@@ -24,4 +25,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   about,
   widgets,
   settings,
+  section,
 ]
