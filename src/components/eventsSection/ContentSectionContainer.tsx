@@ -1,7 +1,8 @@
 'use client'
-import Image, { type StaticImageData } from 'next/image'
+import Image from 'next/image'
 import React from 'react'
 import { type ReactNode, useState } from 'react'
+import decorativeImage from '~/assets/images/bg_image2.png'
 
 interface ContentSectionContainerProps<T> {
   title: string
@@ -11,7 +12,6 @@ interface ContentSectionContainerProps<T> {
   sortFunction?: (a: T, b: T) => number
   button?: React.ReactElement<{ onClick: () => void }>
   currentDate: Date
-  image: StaticImageData
 }
 
 export default function ContentSectionContainer<
@@ -24,7 +24,6 @@ export default function ContentSectionContainer<
   sortFunction,
   button,
   currentDate,
-  image,
 }: ContentSectionContainerProps<T>) {
   const [displayCount, setDisplayCount] = useState(3)
 
@@ -38,11 +37,11 @@ export default function ContentSectionContainer<
   const showLoadMoreButton = items.length > displayCount
 
   return (
-    <section className="max-w-screen-xl  px-6 mx-auto font-manrope py-[100px] relative ">
+    <section className="max-w-screen-xl mx-auto py-[100px] relative ">
       <h2 className="font-medium text-center text-[48px] text-primaryBlack ">
         {title}
       </h2>
-      <p className="text-center text-primaryGray mt-3 font-light text-base leading-[22px] mb-[56px]  max-w-[611px]  mx-auto">
+      <p className="text-primaryGray mt-4 mb-4 max-w-5xl m-auto text-center">
         {description}
       </p>
 
@@ -58,8 +57,8 @@ export default function ContentSectionContainer<
         React.cloneElement(button, { onClick: handleLoadMore })}
       <div className="absolute bottom-0 right-0 z-10">
         <Image
-          src={image}
-          alt={title}
+          src={decorativeImage}
+          alt="decorative image"
           width={200}
           height={150}
           className="w-full h-auto"

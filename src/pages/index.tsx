@@ -127,6 +127,7 @@ export default function HomePage({
               contacts={contactsData}
             />
           )}
+
           <Footer logo={logo} contacts={contactsData} />
         </>
       ) : (
