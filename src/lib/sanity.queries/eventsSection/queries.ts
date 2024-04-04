@@ -15,7 +15,6 @@ export const eventsSectionQuery = groq`*[_type == "eventsSection"]{
   'ctaBackgroundImage': coalesce(ctaBackgroundImage.asset->url, null),
   eventsButton,
   'backgroundImage': coalesce(backgroundImage.asset->url, null),
-  'decorativeImageElement': coalesce(decorativeImageElement.asset->url, null),
 }[0]`
 
 export async function getEventsSectionData(

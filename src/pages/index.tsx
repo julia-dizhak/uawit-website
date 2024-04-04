@@ -102,7 +102,7 @@ export default function HomePage({
 
   const dataShouldBePresent = postsData.length > 0 || events.length
 
-  const contactsData = useLiveQuery(contacts, contactQuery)
+  const [contactsData] = useLiveQuery(contacts, contactQuery)
 
   return (
     <>
@@ -120,7 +120,13 @@ export default function HomePage({
           )}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
-          {events.length > 0 && <EventsSection events={eventsData} section={eventsSection} />}
+          {events.length > 0 && (
+            <EventsSection
+              events={eventsData}
+              section={eventsSection}
+              contacts={contactsData}
+            />
+          )}
           <Footer logo={logo} contacts={contactsData} />
         </>
       ) : (

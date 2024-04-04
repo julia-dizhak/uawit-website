@@ -20,5 +20,4 @@ export interface EventsSectionType {
   ctaSubsectionDescription: string
   ctaButton: CTAButtonType
   ctaBackgroundImage: ImageAsset
-  decorativeImageElement?: ImageAsset
 }
