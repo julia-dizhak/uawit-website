@@ -26,14 +26,16 @@ export default function Card({ post }: CardProps) {
         <div className="bg-black h-[150px]" />
       )}
       <div className="mt-4 text-left">
-        <h3>
+        <h3 className="text-primaryBlack text-1xl pb-4">
           {post.slug && <a href={`/post/${post.slug.current}`}>{post.title}</a>}
         </h3>
-        <div className="line-clamp-3">
+        <div className=" text-primaryGray text-sm line-clamp-3 hover:line-clamp-6 pb-4">
           {post.body && <PortableText value={post.body} />}
         </div>
         <p>{post.excerpt}</p>
-        <p>{post._createdAt && formatDate(post._createdAt)}</p>
+        <p className="text-xs pt-4">
+          {post._createdAt && formatDate(post._createdAt)}
+        </p>
       </div>
     </div>
   )
