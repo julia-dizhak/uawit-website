@@ -16,14 +16,15 @@ export default function ActionContainer({
   const { email } = contacts
 
   const backgroundImageUrl =
-  section?.ctaBackgroundImage && typeof section.ctaBackgroundImage === 'string'
+    section?.ctaBackgroundImage &&
+    typeof section.ctaBackgroundImage === 'string'
       ? section.ctaBackgroundImage
       : ''
 
   return (
-    <div className="flex flex-wrap items-center justify-center max-w-screen-xl mx-auto sm:px-6 font-manrope pt-[100px]">
+    <div className="flex flex-wrap items-center justify-center max-w-screen-xl mx-auto pt-[100px]">
       <div
-        className="relative z-20  w-full overflow-hidden border sm:rounded-xl max-h-[368px] 
+        className="relative z-20 w-full overflow-hidden border sm:rounded-xl max-h-[368px] 
       "
       >
         <div className="absolute inset-0 z-20 bg-white bg-opacity-20 saturate-40"></div>

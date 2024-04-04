@@ -119,6 +119,7 @@ export default function HomePage({
             />
           )}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
+
           {postsData.length > 0 && <Posts posts={postsData} />}
           {events.length > 0 && (
             <EventsSection
@@ -127,6 +128,7 @@ export default function HomePage({
               contacts={contactsData}
             />
           )}
+
           <Footer logo={logo} contacts={contactsData} />
         </>
       ) : (

@@ -6,9 +6,6 @@ const sans = Manrope({
   weight: ['500', '700', '800'],
 })
 
-export default sans
-
-// todo: probably we do not need that fonts
 export const mono = IBM_Plex_Mono({
   variable: '--font-family-mono',
   subsets: ['latin'],
@@ -21,3 +18,5 @@ export const serif = PT_Serif({
   subsets: ['latin'],
   weight: ['400', '700'],
 })
+
+export default sans

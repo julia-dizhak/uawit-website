@@ -13,17 +13,17 @@ export default function Card({ post }: CardProps) {
   return (
     <div className="flex flex-col mt-10 w-1/4 p-4">
       {post.mainImage ? (
-        <div className="w-full">
+        <div className="rounded-2xl w-auto h-[150px] relative bg-white">
           <Image
             className="rounded-2xl"
             src={urlForImage(post.mainImage)?.url() || ''}
-            height={180}
-            width={200}
-            alt={post.title || 'image of post'}
+            layout="fill"
+            objectFit="contain"
+            alt={post.title || 'post image'}
           />
         </div>
       ) : (
-        <div className="bg-black w-100 h-[200]px" />
+        <div className="bg-black h-[150px]" />
       )}
       <div className="mt-4 text-left">
         <h3>

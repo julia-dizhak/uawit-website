@@ -24,12 +24,11 @@ const Hero = ({
     <>
       <div className="relative bg-center bg-cover">
         {backgroundImage && (
-          <div className="">
+          <div>
             <Image
-              className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+              className="absolute top-0 left-0 w-full h-[500px] object-cover z-[-1]"
               src={urlForImage(backgroundImage)?.url() || ''}
-              fill={true}
-              objectFit="cover"
+              fill
               alt="Logo UAWIT"
             />
             <div className="absolute inset-0 z-[-1] hero-overlay"></div>
