@@ -1,8 +1,6 @@
 'use client'
-import Image from 'next/image'
 import React from 'react'
 import { type ReactNode, useState } from 'react'
-import decorativeImage from '~/assets/images/bg_image2.png'
 
 interface ContentSectionContainerProps<T> {
   title: string
@@ -58,15 +56,6 @@ export default function ContentSectionContainer<
       {showLoadMoreButton &&
         button &&
         React.cloneElement(button, { onClick: handleLoadMore })}
-      <div className="absolute bottom-0 right-0 z-10">
-        <Image
-          src={decorativeImage}
-          alt="decorative image"
-          width={200}
-          height={150}
-          className="w-full h-auto"
-        />
-      </div>
     </section>
   )
 }
