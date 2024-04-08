@@ -14,7 +14,7 @@ type Props = {
 const Hero = ({ hero, navbar, logo }: Props) => {
   const { backgroundImage, description, title, fontColor } = hero
 
-  const renderRestOfHeader = (title) => {
+  const renderRestOfHeader = (title: string) => {
     const firstSpaceIndex = title.indexOf(' ')
     return title.substring(firstSpaceIndex + 1)
   }

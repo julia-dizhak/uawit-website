@@ -25,7 +25,7 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
 }
 
 const Navigation = ({ navbar, logo }) => {
-  const { buttonName } = navbar
+  const { redirectTo, buttonText } = navbar
 
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -34,7 +34,7 @@ const Navigation = ({ navbar, logo }) => {
   }
 
   const handleButtonClick = () => {
-    window.open(buttonName.redirectTo, '_blank')
+    window.open(redirectTo, '_blank')
   }
 
   const handleMenuClick = () => {
@@ -103,7 +103,7 @@ const Navigation = ({ navbar, logo }) => {
             />
 
             <Button
-              buttonText={buttonName?.buttonText}
+              buttonText={buttonText}
               handleClick={handleButtonClick}
               className="m-0 bg-primaryBlue text-red my-3 hover:opacity-75 transition duration-300"
             />
