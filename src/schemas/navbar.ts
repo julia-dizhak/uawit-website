@@ -4,24 +4,16 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'buttonName',
-      title: 'Button Name',
-      type: 'object',
-      fields: [
-        {
-          name: 'buttonText',
-          type: 'string',
-          title: 'Button Text',
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          name: 'redirectTo',
-          type: 'url',
-          title: 'Redirect To',
-          validation: (Rule) =>
-            Rule.required().uri({ scheme: ['http', 'https'] }),
-        },
-      ],
+      name: 'navButtonText',
+      type: 'string',
+      title: 'Button Text',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'navRedirectTo',
+      type: 'url',
+      title: 'Redirect To',
+      validation: (Rule) => Rule.required(),
     },
   ],
 }

@@ -2,22 +2,11 @@ import groq from 'groq'
 import { SanityClient } from 'next-sanity'
 import { NavigationType } from './types'
 
-// Navigation
+// Navigation query
 export const navbarQuery = groq`
 *[_type == "navigation"] {
-  "items": items[] {
-    "id": id.current,
-    "title": title,
-    "path": path,
-  },
-  "languages": languages[] {
-    "name": name,
-    "key": key
-  },
-  "buttonName": buttonName {
-    "buttonText": buttonText,
-    "redirectTo": redirectTo,
-  }
+  "buttonText": navButtonText,
+  "redirectTo": navRedirectTo,
 }[0]
 `
 export async function getNavbarData(
