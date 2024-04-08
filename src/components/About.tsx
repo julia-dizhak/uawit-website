@@ -13,7 +13,7 @@ type Props = {
 
 export default function About({ about, partnersData }: Props) {
   return (
-    <div className="bg-white rounded-[28px] -my-6" id="about">
+    <div className="bg-white rounded-[28px] -my-6" id="about-us">
       <Container className="flex flex-col py-20 gap-y-4 md:gap-y-20">
         {about.mainImage && (
           <div className="w-full">

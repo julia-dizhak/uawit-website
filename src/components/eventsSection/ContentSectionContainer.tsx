@@ -37,7 +37,10 @@ export default function ContentSectionContainer<
   const showLoadMoreButton = items.length > displayCount
 
   return (
-    <section className="max-w-screen-xl mx-auto py-[100px] relative ">
+    <section
+      className="max-w-screen-xl mx-auto py-[100px] relative"
+      id="events"
+    >
       <h2 className="font-medium text-center text-[48px] text-primaryBlack ">
         {title}
       </h2>

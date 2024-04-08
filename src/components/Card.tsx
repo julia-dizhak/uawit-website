@@ -29,7 +29,7 @@ export default function Card({ post }: CardProps) {
         <h3 className="text-primaryBlack text-1xl pb-4">
           {post.slug && <a href={`/post/${post.slug.current}`}>{post.title}</a>}
         </h3>
-        <div className=" text-primaryGray text-sm line-clamp-3 hover:line-clamp-6 pb-4">
+        <div className=" text-primaryGray text-sm line-clamp-3 pb-4">
           {post.body && <PortableText value={post.body} />}
         </div>
         <p>{post.excerpt}</p>

@@ -66,16 +66,20 @@ export const Footer = ({ logo, contacts }) => {
               <div>
                 <h2 className="mb-3 font-bold">Contacts</h2>
                 <ul>
-                  <li className="mb-2">
-                    <a href={`mailto:${email}`} className="hover:underline ">
-                      Email
-                    </a>
-                  </li>
-                  <li>
-                    <a href={linkedIn} className="hover:underline">
-                      LinkedIn
-                    </a>
-                  </li>
+                  {email && (
+                    <li className="mb-2">
+                      <a href={`mailto:${email}`} className="hover:underline ">
+                        Email
+                      </a>
+                    </li>
+                  )}
+                  {linkedIn && (
+                    <li>
+                      <a href={linkedIn} className="hover:underline">
+                        LinkedIn
+                      </a>
+                    </li>
+                  )}
                 </ul>
               </div>
               <div className="invisible lg:visible">
