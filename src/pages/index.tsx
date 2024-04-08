@@ -90,10 +90,7 @@ export default function HomePage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
-
   const [hero] = useLiveQuery(heroData, heroQuery)
-  const { backgroundImage, description, title, fontColor } = hero
-
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [events] = useLiveQuery(eventsData, eventsQuery)
   const [eventsSection] = useLiveQuery(eventsSectionData, eventsSectionQuery)
@@ -108,16 +105,7 @@ export default function HomePage({
     <>
       {dataShouldBePresent ? (
         <>
-          {hero && (
-            <Hero
-              backgroundImage={backgroundImage}
-              description={description}
-              title={title}
-              fontColor={fontColor}
-              navbar={navbar}
-              logo={logo}
-            />
-          )}
+          {hero && <Hero hero={hero} navbar={navbar} logo={logo} />}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
           {events.length > 0 && (
