@@ -15,7 +15,7 @@ export const Posts = ({ posts }: Props) => {
         <div className="w-[200]px h-[150px]">
           <Image
             src={decorativeImage}
-            alt="decorative image"
+            alt="top decorative image top"
             width={200}
             height={100}
           />

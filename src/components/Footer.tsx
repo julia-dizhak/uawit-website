@@ -44,26 +44,6 @@ export const Footer = ({ logo, contacts }) => {
                 </div>
               )}
               <div>
-                <h2 className="mb-3 font-bold">Regulations</h2>
-                <ul>
-                  <li className="mb-2">
-                    {/* <a href="#" className="hover:underline"> */}
-                    Privacy Policy
-                    {/* </a> */}
-                  </li>
-                  <li className="mb-2">
-                    {/* <a href="#" className="hover:underline"> */}
-                    Terms &amp; Conditions
-                    {/* </a> */}
-                  </li>
-                  <li>
-                    {/* <a href="#" className="hover:underline"> */}
-                    Cookie settings
-                    {/* </a> */}
-                  </li>
-                </ul>
-              </div>
-              <div>
                 <h2 className="mb-3 font-bold">Contacts</h2>
                 <ul>
                   {email && (

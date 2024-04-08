@@ -7,6 +7,8 @@ import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
 import { sortEventsByDate } from '~/utils/index'
 import ActionContainer from './ActionContainer'
 import { ContactType } from '~/lib/sanity.queries/general/types'
+import decorativeImage from '~/assets/images/bg_image2.png'
+import Image from 'next/image'
 
 interface EventsSectionProps {
   section: EventsSectionType
@@ -30,7 +32,7 @@ export default function EventsSection({
   }
 
   return (
-    <div className="bg-backgroundColorGray">
+    <div className="bg-backgroundColorGray relative">
       <ActionContainer section={section} contacts={contacts} />
       <ContentSectionContainer
         title={section?.sectionTitle}
@@ -48,6 +50,16 @@ export default function EventsSection({
           />
         )}
       </ContentSectionContainer>
+      <div className="absolute bottom-0 right-0 z-1 lg:visible">
+        <div className="w-[200]px h-[90px]">
+          <Image
+            src={decorativeImage}
+            alt="bottom decorative image"
+            width={200}
+            height={90}
+          />
+        </div>
+      </div>
     </div>
   )
 }

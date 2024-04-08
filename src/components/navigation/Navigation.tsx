@@ -15,7 +15,7 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
   return (
     <a
       href={`#${path}`}
-      className="block py-2 text-slate-600 font-bold rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500"
+      className="block py-2 text-slate-600 font-bold rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500 hover:underline"
       aria-current="page"
       onClick={onClick}
     >
