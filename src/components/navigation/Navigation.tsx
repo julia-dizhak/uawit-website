@@ -26,7 +26,6 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
 
 const Navigation = ({ navbar, logo }) => {
   const { redirectTo, buttonText } = navbar
-  console.log({ navbar })
 
   const [isExpanded, setIsExpanded] = useState(false)
 
