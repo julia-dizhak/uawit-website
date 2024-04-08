@@ -3,14 +3,16 @@ import { urlForImage } from '~/lib/sanity.image'
 import Navigation from '~/components/navigation/Navigation'
 import { HeroType } from '~/lib/sanity.queries/hero/types'
 import { NavigationType } from '~/lib/sanity.queries/navbar/types'
+import { LogoType } from '~/lib/sanity.queries/logo/types'
 
 type Props = {
   hero: HeroType
   navbar: NavigationType
+  logo: LogoType
 }
 
-const Hero = ({ hero, navbar }: Props) => {
-  const { backgroundImage, description, title, fontColor, logo } = hero
+const Hero = ({ hero, navbar, logo }: Props) => {
+  const { backgroundImage, description, title, fontColor } = hero
 
   const renderRestOfHeader = (title) => {
     const firstSpaceIndex = title.indexOf(' ')

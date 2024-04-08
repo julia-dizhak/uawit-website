@@ -105,7 +105,7 @@ export default function HomePage({
     <>
       {dataShouldBePresent ? (
         <>
-          {hero && <Hero hero={hero} navbar={navbar} />}
+          {hero && <Hero hero={hero} navbar={navbar} logo={logo} />}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
           {events.length > 0 && (

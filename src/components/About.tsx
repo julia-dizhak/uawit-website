@@ -22,7 +22,7 @@ export default function About({ about, partnersData }: Props) {
               layout="responsive"
               height={500}
               width={500}
-              alt="Our comunity"
+              alt="Our community"
               className="rounded-2xl"
             />
           </div>
