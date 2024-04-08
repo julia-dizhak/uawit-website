@@ -1,17 +1,17 @@
 import Image from 'next/image'
 import { urlForImage } from '~/lib/sanity.image'
 import Navigation from '~/components/navigation/Navigation'
-import Container from './Container'
 import { HeroType } from '~/lib/sanity.queries/hero/types'
+import { NavigationType } from '~/lib/sanity.queries/navbar/types'
 
-const Hero = ({
-  backgroundImage,
-  description,
-  title,
-  fontColor,
-  navbar,
-  logo,
-}: HeroType) => {
+type Props = {
+  hero: HeroType
+  navbar: NavigationType
+}
+
+const Hero = ({ hero, navbar }: Props) => {
+  const { backgroundImage, description, title, fontColor, logo } = hero
+
   const renderRestOfHeader = (title) => {
     const firstSpaceIndex = title.indexOf(' ')
     return title.substring(firstSpaceIndex + 1)
