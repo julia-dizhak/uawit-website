@@ -8,13 +8,13 @@ const navigationItems = [
   },
   {
     id: uuidv4(),
-    path: 'events',
-    title: 'Events',
+    path: 'news',
+    title: 'News',
   },
   {
     id: uuidv4(),
-    path: 'news',
-    title: 'News',
+    path: 'events',
+    title: 'Events',
   },
 ]
 

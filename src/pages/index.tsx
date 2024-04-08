@@ -97,7 +97,7 @@ export default function HomePage({
   const [aboutData] = useLiveQuery(about, aboutQuery)
   const [partnersData] = useLiveQuery(partners, partnersQuery)
 
-  const dataShouldBePresent = postsData.length > 0 || events.length
+  const dataShouldBePresent = aboutData && postsData.length > 0
 
   const [contactsData] = useLiveQuery(contacts, contactQuery)
 
