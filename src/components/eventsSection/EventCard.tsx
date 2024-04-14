@@ -1,13 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
-import React from 'react'
-import { type EventType } from '~/lib/sanity.queries/events/types'
-import { formatDateTime } from '~/lib/sanity.queries/events/utility'
+import Image from 'next/image'
+import Link from 'next/link'
+import { EventType } from '~/lib/sanity.queries/events/types'
+import formatDateTime from '~/utils/index'
 
 interface EventCardProps {
   event: EventType
+  isEventPassed: boolean
 }
 
-export default function EventCard({ event }: EventCardProps) {
+export default function EventCard({ event, isEventPassed }: EventCardProps) {
   const { formattedDate, formattedTime } = formatDateTime(event.dateAndTime)
 
   const renderLocationLink = () => {
@@ -16,52 +17,49 @@ export default function EventCard({ event }: EventCardProps) {
       address &&
       city &&
       googleMapsUrl && (
-        <a
+        <Link
           href={googleMapsUrl}
-          target="_blank"
           rel="noopener noreferrer"
-          className="text-base not-italic text-black  hover:text-[#0F62FE] hover:underline line-clamp-2"
+          passHref
+          className="text-base not-italic text-secondaryGray hover:text-primaryBlue hover:underline line-clamp-2 mt-1.5"
         >
           {`${address}, ${city}`}
-        </a>
+        </Link>
       )
     )
   }
 
+  const imageUrl = typeof event.image === 'string' ? event.image : ''
+
   return (
-    <li className="flex flex-col overflow-hidden border shadow-md cursor-pointer group rounded-xl font-roboto">
-      <div className="relative w-full overflow-hidden min-h-[183px] transition-transform duration-200 ease-out border rounded-xl group-hover:scale-105">
-        <img
-          src={event.image ?? ''}
-          alt={event.title}
-          className="object-cover w-full h-full"
-        />
+    <li className="flex flex-col overflow-hidden cursor-pointer group ">
+      <div
+        className={`relative w-full overflow-hidden h-[183px] border rounded-xl ${
+          isEventPassed ? 'opacity-60  saturate-[.35]' : ''
+        }`}
+      >
+        {event.image && (
+          <Image
+            src={imageUrl}
+            alt={event.title}
+            fill
+            sizes="(min-width: 1040px) calc(33.32vw - 87px), (min-width: 780px) calc(50vw - 119px), (min-width: 640px) calc(100vw - 212px), calc(100vw - 50px)"
+            className="object-cover w-full h-auto transition-transform duration-200 ease-out group-hover:scale-105"
+          />
+        )}
       </div>
-      <div className="flex-1 mx-5 my-3 ">
-        <p className="text-xl font-medium text-[#21272A]"> {event.title}</p>
-        <p className="mt-3 text-base  text-[#525252] ">
+      <div className="flex-1 mt-6 ">
+        <p className="text-xl font-medium text-"> {event.title}</p>
+        <p className="mt-3 text-base text-secondaryGray">
           {formattedDate && formattedTime && (
             <>
-              {formattedDate} <span className="mx-2">•</span>
+              {formattedDate} <span className="mx-2 text-[#484848]">•</span>
               <span>{formattedTime}</span>
             </>
           )}
         </p>
         {renderLocationLink()}
       </div>
-      {event.entranceFee && (
-        <p
-          className={`flex items-center mx-5 mb-5 font-medium ${
-            event.entranceFee.type === 'Free'
-              ? 'text-[#057910]'
-              : 'text-[#0F62FE]'
-          }`}
-        >
-          {event.entranceFee.type === 'Free'
-            ? 'Free'
-            : `${event.entranceFee.priceSek} SEK`}
-        </p>
-      )}
     </li>
   )
 }

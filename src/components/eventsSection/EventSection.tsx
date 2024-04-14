@@ -1,50 +1,65 @@
-import {
-  type EventType,
-  type EventsListType,
-} from '~/lib/sanity.queries/events/types'
+'use client'
+import { EventType, EventsListType } from '~/lib/sanity.queries/events/types'
 import ContentSectionContainer from './ContentSectionContainer'
 import EventCard from './EventCard'
-import ContentSectionButton from './ContentSectionButton'
+import SecondaryButton from '../SecondaryButton'
+import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
+import { sortEventsByDate } from '~/utils/index'
+import ActionContainer from './ActionContainer'
+import { ContactType } from '~/lib/sanity.queries/general/types'
+import decorativeImage from '~/assets/images/bg_image2.png'
+import Image from 'next/image'
 
 interface EventsSectionProps {
+  section: EventsSectionType
   events: EventsListType
+  contacts: ContactType
 }
 
-export default function EventsSection({ events }: EventsSectionProps) {
-  const sortEventsByDate = (a: EventType, b: EventType) => {
-    const dateA = new Date(a.eventCard.dateAndTime ?? '')
-    const dateB = new Date(b.eventCard.dateAndTime ?? '')
-
-    if (isNaN(dateA.getTime())) return -1
-    if (isNaN(dateB.getTime())) return 1
-
-    return dateA.getTime() - dateB.getTime()
-  }
-
+export default function EventsSection({
+  section,
+  events,
+  contacts,
+}: EventsSectionProps) {
   const buttonContent = (
-    <ContentSectionButton
-      buttonLink={events[0]?.eventSectionButton?.buttonLink}
-    >
-      See more events
-    </ContentSectionButton>
+    <SecondaryButton
+      buttonText={section?.eventsButton?.buttonText}
+      btnClasses={`text-primaryBlue  border-primaryBlue mt-[64px] px-[24px]`}
+    />
   )
-
   if (events.length === 0) {
     return null
   }
 
   return (
-    <ContentSectionContainer
-      title="Events"
-      description="Check out our upcoming events or events outside of our community that will help you find new information and expand your networking."
-      items={events}
-      sortFunction={sortEventsByDate}
-      getDateProperty={(event) => event.eventCard.dateAndTime}
-      button={buttonContent}
-    >
-      {(event: EventType) => (
-        <EventCard event={event.eventCard} key={event._id} />
-      )}
-    </ContentSectionContainer>
+    <div className="bg-backgroundColorGray relative">
+      <ActionContainer section={section} contacts={contacts} />
+      <ContentSectionContainer
+        title={section?.sectionTitle}
+        description={section?.sectionDescription}
+        items={events}
+        sortFunction={sortEventsByDate}
+        button={buttonContent}
+        currentDate={new Date()}
+      >
+        {(event: EventType, isEventPassed: boolean) => (
+          <EventCard
+            event={event}
+            key={event._id}
+            isEventPassed={isEventPassed}
+          />
+        )}
+      </ContentSectionContainer>
+      <div className="absolute bottom-0 right-0 z-1 lg:visible">
+        <div className="w-[200]px h-[90px]">
+          <Image
+            src={decorativeImage}
+            alt="bottom decorative image"
+            width={200}
+            height={90}
+          />
+        </div>
+      </div>
+    </div>
   )
 }

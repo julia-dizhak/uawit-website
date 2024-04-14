@@ -13,9 +13,9 @@ export const Logo = ({ logo }: Props) => {
     <a href={`#${href}`} className="block" aria-current="page">
       {Boolean(logoImage) && (
         <Image
-          src={urlForImage(logoImage).url()}
-          height={50}
-          width={50}
+          src={urlForImage(logoImage)?.url() || ''}
+          height={70}
+          width={70}
           alt={caption || 'Logo UA WIT in Stockholm'}
         />
       )}

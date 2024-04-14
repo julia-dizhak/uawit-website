@@ -27,7 +27,6 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Button', value: 'Button' },
           { title: 'Logo', value: 'Logo' },
           { title: 'Image', value: 'Image' },
         ],

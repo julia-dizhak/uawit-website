@@ -1,50 +1,61 @@
-import React, { type ReactNode } from 'react'
+'use client'
+import React from 'react'
+import { type ReactNode, useState } from 'react'
 
 interface ContentSectionContainerProps<T> {
   title: string
   description: string
   items: T[]
-  children: (item: T) => ReactNode
+  children: (item: T, isEventPassed: boolean) => ReactNode
   sortFunction?: (a: T, b: T) => number
-  getDateProperty?: (item: T) => string | undefined
-  button?: ReactNode
+  button?: React.ReactElement<{ onClick: () => void }>
+  currentDate: Date
 }
 
-export default function ContentSectionContainer<T>({
+export default function ContentSectionContainer<
+  T extends { dateAndTime: string },
+>({
   title,
   description,
   items,
   children,
   sortFunction,
-  getDateProperty,
   button,
+  currentDate,
 }: ContentSectionContainerProps<T>) {
-  const currentDate = new Date()
+  const [displayCount, setDisplayCount] = useState(3)
 
-  const filteredItems = items.filter((item) => {
-    const eventDate = new Date(getDateProperty?.(item) ?? '')
-    return eventDate >= currentDate
-  })
-
+  const handleLoadMore = () => {
+    setDisplayCount((prevCount) => prevCount + 3)
+  }
   const sortedItems = sortFunction
-    ? [...filteredItems].sort(sortFunction).slice(0, 3)
-    : filteredItems.slice(0, 3)
+    ? [...items].sort(sortFunction).slice(0, displayCount)
+    : items.slice(0, displayCount)
+
+  const showLoadMoreButton = items.length > displayCount
 
   return (
-    <section className=" py-16 px-6 sm:px-[6.563rem]">
-      <h2 className="font-bold text-center text-[42px] text-[#21272A] font-roboto">
+    <section
+      className="max-w-screen-xl mx-auto py-[100px] relative"
+      id="events"
+    >
+      <h2 className="font-medium text-center text-[48px] text-primaryBlack ">
         {title}
       </h2>
-      <p className="text-center font-roboto color-[#21272A] mt-4 font-normal text-lg mb-[3.75rem]">
+      <p className="text-primaryGray mt-4 mb-4 max-w-5xl m-auto text-center">
         {description}
       </p>
 
-      <div className="grid grid-cols-1 gap-[3.75rem] md:grid-cols-2 lg:grid-cols-3">
-        {sortedItems.flatMap((item, index) => (
-          <div key={index}>{children(item)}</div>
+      <div className="grid grid-cols-1 gap-[24px] md:grid-cols-2 lg:grid-cols-3">
+        {sortedItems.map((item, index) => (
+          <div key={index}>
+            {children(item, new Date(item.dateAndTime) < currentDate)}
+          </div>
         ))}
       </div>
-      {button}
+      {showLoadMoreButton &&
+        button &&
+        React.cloneElement(button, { onClick: handleLoadMore })}
     </section>
   )
 }

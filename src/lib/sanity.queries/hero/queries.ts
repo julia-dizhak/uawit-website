@@ -8,10 +8,7 @@ export const heroQuery = groq`
     "backgroundImage": backgroundImage,
     "title": title,
     "description": description,
-    "buttonName": buttonName {
-      "buttonText": buttonText,
-      "redirectTo": redirectTo,
-    }
+    "fontColor": fontColor
   }[0]
 `
 

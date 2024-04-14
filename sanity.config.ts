@@ -20,6 +20,7 @@ import {
   projectId,
 } from '~/lib/sanity.api'
 import { schemaTypes } from '~/schemas'
+import { uawitStructure } from '~/utils/deskStructure'
 
 const iframeOptions = {
   url: defineUrlResolver({
@@ -30,6 +31,12 @@ const iframeOptions = {
   reload: { button: true },
 } satisfies IframeOptions
 
+// Define the actions that should be available for singleton documents
+const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
+
+// Define the singleton document types
+const singletonTypes = new Set(['settings'])
+
 export default defineConfig({
   basePath: '/studio',
   name: 'project-name',
@@ -39,6 +46,14 @@ export default defineConfig({
   // edit schemas in './src/schemas'
   schema: {
     types: schemaTypes,
+    templates: (templates) =>
+      templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
+  },
+  document: {
+    actions: (input, context) =>
+      singletonTypes.has(context.schemaType)
+        ? input.filter(({ action }) => action && singletonActions.has(action))
+        : input,
   },
   plugins: [
     deskTool({
@@ -55,6 +70,7 @@ export default defineConfig({
           S.view.component(Iframe).options(iframeOptions).title('Preview'),
         ])
       },
+      structure: uawitStructure,
     }),
     // Add the "Open preview" action
     previewUrl({

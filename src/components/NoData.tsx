@@ -3,13 +3,13 @@ import Container from './Container'
 
 export default function NoData() {
   return (
-    <Container>
+    <Container className="text-center">
       <div className="flex flex-col aligns-center p-2">
         <div className="flex-col">
           <h1 className="text-3xl font-bold pt-10 pb-10 text-center">
             No Data
           </h1>
-          <h2 className="text-2xl max-w-[750px] text-center pb-10">
+          <h2 className="text-2xl text-center pb-10">
             Please provide data in Sanity studio
           </h2>
 
