@@ -22,42 +22,23 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'component',
+      name: 'componentType',
       title: 'Component',
       type: 'string',
       options: {
         list: [
-          {title: 'Button', value: 'Button'},
-          {title: 'Logo', value: 'Logo'}
-        ]
+          { title: 'Button', value: 'Button' },
+          { title: 'Logo', value: 'Logo' },
+          { title: 'Image', value: 'Image' },
+        ],
       }
-    }),
-    defineField({
-      name: 'Button',
-      title: 'Button',
-      type: 'object',
-      group: 'settings',
-      hidden: ({ parent, value }) => parent?.component !== 'Button',
-      fields: [
-        defineField({
-          name: 'buttonText',
-          type: 'string',
-          title: 'Button Text',
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: 'redirectTo',
-          type: 'url',
-          title: 'Redirect To',
-        })
-      ]
     }),
     defineField({
       name: 'Logo',
       title: 'Logo',
       type: 'object',
       group: 'settings',
-      hidden: ({ parent, value }) => parent?.component !== 'Logo',
+      hidden: ({ parent, value }) => parent?.componentType !== 'Logo',
       fields: [
         defineField({
           name: 'logo',
@@ -67,6 +48,26 @@ export default defineType({
           to: [{type: 'logo'}],
         }),
       ]
+    }),
+    defineField({
+      name: 'Picture',
+      title: 'Image',
+      type: 'object',
+      group: 'settings',
+      hidden: ({ parent, value }) => parent?.componentType !== 'Image',
+      fields: [
+        defineField({
+          name: 'title',
+          type: 'string',
+          title: 'Image Text'
+        }),
+        defineField({
+          name: 'image',
+          type: 'image',
+          title: 'Choose image',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
     }),
   ],
   preview: {
