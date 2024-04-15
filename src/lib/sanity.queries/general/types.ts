@@ -1,5 +1,5 @@
-export interface ContactType {
+export interface ContactsType {
   email: string
-  telephone: string
-  linkedIn: string
+  telephone?: string
+  linkedIn?: string
 }

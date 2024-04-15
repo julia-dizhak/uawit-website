@@ -22,7 +22,6 @@ export default function Card({ post }: CardProps) {
             className="object-cover w-full h-auto transition-transform duration-200 ease-out group-hover:scale-105"
           />
         </div>
-        
       ) : (
         <div className="bg-black h-[200px]" />
       )}

@@ -42,8 +42,8 @@ const Navigation = ({ navbar, logo }) => {
   }
 
   return (
-    <Container>
-      <nav className="flex items-center  justify-between mx-auto">
+    <Container className="pt-3">
+      <nav className="flex items-center justify-between mx-auto">
         <div className="flex items-center space-x-3 rtl:space-x-reverse pr-20">
           <Logo logo={logo} />
         </div>
