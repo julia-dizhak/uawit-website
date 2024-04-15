@@ -17,7 +17,4 @@ export interface EventsSectionType {
   sectionDescription: string
   eventsButton: EventsButtonType
   backgroundImage: ImageAsset
-  ctaSubsectionDescription: string
-  ctaButton: CTAButtonType
-  ctaBackgroundImage: ImageAsset
 }

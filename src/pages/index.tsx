@@ -28,8 +28,7 @@ import { Partner } from '~/lib/sanity.queries/partners/types'
 import { Footer } from '~/components/Footer'
 import { ContactsType } from '~/lib/sanity.queries/general/types'
 import {
-  getContact,
-  contactQuery,
+  contactsQuery,
   getContacts,
 } from '~/lib/sanity.queries/general/queries'
 import {
@@ -111,7 +110,7 @@ export default function HomePage({
   const [aboutData] = useLiveQuery(about, aboutQuery)
   const [partnersData] = useLiveQuery(partners, partnersQuery)
   const [sendMessageData] = useLiveQuery(sendMessage, sendMessageQuery)
-  const [contactsData] = useLiveQuery(contacts, contactQuery)
+  const [contactsData] = useLiveQuery(contacts, contactsQuery)
 
   const dataShouldBePresent = aboutData && postsData.length > 0
 

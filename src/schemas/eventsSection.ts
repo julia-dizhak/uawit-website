@@ -5,40 +5,6 @@ export default defineType({
   title: 'Events Sections',
   type: 'document',
   fields: [
-    // defineField({
-    //   name: 'ctaSubsectionDescription',
-    //   title: 'CTA Subsection Description',
-    //   type: 'text',
-    //   validation: (Rule) => Rule.required().max(300),
-    //   description:
-    //     'Enter a brief description for the call-to-action subsection.Maximum 300 characters.',
-    // // }),
-    // defineField({
-    //   name: 'ctaButton',
-    //   title: 'CTA Button',
-    //   type: 'object',
-    //   fields: [
-    //     defineField({
-    //       name: 'buttonText',
-    //       title: 'Button Text',
-    //       type: 'string',
-    //       validation: (Rule) => Rule.required(),
-    //       description:
-    //         'Enter the text to display on the call-to-action button.',
-    //     }),
-    //   ],
-    // }),
-    // defineField({
-    //   name: 'ctaBackgroundImage',
-    //   title: 'CTA Background Image',
-    //   type: 'image',
-    //   description:
-    //     'Upload a background image for the call-to-action subsection.',
-    //   validation: (Rule) => Rule.required(),
-    //   options: {
-    //     hotspot: true,
-    //   },
-    // }),
     defineField({
       name: 'sectionTitle',
       title: 'Section Title',
