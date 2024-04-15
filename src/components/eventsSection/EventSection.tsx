@@ -5,22 +5,15 @@ import EventCard from './EventCard'
 import SecondaryButton from '../SecondaryButton'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
 import { sortEventsByDate } from '~/utils/index'
-import ActionContainer from './ActionContainer'
-import { ContactType } from '~/lib/sanity.queries/general/types'
 import decorativeImage from '~/assets/images/bg_image2.png'
 import Image from 'next/image'
 
 interface EventsSectionProps {
   section: EventsSectionType
   events: EventsListType
-  contacts: ContactType
 }
 
-export default function EventsSection({
-  section,
-  events,
-  contacts,
-}: EventsSectionProps) {
+export default function EventsSection({ section, events }: EventsSectionProps) {
   const buttonContent = (
     <SecondaryButton
       buttonText={section?.eventsButton?.buttonText}
@@ -33,7 +26,6 @@ export default function EventsSection({
 
   return (
     <div className="bg-backgroundColorGray relative">
-      <ActionContainer section={section} contacts={contacts} />
       <ContentSectionContainer
         title={section?.sectionTitle}
         description={section?.sectionDescription}

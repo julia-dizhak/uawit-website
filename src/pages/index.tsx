@@ -26,13 +26,23 @@ import {
 import { SharedPageProps } from './_app'
 import { Partner } from '~/lib/sanity.queries/partners/types'
 import { Footer } from '~/components/Footer'
-import { ContactType } from '~/lib/sanity.queries/general/types'
-import { getContact, contactQuery } from '~/lib/sanity.queries/general/queries'
+import { ContactsType } from '~/lib/sanity.queries/general/types'
+import {
+  getContact,
+  contactQuery,
+  getContacts,
+} from '~/lib/sanity.queries/general/queries'
 import {
   eventsSectionQuery,
   getEventsSectionData,
 } from '~/lib/sanity.queries/eventsSection/queries'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
+import SendMessageSection from '~/components/SendMessageSection'
+import { SendMessageType } from '~/lib/sanity.queries/sendMessage/types'
+import {
+  getSendMessageData,
+  sendMessageQuery,
+} from '~/lib/sanity.queries/sendMessage/queries'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -40,11 +50,12 @@ export const getStaticProps: GetStaticProps<
     navbarData: NavigationType
     logoData: LogoType
     heroData: HeroType
-    eventsData: EventsListType
-    eventsSectionData: EventsSectionType
     about: AboutType
     partners: Partner[]
-    contacts: ContactType
+    sendMessage: SendMessageType
+    eventsData: EventsListType
+    eventsSectionData: EventsSectionType
+    contacts: ContactsType
   }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
@@ -57,7 +68,8 @@ export const getStaticProps: GetStaticProps<
   const eventsSectionData = await getEventsSectionData(client)
   const about = await getAbout(client)
   const partners = await getPartnersData(client)
-  const contacts = await getContact(client)
+  const contacts = await getContacts(client)
+  const sendMessage = await getSendMessageData(client)
 
   return {
     props: {
@@ -65,13 +77,14 @@ export const getStaticProps: GetStaticProps<
       token: draftMode ? readToken : '',
       // fetched data from sanity
       posts,
-      eventsData,
-      eventsSectionData,
       logoData,
       heroData,
       navbarData,
       about,
       partners,
+      sendMessage,
+      eventsData,
+      eventsSectionData,
       contacts,
     },
   }
@@ -86,6 +99,7 @@ export default function HomePage({
   about,
   partners,
   contacts,
+  sendMessage,
   eventsSectionData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
@@ -96,6 +110,7 @@ export default function HomePage({
   const [eventsSection] = useLiveQuery(eventsSectionData, eventsSectionQuery)
   const [aboutData] = useLiveQuery(about, aboutQuery)
   const [partnersData] = useLiveQuery(partners, partnersQuery)
+  const [sendMessageData] = useLiveQuery(sendMessage, sendMessageQuery)
   const [contactsData] = useLiveQuery(contacts, contactQuery)
 
   const dataShouldBePresent = aboutData && postsData.length > 0
@@ -107,14 +122,15 @@ export default function HomePage({
           {hero && <Hero hero={hero} navbar={navbar} logo={logo} />}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
-          {events.length > 0 && (
-            <EventsSection
-              events={eventsData}
-              section={eventsSection}
-              contacts={contactsData}
+          {sendMessageData && contactsData && (
+            <SendMessageSection
+              sendMessage={sendMessageData}
+              email={contactsData.email}
             />
           )}
-
+          {events.length > 0 && (
+            <EventsSection events={eventsData} section={eventsSection} />
+          )}
           {contactsData && <Footer logo={logo} contacts={contactsData} />}
         </>
       ) : (
