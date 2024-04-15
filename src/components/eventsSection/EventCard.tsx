@@ -32,9 +32,9 @@ export default function EventCard({ event, isEventPassed }: EventCardProps) {
   const imageUrl = typeof event.image === 'string' ? event.image : ''
 
   return (
-    <li className="flex flex-col overflow-hidden cursor-pointer group ">
+    <li className="flex flex-col overflow-hidden cursor-pointer group">
       <div
-        className={`relative w-full overflow-hidden h-[183px] border rounded-xl ${
+        className={`relative w-full overflow-hidden h-[220px] border rounded-xl ${
           isEventPassed ? 'opacity-60  saturate-[.35]' : ''
         }`}
       >
