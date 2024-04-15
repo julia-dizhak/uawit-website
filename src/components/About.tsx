@@ -14,26 +14,26 @@ type Props = {
 export default function About({ about, partnersData }: Props) {
   return (
     <div className="bg-white rounded-[28px] -my-6" id="about-us">
-      <Container className="flex flex-col py-20 gap-y-4 md:gap-y-20">
+      <Container className="flex flex-col py-20 gap-y-4 md:gap-y-20 px-8">
         {about.mainImage && (
-          <div className="w-full">
+          <div className="w-full overflow-hidden h-[440px]">
             <Image
               src={urlForImage(about.mainImage)?.url() || ''}
               layout="responsive"
-              height={500}
-              width={500}
+              width={400}
+              height={440}
               alt="Our community"
               className="rounded-2xl"
             />
           </div>
         )}
         <div className="flex flex-wrap justify-between">
-          <div className="w-full md:w-[48%]">
+          <div className="w-full md:w-[40%]">
             <h3 className="mb-8 text-5xl font-bold leading-none tracking-tight text-gray-900 block ml-auto mr-auto text-center md:text-left">
               {about.title}
             </h3>
           </div>
-          <div className="w-full md:w-[48%] text-lg">
+          <div className="w-full md:w-[60%] text-lg">
             <PortableText value={about.shortDescription} />
           </div>
         </div>

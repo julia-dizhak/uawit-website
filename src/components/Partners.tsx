@@ -12,9 +12,9 @@ export const Partners = ({ partners }: Props) => {
     <Container className="text-center">
       <div className="flex flex-wrap justify-center text-center align-center">
         {partners.map((partner: Partner, index) => (
-          <a href={partner.href} key={index} className="block m-auto w-1/6 p-4">
+          <a href={partner.href} key={index} className="block m-auto p-4 lg:w-1/6 md:w-1/4 sm:2/4">
             <Image
-              className="block text-center m-auto "
+              className="block m-auto "
               src={urlForImage(partner.partnerLogo)?.url() || ''}
               height={60}
               width={60}
