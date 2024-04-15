@@ -45,7 +45,7 @@ import {
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-    posts: PostType[]
+    postsData: PostType[]
     navbarData: NavigationType
     logoData: LogoType
     heroData: HeroType
