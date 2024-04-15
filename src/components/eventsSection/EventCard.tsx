@@ -13,6 +13,7 @@ export default function EventCard({ event, isEventPassed }: EventCardProps) {
 
   const renderLocationLink = () => {
     const { address, city, googleMapsUrl } = event.location ?? {}
+
     return (
       address &&
       city &&
@@ -49,7 +50,7 @@ export default function EventCard({ event, isEventPassed }: EventCardProps) {
         )}
       </div>
       <div className="flex-1 mt-6 ">
-        <p className="text-xl font-medium text-"> {event.title}</p>
+        <p className="text-xl font-medium"> {event.title}</p>
         <p className="mt-3 text-base text-secondaryGray">
           {formattedDate && formattedTime && (
             <>

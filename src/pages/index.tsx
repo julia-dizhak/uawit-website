@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps<
     heroData: HeroType
     about: AboutType
     partners: Partner[]
-    sendMessage: SendMessageType
+    sendMessageData: SendMessageType
     eventsData: EventsListType
     eventsSectionData: EventsSectionType
     contacts: ContactsType
@@ -63,12 +63,12 @@ export const getStaticProps: GetStaticProps<
   const heroData = await getHeroData(client)
   const logoData = await getLogoData(client)
   const posts = await getPosts(client) // or news
-  const eventsData = await getEvents(client)
-  const eventsSectionData = await getEventsSectionData(client)
   const about = await getAbout(client)
   const partners = await getPartnersData(client)
+  const sendMessageData = await getSendMessageData(client)
+  const eventsSectionData = await getEventsSectionData(client)
+  const eventsData = await getEvents(client)
   const contacts = await getContacts(client)
-  const sendMessage = await getSendMessageData(client)
 
   return {
     props: {
@@ -81,9 +81,9 @@ export const getStaticProps: GetStaticProps<
       navbarData,
       about,
       partners,
-      sendMessage,
-      eventsData,
+      sendMessageData,
       eventsSectionData,
+      eventsData,
       contacts,
     },
   }
@@ -98,18 +98,18 @@ export default function HomePage({
   about,
   partners,
   contacts,
-  sendMessage,
+  sendMessageData,
   eventsSectionData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
   const [hero] = useLiveQuery(heroData, heroQuery)
   const [logo] = useLiveQuery(logoData, logoQuery)
-  const [events] = useLiveQuery(eventsData, eventsQuery)
-  const [eventsSection] = useLiveQuery(eventsSectionData, eventsSectionQuery)
   const [aboutData] = useLiveQuery(about, aboutQuery)
   const [partnersData] = useLiveQuery(partners, partnersQuery)
-  const [sendMessageData] = useLiveQuery(sendMessage, sendMessageQuery)
+  const [sendMessage] = useLiveQuery(sendMessageData, sendMessageQuery)
+  const [events] = useLiveQuery(eventsData, eventsQuery)
+  const [eventsSection] = useLiveQuery(eventsSectionData, eventsSectionQuery)
   const [contactsData] = useLiveQuery(contacts, contactsQuery)
 
   const dataShouldBePresent = aboutData && postsData.length > 0
@@ -121,14 +121,14 @@ export default function HomePage({
           {hero && <Hero hero={hero} navbar={navbar} logo={logo} />}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
           {postsData.length > 0 && <Posts posts={postsData} />}
-          {sendMessageData && contactsData && (
+          {sendMessage && contactsData && (
             <SendMessageSection
               sendMessage={sendMessageData}
               email={contactsData.email}
             />
           )}
-          {events.length > 0 && (
-            <EventsSection events={eventsData} section={eventsSection} />
+          {eventsSection && events.length > 0 && (
+            <EventsSection events={events} section={eventsSection} />
           )}
           {contactsData && <Footer logo={logo} contacts={contactsData} />}
         </>

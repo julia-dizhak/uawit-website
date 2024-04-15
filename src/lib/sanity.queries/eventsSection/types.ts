@@ -1,20 +1,11 @@
-import { ImageAsset, Slug } from '@sanity/types'
-
-export interface EventsButtonType {
-  buttonText: string
-  buttonLink: string
-}
-
-export interface CTAButtonType {
-  buttonText: string
-}
+import { PortableTextBlock } from '@portabletext/types'
 
 export interface EventsSectionType {
   _type: 'eventsSection'
   _id: string
-  sectionTitle: string
-  slug: Slug
-  sectionDescription: string
-  eventsButton: EventsButtonType
-  backgroundImage: ImageAsset
+  _createdAt?: string
+  // dynamic
+  eventsTitle: string
+  eventsDescription: PortableTextBlock[]
+  moreButtonText: string
 }
