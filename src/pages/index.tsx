@@ -45,7 +45,7 @@ import {
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-    posts: PostType[]
+    postsData: PostType[]
     navbarData: NavigationType
     logoData: LogoType
     heroData: HeroType
@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps<
   const navbarData = await getNavbarData(client)
   const heroData = await getHeroData(client)
   const logoData = await getLogoData(client)
-  const posts = await getPosts(client) // or news
+  const postsData = await getPosts(client) // or news
   const about = await getAbout(client)
   const partners = await getPartnersData(client)
   const sendMessageData = await getSendMessageData(client)
@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps<
       draftMode,
       token: draftMode ? readToken : '',
       // fetched data from sanity
-      posts,
+      postsData,
       logoData,
       heroData,
       navbarData,
@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps<
 }
 
 export default function HomePage({
-  posts,
+  postsData,
   navbarData,
   heroData,
   logoData,
@@ -101,7 +101,7 @@ export default function HomePage({
   sendMessageData,
   eventsSectionData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
+  const [posts] = useLiveQuery<PostsType>(postsData, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
   const [hero] = useLiveQuery(heroData, heroQuery)
   const [logo] = useLiveQuery(logoData, logoQuery)
@@ -120,7 +120,7 @@ export default function HomePage({
         <>
           {hero && <Hero hero={hero} navbar={navbar} logo={logo} />}
           {aboutData && <About about={aboutData} partnersData={partnersData} />}
-          {postsData.length > 0 && <Posts posts={postsData} />}
+          {posts.length > 0 && <Posts posts={posts} />}
           {sendMessage && contactsData && (
             <SendMessageSection
               sendMessage={sendMessageData}
