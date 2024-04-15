@@ -36,7 +36,7 @@ export default function ContentSectionContainer<
 
   return (
     <section
-      className="max-w-screen-xl mx-auto py-[100px] relative"
+      className="max-w-screen-xl mx-auto py-[100px] px-6"
       id="events"
     >
       <h2 className="font-medium text-center text-[48px] text-primaryBlack ">
