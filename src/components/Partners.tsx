@@ -1,7 +1,7 @@
 import { Partner } from '~/lib/sanity.queries/partners/types'
 import Image from 'next/image'
 import { urlForImage } from '~/lib/sanity.image'
-import Container from './Container'
+import Container from './common/Container'
 
 type Props = {
   partners: Partner[]
