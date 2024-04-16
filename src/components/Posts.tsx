@@ -21,7 +21,7 @@ export const Posts = ({ posts }: Props) => {
           />
         </div>
       </div>
-      <Container className="text-center py-[100px] relative">
+      <Container className="text-center pt-[100px] relative">
         <h2 className="font-medium text-primaryBlack text-6xl">News</h2>
         <p className="text-center mt-4 mb-4 text-lg text-primaryGray max-w-5xl m-auto">
           Read the latest news, discover stories from the world of IT
