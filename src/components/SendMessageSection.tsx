@@ -17,7 +17,7 @@ export default function SendMessageSection({
 
   return (
     <div className="bg-backgroundColorGray">
-      <Container className="text-center">
+      <Container className="text-center pt-[100px] pb-2">
         <div className="relative z-10 w-full overflow-hidden border sm:rounded-xl max-h-[368px]">
           <div className="absolute inset-0 z-20 bg-white bg-opacity-20 saturate-40"></div>
           {blockImage && (

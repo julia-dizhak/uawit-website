@@ -49,7 +49,7 @@ export const getStaticProps: GetStaticProps<
     navbarData: NavigationType
     logoData: LogoType
     heroData: HeroType
-    about: AboutType
+    aboutData: AboutType
     partners: Partner[]
     sendMessageData: SendMessageType
     eventsData: EventsListType
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<
   const heroData = await getHeroData(client)
   const logoData = await getLogoData(client)
   const postsData = await getPosts(client) // or news
-  const about = await getAbout(client)
+  const aboutData = await getAbout(client)
   const partners = await getPartnersData(client)
   const sendMessageData = await getSendMessageData(client)
   const eventsSectionData = await getEventsSectionData(client)
@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps<
       logoData,
       heroData,
       navbarData,
-      about,
+      aboutData,
       partners,
       sendMessageData,
       eventsSectionData,
@@ -94,18 +94,18 @@ export default function HomePage({
   navbarData,
   heroData,
   logoData,
-  eventsData,
-  about,
+  aboutData,
   partners,
-  contacts,
   sendMessageData,
   eventsSectionData,
+  eventsData,
+  contacts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [posts] = useLiveQuery<PostsType>(postsData, postsQuery)
   const [navbar] = useLiveQuery(navbarData, navbarQuery)
   const [hero] = useLiveQuery(heroData, heroQuery)
   const [logo] = useLiveQuery(logoData, logoQuery)
-  const [aboutData] = useLiveQuery(about, aboutQuery)
+  const [about] = useLiveQuery(aboutData, aboutQuery)
   const [partnersData] = useLiveQuery(partners, partnersQuery)
   const [sendMessage] = useLiveQuery(sendMessageData, sendMessageQuery)
   const [events] = useLiveQuery(eventsData, eventsQuery)
@@ -119,7 +119,7 @@ export default function HomePage({
       {dataShouldBePresent ? (
         <>
           {hero && <Hero hero={hero} navbar={navbar} logo={logo} />}
-          {aboutData && <About about={aboutData} partnersData={partnersData} />}
+          {about && <About about={about} partnersData={partnersData} />}
           {posts.length > 0 && <Posts posts={posts} />}
           {sendMessage && contactsData && (
             <SendMessageSection
