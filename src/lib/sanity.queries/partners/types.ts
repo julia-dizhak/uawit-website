@@ -6,3 +6,5 @@ export interface Partner {
   partnerName: string
   href?: string
 }
+
+export type Partners = Partner[]

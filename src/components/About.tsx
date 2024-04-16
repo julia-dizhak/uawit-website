@@ -8,10 +8,10 @@ import Container from './common/Container'
 
 type Props = {
   about: AboutType
-  partnersData: Partner[]
+  partners: Partner[]
 }
 
-export default function About({ about, partnersData }: Props) {
+export default function About({ about, partners }: Props) {
   return (
     <div className="bg-white rounded-[28px] -my-6" id="about-us">
       <Container className="flex flex-col py-20 gap-y-4 md:gap-y-20 px-8">
@@ -37,9 +37,9 @@ export default function About({ about, partnersData }: Props) {
             <PortableText value={about.shortDescription} />
           </div>
         </div>
-        {partnersData.length > 0 && (
+        {partners.length > 0 && (
           <div className="w-full">
-            <Partners partners={partnersData} />
+            <Partners partners={partners} />
           </div>
         )}
       </Container>
