@@ -1,5 +1,5 @@
 import navigationItems from '~/utils/constants'
-import Container from './Container'
+import Container from './common/Container'
 import { Logo } from './Logo'
 
 interface MenuItemsProps {

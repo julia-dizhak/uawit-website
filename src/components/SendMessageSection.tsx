@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { SendMessageType } from '~/lib/sanity.queries/sendMessage/types'
 import { urlForImage } from '~/lib/sanity.image'
-import Container from './Container'
+import Container from './common/Container'
 
 interface SendMessageSectionProps {
   sendMessage: SendMessageType

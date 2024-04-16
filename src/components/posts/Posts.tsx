@@ -1,5 +1,5 @@
-import Container from './Container'
-import Card from './Card'
+import Container from '../common/Container'
+import PostCard from './PostCard'
 import { PostType, PostsType } from '~/lib/sanity.queries/posts/types'
 import Image from 'next/image'
 import decorativeImage from '~/assets/images/bg_image_for_news.png'
@@ -15,7 +15,7 @@ export const Posts = ({ posts }: Props) => {
         <div className="w-[200]px h-[150px]">
           <Image
             src={decorativeImage}
-            alt="top decorative image top"
+            alt="top decorative image"
             width={200}
             height={100}
           />
@@ -28,7 +28,7 @@ export const Posts = ({ posts }: Props) => {
         </p>
         <div className="flex flex-wrap justify-center text-center align-center">
           {posts.map((post: PostType) => (
-            <Card
+            <PostCard
               key={post._id}
               post={post}
               className="block m-auto w-1/4 p-4"

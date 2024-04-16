@@ -4,7 +4,7 @@ import { urlForImage } from '~/lib/sanity.image'
 import { AboutType } from '~/lib/sanity.queries/about/types'
 import { Partner } from '~/lib/sanity.queries/partners/types'
 import { Partners } from '~/components/Partners'
-import Container from './Container'
+import Container from './common/Container'
 
 type Props = {
   about: AboutType

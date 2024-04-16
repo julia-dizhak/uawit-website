@@ -1,11 +1,11 @@
 import { EventType, EventsListType } from '~/lib/sanity.queries/events/types'
 import EventCard from './EventCard'
-import SecondaryButton from '../SecondaryButton'
+import SecondaryButton from '../buttons/SecondaryButton'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
 import { sortEventsByDate } from '~/utils/index'
 import decorativeImage from '~/assets/images/bg_image2.png'
 import Image from 'next/image'
-import Container from '../Container'
+import Container from '../common/Container'
 import { PortableText } from '@portabletext/react'
 import { useState } from 'react'
 
@@ -51,7 +51,7 @@ export default function EventsSection({ section, events }: EventsSectionProps) {
           {showLoadMoreButton && (
             <SecondaryButton
               buttonText={moreButtonText}
-              btnClasses={`text-primaryBlue border-primaryBlue px-3 py-2`}
+              btnClasses="text-primaryBlue border-primaryBlue px-4 py-2"
               handleClick={handleLoadMore}
             />
           )}

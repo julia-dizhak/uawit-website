@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Button } from '../Button'
-import Container from '../Container'
+import { Button } from '../buttons/Button'
+import Container from '../common/Container'
 import { Logo } from '../Logo'
 import { FaLinkedinIn } from 'react-icons/fa'
 import navigationItems from '~/utils/constants'
