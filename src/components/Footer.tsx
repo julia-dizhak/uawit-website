@@ -1,6 +1,7 @@
 import navigationItems from '~/utils/constants'
 import Container from './Container'
 import { Logo } from './Logo'
+import Link from 'next/link'
 
 interface MenuItemsProps {
   path: string
@@ -17,6 +18,11 @@ const MenuItems = ({ path, title }: MenuItemsProps) => {
 
 export const Footer = ({ logo, contacts }) => {
   const { email, linkedIn } = contacts
+  const { link } = linkedIn
+
+  const openInNewTab = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
 
   return (
     <Container>
@@ -53,9 +59,13 @@ export const Footer = ({ logo, contacts }) => {
                       </a>
                     </li>
                   )}
-                  {linkedIn && (
+                  {link && (
                     <li>
-                      <a href={linkedIn} className="hover:underline">
+                      <a
+                        href={link}
+                        target="_blank"
+                        className="hover:underline"
+                      >
                         LinkedIn
                       </a>
                     </li>

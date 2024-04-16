@@ -47,34 +47,33 @@ export default defineType({
         timeStep: 15,
       },
     }),
-    defineField({
+    {
       name: 'location',
       title: 'Location',
       type: 'object',
       description:
         'Enter the address and city where the event will take place.',
       fields: [
-        defineField({
+        {
           name: 'address',
           title: 'Address',
           type: 'string',
           validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+        },
+        {
           name: 'city',
           title: 'City',
           type: 'string',
           validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+        },
+        {
           name: 'googleMapsUrl',
           title: 'Google Maps URL',
           type: 'url',
           description: 'Provide a Google Maps URL for the event location.',
-          validation: (Rule) => Rule.required(),
-        }),
+        },
       ],
-    }),
+    },
   ],
 
   preview: {

@@ -1,5 +1,4 @@
 import logo from './logo'
-import navbar from './navbar'
 import hero from './hero'
 import { SchemaTypeDefinition } from 'sanity'
 import blockContent from './blockContent'
@@ -15,7 +14,6 @@ import sendMessage from './sendMessage'
 export const schemaTypes: SchemaTypeDefinition[] = [
   posts,
   blockContent,
-  navbar,
   hero,
   logo,
   about,

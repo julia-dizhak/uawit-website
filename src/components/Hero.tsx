@@ -2,16 +2,16 @@ import Image from 'next/image'
 import { urlForImage } from '~/lib/sanity.image'
 import Navigation from '~/components/navigation/Navigation'
 import { HeroType } from '~/lib/sanity.queries/hero/types'
-import { NavigationType } from '~/lib/sanity.queries/navbar/types'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
+import { LinkedInType } from '~/lib/sanity.queries/settings/types'
 
 type Props = {
   hero: HeroType
-  navbar: NavigationType
   logo: LogoType
+  linkedIn: LinkedInType
 }
 
-const Hero = ({ hero, navbar, logo }: Props) => {
+const Hero = ({ hero, linkedIn, logo }: Props) => {
   const { backgroundImage, description, title, fontColor } = hero
 
   const renderRestOfHeader = (title: string) => {
@@ -31,12 +31,12 @@ const Hero = ({ hero, navbar, logo }: Props) => {
               className="absolute top-0 left-0 w-full h-[500px] object-cover z-[-1]"
               src={urlForImage(backgroundImage)?.url() || ''}
               fill
-              alt="Logo UAWIT"
+              alt="UA WIT"
             />
             <div className="absolute inset-0 z-[-1] hero-overlay"></div>
           </div>
         )}
-        {(navbar || logo) && <Navigation logo={logo} navbar={navbar} />}
+        {(linkedIn || logo) && <Navigation logo={logo} linkedIn={linkedIn} />}
 
         <div
           className={`pt-[180px] pb-[140px] flex flex-col justify-center items-center gap-4 md:mt-0 text-${fontColor} `}

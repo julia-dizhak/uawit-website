@@ -24,8 +24,8 @@ const MenuItems = ({ path, title, onClick }: MenuItemsProps) => {
   )
 }
 
-const Navigation = ({ navbar, logo }) => {
-  const { redirectTo, buttonText } = navbar
+const Navigation = ({ linkedIn, logo }) => {
+  const { link, buttonText } = linkedIn
 
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -34,7 +34,7 @@ const Navigation = ({ navbar, logo }) => {
   }
 
   const handleButtonClick = () => {
-    window.open(redirectTo, '_blank')
+    window.open(link, '_blank')
   }
 
   const handleMenuClick = () => {
