@@ -15,30 +15,46 @@ export default defineType({
     },
   ],
   fields: [
-    defineField({
+    {
       name: 'email',
       title: 'Email',
       type: 'string',
       group: 'contacts',
-    }),
-    defineField({
-      name: 'telephone',
-      title: 'Telephone',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'phone',
+      title: 'Phone',
       type: 'string',
       group: 'contacts',
-    }),
-    defineField({
+    },
+    {
       name: 'linkedIn',
       title: 'LinkedIn',
-      type: 'string',
+      type: 'object',
       group: 'contacts',
-    }),
-    defineField({
+      description: 'Enter the linkedIn url and text for button',
+      fields: [
+        {
+          name: 'link',
+          title: 'Link',
+          type: 'url',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'buttonText',
+          title: 'LinkedIn Button Text',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+      ],
+    },
+    {
       name: 'logo',
       type: 'reference',
       title: 'Logo',
       description: 'Select one of the existing logos or add new.',
       to: [{ type: 'logo' }],
-    }),
+    },
   ],
 })
