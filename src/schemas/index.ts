@@ -3,7 +3,7 @@ import navbar from './navbar'
 import hero from './hero'
 import { SchemaTypeDefinition } from 'sanity'
 import blockContent from './blockContent'
-import post from './posts'
+import posts from './posts'
 import events from './events/eventCards'
 import partners from './partner'
 import about from './about'
@@ -13,7 +13,7 @@ import eventsSection from './events/eventsSection'
 import sendMessage from './sendMessage'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
-  post,
+  posts,
   blockContent,
   navbar,
   hero,
