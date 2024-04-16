@@ -36,7 +36,7 @@ const Hero = ({ hero, linkedIn, logo }: Props) => {
             <div className="absolute inset-0 z-[-1] hero-overlay"></div>
           </div>
         )}
-        {(linkedIn || logo) && <Navigation logo={logo} linkedIn={linkedIn} />}
+        {linkedIn && logo && <Navigation logo={logo} linkedIn={linkedIn} />}
 
         <div
           className={`pt-[180px] pb-[140px] flex flex-col justify-center items-center gap-4 md:mt-0 text-${fontColor} `}

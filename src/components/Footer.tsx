@@ -18,7 +18,7 @@ const MenuItems = ({ path, title }: MenuItemsProps) => {
 
 export const Footer = ({ logo, contacts }) => {
   const { email, linkedIn } = contacts
-  const { link } = linkedIn
+  const { link } = linkedIn ?? {}
 
   const openInNewTab = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer')
