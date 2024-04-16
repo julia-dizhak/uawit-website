@@ -29,10 +29,15 @@ export default function PostCard({ post }: PostCardProps) {
         <h3 className="text-primaryBlack text-1xl pb-4">
           {post.slug && <a href={`/post/${post.slug.current}`}>{post.title}</a>}
         </h3>
-        <div className=" text-primaryGray text-sm line-clamp-5 pb-4">
-          {post.body && <PortableText value={post.body} />}
-        </div>
-        <p>{post.excerpt}</p>
+
+        {post.body && (
+          <div className="text-primaryGray text-sm line-clamp-3 mb-1">
+            <PortableText value={post.body} />{' '}
+          </div>
+        )}
+
+        {post.excerpt && <p>{post.excerpt}</p>}
+
         <p className="text-xs pt-4">
           {post._createdAt && formatDate(post._createdAt)}
         </p>
