@@ -10,7 +10,7 @@ export const Logo = ({ logo }: Props) => {
   const { logoImage, href, caption } = logo
 
   return (
-    <a href={`#${href}`} className="block" aria-current="page">
+    <a href={href} className="block" aria-current="page">
       {Boolean(logoImage) && (
         <Image
           src={urlForImage(logoImage)?.url() || ''}

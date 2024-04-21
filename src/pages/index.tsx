@@ -3,9 +3,9 @@ import { useLiveQuery } from 'next-sanity/preview'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { Posts } from '~/components/Posts'
+import { Posts } from '~/components/posts/Posts'
 import About from '~/components/About'
-import NoData from '~/components/NoData'
+import NoData from '~/components/common/NoData'
 import { Widget } from '~/components/Widget'
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
@@ -15,13 +15,11 @@ import { PostType, PostsType } from '~/lib/sanity.queries/posts/types'
 import { getPosts, postsQuery } from '~/lib/sanity.queries/posts/queries'
 import { eventsQuery, getEvents } from '~/lib/sanity.queries/events/queries'
 import { EventsListType } from '~/lib/sanity.queries/events/types'
-import { getNavbarData, navbarQuery } from '~/lib/sanity.queries/navbar/queries'
-import { NavigationType } from '~/lib/sanity.queries/navbar/types'
 import { AboutType } from '~/lib/sanity.queries/about/types'
 import { getAbout, aboutQuery } from '~/lib/sanity.queries/about/queries'
 import { WidgetType } from '~/lib/sanity.queries/widgets/types'
 import { getWidgetData, widgetQuery } from '~/lib/sanity.queries/widgets/queries'
-import EventsSection from '~/components/eventsSection/EventSection'
+import EventsSection from '~/components/events/EventsSection'
 import {
   getPartnersData,
   partnersQuery,
@@ -29,39 +27,48 @@ import {
 import { SharedPageProps } from './_app'
 import { Partner } from '~/lib/sanity.queries/partners/types'
 import { Footer } from '~/components/Footer'
-import { ContactType } from '~/lib/sanity.queries/general/types'
-import { getContact, contactQuery } from '~/lib/sanity.queries/general/queries'
+import { ContactsType } from '~/lib/sanity.queries/settings/types'
+import {
+  contactsQuery,
+  getContacts,
+} from '~/lib/sanity.queries/settings/queries'
 import {
   eventsSectionQuery,
   getEventsSectionData,
 } from '~/lib/sanity.queries/eventsSection/queries'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
+import SendMessageSection from '~/components/SendMessageSection'
+import { SendMessageType } from '~/lib/sanity.queries/sendMessage/types'
+import {
+  getSendMessageData,
+  sendMessageQuery,
+} from '~/lib/sanity.queries/sendMessage/queries'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-  posts: PostType[]
-  navbarData: NavigationType
+  postsData: PostType[]
   logoData: LogoType
   heroData: HeroType
+  aboutData: AboutType
+  partnersData: Partner[]
+  sendMessageData: SendMessageType
   eventsData: EventsListType
   eventsSectionData: EventsSectionType
-  about: AboutType
-  partners: Partner[]
-  contacts: ContactType
+  contacts: ContactsType
   widget: WidgetType
 }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  const navbarData = await getNavbarData(client)
   const heroData = await getHeroData(client)
   const logoData = await getLogoData(client)
-  const posts = await getPosts(client) // or news
-  const eventsData = await getEvents(client)
+  const postsData = await getPosts(client) // or news
+  const aboutData = await getAbout(client)
+  const partnersData = await getPartnersData(client)
+  const sendMessageData = await getSendMessageData(client)
   const eventsSectionData = await getEventsSectionData(client)
-  const about = await getAbout(client)
-  const partners = await getPartnersData(client)
-  const contacts = await getContact(client)
+  const eventsData = await getEvents(client)
+  const contacts = await getContacts(client)
   const widget = await getWidgetData(client)
 
   return {
@@ -69,14 +76,14 @@ export const getStaticProps: GetStaticProps<
       draftMode,
       token: draftMode ? readToken : '',
       // fetched data from sanity
-      posts,
-      eventsData,
-      eventsSectionData,
+      postsData,
       logoData,
       heroData,
-      navbarData,
-      about,
-      partners,
+      aboutData,
+      partnersData,
+      sendMessageData,
+      eventsSectionData,
+      eventsData,
       contacts,
       widget,
     },
@@ -84,46 +91,50 @@ export const getStaticProps: GetStaticProps<
 }
 
 export default function HomePage({
-                                   posts,
-                                   navbarData,
+                                   postsData,
                                    heroData,
                                    logoData,
-                                   eventsData,
-                                   about,
-                                   partners,
-                                   contacts,
+                                   aboutData,
+                                   partnersData,
+                                   sendMessageData,
                                    eventsSectionData,
+                                   eventsData,
+                                   contacts,
                                    widget,
                                  }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [postsData] = useLiveQuery<PostsType>(posts, postsQuery)
-  const [navbar] = useLiveQuery(navbarData, navbarQuery)
+  const [posts] = useLiveQuery<PostsType>(postsData, postsQuery)
   const [hero] = useLiveQuery(heroData, heroQuery)
   const [logo] = useLiveQuery(logoData, logoQuery)
+  const [about] = useLiveQuery(aboutData, aboutQuery)
+  const [partners] = useLiveQuery(partnersData, partnersQuery)
+  const [sendMessage] = useLiveQuery(sendMessageData, sendMessageQuery)
   const [events] = useLiveQuery(eventsData, eventsQuery)
   const [eventsSection] = useLiveQuery(eventsSectionData, eventsSectionQuery)
-  const [aboutData] = useLiveQuery(about, aboutQuery)
-  const [partnersData] = useLiveQuery(partners, partnersQuery)
-  const [contactsData] = useLiveQuery(contacts, contactQuery)
+  const [contactsData] = useLiveQuery(contacts, contactsQuery)
   const [widgetData] = useLiveQuery(widget, widgetQuery)
 
   const dataShouldBePresent = aboutData && postsData.length > 0
+  console.log({ partners })
 
   return (
     <>
       {dataShouldBePresent ? (
         <>
-          {hero && <Hero hero={hero} navbar={navbar} logo={logo} />}
-          {aboutData && <About about={aboutData} partnersData={partnersData} />}
-          {postsData.length > 0 && <Posts posts={postsData} />}
-          {events.length > 0 && (
-            <EventsSection
-              events={eventsData}
-              section={eventsSection}
-              contacts={contactsData}
+          {hero && contactsData && (
+            <Hero hero={hero} linkedIn={contactsData.linkedIn} logo={logo} />
+          )}
+          {about && partners && <About about={about} partners={partners} />}
+          {posts.length > 0 && <Posts posts={posts} />}
+          {sendMessage && contactsData && (
+            <SendMessageSection
+              sendMessage={sendMessageData}
+              email={contactsData.email}
             />
           )}
+          {eventsSection && events.length > 0 && (
+            <EventsSection events={events} section={eventsSection} />
+          )}
           {widgetData && <Widget widget={widgetData} />}
-
           {contactsData && <Footer logo={logo} contacts={contactsData} />}
         </>
       ) : (

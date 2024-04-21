@@ -13,6 +13,7 @@ export default function EventCard({ event, isEventPassed }: EventCardProps) {
 
   const renderLocationLink = () => {
     const { address, city, googleMapsUrl } = event.location ?? {}
+
     return (
       address &&
       city &&
@@ -32,9 +33,9 @@ export default function EventCard({ event, isEventPassed }: EventCardProps) {
   const imageUrl = typeof event.image === 'string' ? event.image : ''
 
   return (
-    <li className="flex flex-col overflow-hidden cursor-pointer group ">
+    <li className="flex flex-col overflow-hidden cursor-pointer group">
       <div
-        className={`relative w-full overflow-hidden h-[183px] border rounded-xl ${
+        className={`relative w-full overflow-hidden h-[220px] border rounded-xl ${
           isEventPassed ? 'opacity-60  saturate-[.35]' : ''
         }`}
       >
@@ -49,7 +50,7 @@ export default function EventCard({ event, isEventPassed }: EventCardProps) {
         )}
       </div>
       <div className="flex-1 mt-6 ">
-        <p className="text-xl font-medium text-"> {event.title}</p>
+        <p className="text-xl font-medium"> {event.title}</p>
         <p className="mt-3 text-base text-secondaryGray">
           {formattedDate && formattedTime && (
             <>
