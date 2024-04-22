@@ -4,7 +4,7 @@ import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { Posts } from '~/components/posts/Posts'
-import About from '~/components/About'
+import AboutUs from '~/components/AboutUs'
 import NoData from '~/components/common/NoData'
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
@@ -106,7 +106,6 @@ export default function HomePage({
   const [contactsData] = useLiveQuery(contacts, contactsQuery)
 
   const dataShouldBePresent = aboutData && postsData.length > 0
-  console.log({ partners })
 
   return (
     <>
@@ -115,7 +114,7 @@ export default function HomePage({
           {hero && contactsData && (
             <Hero hero={hero} linkedIn={contactsData.linkedIn} logo={logo} />
           )}
-          {about && partners && <About about={about} partners={partners} />}
+          {about && partners && <AboutUs about={about} partners={partners} />}
           {posts.length > 0 && <Posts posts={posts} />}
           {sendMessage && contactsData && (
             <SendMessageSection

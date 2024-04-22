@@ -35,6 +35,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-vars': 'error',
     'react/prop-types': 'off',
+    'react/display-name': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
