@@ -5,7 +5,7 @@ import fakeImage from '~/assets/images/fake-widget.jpg'
 const FakeWidget = () => {
   return (
     <div className="relative w-full">
-      <div className="h-[600px]">
+      <div className="lg:h-[600px] sm:h-[300px] overflow-hidden">
         <Image
           className="object-cover"
           src={fakeImage}

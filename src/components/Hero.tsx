@@ -39,7 +39,7 @@ export const Hero = ({ hero, linkedIn, logo }: Props) => {
         {linkedIn && logo && <Navigation logo={logo} linkedIn={linkedIn} />}
 
         <div
-          className={`pt-[140px] pb-[140px] flex flex-col justify-center items-center gap-4 md:mt-0 text-${fontColor} `}
+          className={`lg:pt-[140px] lg:pb-[140px] pt-[100px] pb-[100px] flex flex-col justify-center items-center gap-4 md:mt-0 text-${fontColor}`}
         >
           <h1 className="mb-10 text-6xl font-bold text-center">
             {firstWord} <br />

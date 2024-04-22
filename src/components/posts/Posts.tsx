@@ -10,7 +10,7 @@ type Props = {
 
 export const Posts = ({ posts }: Props) => {
   return (
-    <div className="bg-backgroundColorGray relative" id="news">
+    <div id="news" className="bg-backgroundColorGray relative rounded-[28px] -my-6" >
       <div className="absolute top-0 left-0 z-1 invisible md:visible">
         <div className="w-[200]px h-[150px]">
           <Image
