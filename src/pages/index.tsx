@@ -40,6 +40,7 @@ import {
   getSendMessageData,
   sendMessageQuery,
 } from '~/lib/sanity.queries/sendMessage/queries'
+import FakeWidget from '~/components/FakeWidget'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
@@ -115,6 +116,7 @@ export default function HomePage({
             <Hero hero={hero} linkedIn={contactsData.linkedIn} logo={logo} />
           )}
           {about && partners && <AboutUs about={about} partners={partners} />}
+          <FakeWidget />
           {posts.length > 0 && <Posts posts={posts} />}
           {sendMessage && contactsData && (
             <SendMessageSection
