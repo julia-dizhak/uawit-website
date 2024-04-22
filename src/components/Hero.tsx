@@ -11,7 +11,7 @@ type Props = {
   linkedIn: LinkedInType
 }
 
-const Hero = ({ hero, linkedIn, logo }: Props) => {
+export const Hero = ({ hero, linkedIn, logo }: Props) => {
   const { backgroundImage, description, title, fontColor } = hero
 
   const renderRestOfHeader = (title: string) => {
@@ -28,7 +28,7 @@ const Hero = ({ hero, linkedIn, logo }: Props) => {
         {backgroundImage && (
           <div>
             <Image
-              className="absolute top-0 left-0 w-full h-[500px] object-cover z-[-1]"
+              className="object-cover z-[-1]"
               src={urlForImage(backgroundImage)?.url() || ''}
               fill
               alt="UA WIT"
@@ -39,7 +39,7 @@ const Hero = ({ hero, linkedIn, logo }: Props) => {
         {linkedIn && logo && <Navigation logo={logo} linkedIn={linkedIn} />}
 
         <div
-          className={`pt-[180px] pb-[140px] flex flex-col justify-center items-center gap-4 md:mt-0 text-${fontColor} `}
+          className={`lg:pt-[140px] lg:pb-[140px] pt-[100px] pb-[100px] flex flex-col justify-center items-center gap-4 md:mt-0 text-${fontColor}`}
         >
           <h1 className="mb-10 text-6xl font-bold text-center">
             {firstWord} <br />
