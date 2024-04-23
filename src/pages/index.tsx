@@ -24,6 +24,7 @@ import {
 import { SharedPageProps } from './_app'
 import { Partner } from '~/lib/sanity.queries/partners/types'
 import { Footer } from '~/components/Footer'
+import { Contact } from '~/components/Contact'
 import { ContactsType } from '~/lib/sanity.queries/settings/types'
 import {
   contactsQuery,
@@ -127,6 +128,7 @@ export default function HomePage({
           {eventsSection && events.length > 0 && (
             <EventsSection events={events} section={eventsSection} />
           )}
+          {contactsData && <Contact contacts={contactsData} />}
           {contactsData && <Footer logo={logo} contacts={contactsData} />}
         </>
       ) : (

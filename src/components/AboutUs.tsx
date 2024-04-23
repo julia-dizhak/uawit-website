@@ -14,7 +14,7 @@ type Props = {
 
 export default React.memo(function AboutUs({ about, partners }: Props) {
   return (
-    <div id="about-us" className="bg-white rounded-[28px] -my-6">
+    <div className="bg-white relative rounded-[28px] -my-6 z-50" id="about-us">
       <Container className="flex flex-col pt-14 pb-16 gap-y-4 md:gap-y-20 px-8">
         {about.mainImage && (
           <div className="w-full overflow-hidden lg:h-[440px] sx:-h-[220px] rounded-2xl">
