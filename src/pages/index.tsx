@@ -109,6 +109,8 @@ export default function HomePage({
 
   const dataShouldBePresent = aboutData && postsData.length > 0
 
+  const { email } = contactsData
+
   return (
     <>
       {dataShouldBePresent ? (
@@ -128,7 +130,7 @@ export default function HomePage({
           {eventsSection && events.length > 0 && (
             <EventsSection events={events} section={eventsSection} />
           )}
-          {contactsData && <Contact contacts={contactsData} />}
+          {email && <Contact email={email} />}
           {contactsData && <Footer logo={logo} contacts={contactsData} />}
         </>
       ) : (
