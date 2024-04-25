@@ -1,5 +1,6 @@
 import '~/styles/global.css'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import { lazy } from 'react'
 import sans, { mono, serif } from '../utils/fonts'
 
@@ -7,6 +8,8 @@ export type SharedPageProps = {
   draftMode: boolean
   token: string
 }
+
+import favicon from '~/assets/images/favicon.ico'
 
 const PreviewProvider = lazy(() => import('~/components/PreviewProvider'))
 
@@ -17,6 +20,9 @@ export default function App({
   const { draftMode, token } = pageProps
   return (
     <>
+      <Head>
+        <link rel="icon" href={favicon.src} sizes="any" />
+      </Head>
       <style jsx global>
         {`
           :root {

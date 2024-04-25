@@ -1,5 +1,6 @@
 import { PortableText } from '@portabletext/react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
+
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 
@@ -16,6 +17,7 @@ import {
   postBySlugQuery,
   postSlugsQuery,
 } from '~/lib/sanity.queries/posts/queries'
+import favicon from '~/assets/images/favicon.ico'
 
 interface Query {
   [key: string]: string

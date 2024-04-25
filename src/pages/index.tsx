@@ -1,4 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import Head from 'next/head'
 import { useLiveQuery } from 'next-sanity/preview'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
