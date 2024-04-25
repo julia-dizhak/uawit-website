@@ -8,7 +8,13 @@ export default function StudioPage() {
     <>
       <Head>
         {Object.entries(metadata).map(([key, value]) => (
-          <meta key={key} name={key} content={value} />
+          <>
+            <meta key={key} name={key} content={value} />
+            <link
+              rel="shortcut icon"
+              href="/src/favicon.ico"
+            />
+          </>
         ))}
       </Head>
 
