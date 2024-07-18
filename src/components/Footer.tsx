@@ -1,7 +1,7 @@
 import navigationItems from '~/utils/constants'
 import Container from './common/Container'
 import { Logo } from './Logo'
-import Link from 'next/link'
+import { FaLinkedinIn } from 'react-icons/fa'
 
 interface MenuItemsProps {
   path: string
@@ -19,10 +19,6 @@ const MenuItems = ({ path, title }: MenuItemsProps) => {
 export const Footer = ({ logo, contacts }) => {
   const { email, linkedIn } = contacts
   const { link } = linkedIn ?? {}
-
-  const openInNewTab = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer')
-  }
 
   return (
     <Container>
@@ -52,21 +48,26 @@ export const Footer = ({ logo, contacts }) => {
               <div>
                 <h2 className="mb-3 font-bold">Contacts</h2>
                 <ul>
-                  {email && (
+                  {Boolean(email) && (
                     <li className="mb-2">
                       <a href={`mailto:${email}`} className="hover:underline ">
                         Email
                       </a>
                     </li>
                   )}
-                  {link && (
+                  {Boolean(link) && (
                     <li>
                       <a
                         href={link}
+                        rel="noopener, noreferrer"
                         target="_blank"
                         className="hover:underline"
                       >
                         LinkedIn
+                        <FaLinkedinIn
+                          className="text-primaryBlue inline ml-1 align-middle"
+                          size={14}
+                        />
                       </a>
                     </li>
                   )}
@@ -79,6 +80,7 @@ export const Footer = ({ logo, contacts }) => {
               </div>
             </div>
           </div>
+
           <div className="visible lg:invisible">
             <hr className="my-2 border-gray-100 sm:mx-auto lg:my-8" />
             <div className="text-sm text-gray-500 sm:text-center">

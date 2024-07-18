@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Button } from '../buttons/Button'
 import Container from '../common/Container'
 import { Logo } from '../Logo'
-import { FaLinkedinIn } from 'react-icons/fa'
 import navigationItems from '~/utils/constants'
 
 interface MenuItemsProps {
@@ -44,9 +43,11 @@ const Navigation = ({ linkedIn, logo }) => {
   return (
     <Container className="pt-3">
       <nav className="flex items-center justify-between mx-auto">
+
         <div className="flex items-center space-x-3 rtl:space-x-reverse pr-20">
           <Logo logo={logo} />
         </div>
+
         {/* mobile view => burger menu */}
         <button
           data-collapse-toggle="navbar-default"
@@ -95,13 +96,7 @@ const Navigation = ({ linkedIn, logo }) => {
             ))}
           </ul>
 
-          <div className="px-6 md:flex items-center gap-4">
-            <FaLinkedinIn
-              className="text-primaryBlue cursor-pointer my-3 hover:opacity-75 transition duration-300"
-              size={20}
-              onClick={handleButtonClick}
-            />
-
+          <div className="pl-3 md:flex items-center gap-4">
             <Button
               buttonText={buttonText}
               handleClick={handleButtonClick}
