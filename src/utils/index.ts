@@ -33,7 +33,7 @@ export default function formatDateTime(dateTimeString?: string): {
   return { formattedDate, formattedTime }
 }
 
-export function sortEventsByDate<T extends { dateAndTime?: string }>(
+export function sortByDate<T extends { dateAndTime?: string }>(
   a: T,
   b: T
 ): number {

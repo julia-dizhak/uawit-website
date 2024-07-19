@@ -2,7 +2,7 @@ import { EventType, EventsListType } from '~/lib/sanity.queries/events/types'
 import EventCard from './EventCard'
 import SecondaryButton from '../buttons/SecondaryButton'
 import { EventsSectionType } from '~/lib/sanity.queries/eventsSection/types'
-import { sortEventsByDate } from '~/utils/index'
+import { sortByDate } from '~/utils/index'
 import decorativeImage from '~/assets/images/bg_image2.png'
 import Image from 'next/image'
 import Container from '../common/Container'
@@ -14,17 +14,19 @@ interface EventsSectionProps {
   events: EventsListType
 }
 
+const DISPLAY_EVENTS_COUNT = 3
+
 export default function EventsSection({ section, events }: EventsSectionProps) {
   const { eventsTitle, eventsDescription, moreButtonText } = section
 
-  const [displayCount, setDisplayCount] = useState(3)
+  const [displayCount, setDisplayCount] = useState(DISPLAY_EVENTS_COUNT)
 
   const handleLoadMore = () => {
-    setDisplayCount((prevCount) => prevCount + 3)
+    setDisplayCount((prevCount) => prevCount + DISPLAY_EVENTS_COUNT)
   }
   const showLoadMoreButton = events.length > displayCount
 
-  const sortedItems = [...events].sort(sortEventsByDate).slice(0, displayCount)
+  const sortedItems = [...events].sort(sortByDate).slice(0, displayCount)
 
   return (
     <div className="bg-backgroundColorGray relative pb-[100px]" id="events">
