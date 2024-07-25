@@ -5,7 +5,6 @@ import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { Posts } from '~/components/posts/Posts'
-import AboutUs from '~/components/AboutUs'
 import NoData from '~/components/common/NoData'
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
@@ -43,6 +42,7 @@ import {
   sendMessageQuery,
 } from '~/lib/sanity.queries/sendMessage/queries'
 import FakeWidget from '~/components/FakeWidget'
+import { AboutUs } from '~/components/AboutUs'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {

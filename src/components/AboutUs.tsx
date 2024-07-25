@@ -12,7 +12,7 @@ type Props = {
   partners: Partner[]
 }
 
-export default React.memo(function AboutUs({ about, partners }: Props) {
+export const AboutUs = ({ about, partners }: Props) => {
   return (
     <div className="bg-white relative rounded-[28px] -my-6 z-50" id="about-us">
       <Container className="flex flex-col pt-14 pb-16 gap-y-4 md:gap-y-20 px-8">
@@ -23,7 +23,7 @@ export default React.memo(function AboutUs({ about, partners }: Props) {
               layout="responsive"
               width={400}
               height={440}
-              alt="Our community"
+              alt={about.title}
               className="rounded-2xl"
             />
           </div>
@@ -46,4 +46,4 @@ export default React.memo(function AboutUs({ about, partners }: Props) {
       </Container>
     </div>
   )
-})
+}
