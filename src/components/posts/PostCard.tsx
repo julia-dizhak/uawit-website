@@ -10,6 +10,8 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post }: PostCardProps) {
+  const date = post.date ? post.date : post._createdAt
+  
   return (
     <div className="flex flex-col mt-10 lg:w-1/4 p-4 md:w-2/4 sm:w-full">
       {post.slug && (
@@ -28,7 +30,7 @@ export default function PostCard({ post }: PostCardProps) {
             <div className="bg-black h-[200px]" />
           )}
           <div className="mt-4 text-left">
-            <h3 className="text-primaryBlack text-1xl pb-4">{post.title}</h3>
+            <h3 className="text-primaryBlack text-xl pb-4">{post.title}</h3>
 
             {post.body && (
               <div className="text-primaryGray text-sm line-clamp-3 mb-1">
@@ -38,9 +40,7 @@ export default function PostCard({ post }: PostCardProps) {
 
             {post.excerpt && <p>{post.excerpt}</p>}
 
-            <p className="text-xs pt-4">
-              {post._createdAt && formatDate(post._createdAt)}
-            </p>
+            <p className="text-xs pt-4">{date && formatDate(date)}</p>
           </div>
         </a>
       )}
