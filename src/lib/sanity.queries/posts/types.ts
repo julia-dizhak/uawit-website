@@ -9,7 +9,7 @@ export interface PostType {
   excerpt?: string
   mainImage?: ImageAsset
   body?: PortableTextBlock[]
-  _createdAt?: string
+  _createdAt: string
   date?: string
 }
 
