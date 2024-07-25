@@ -21,7 +21,13 @@ export const Posts = ({ posts }: Props) => {
 
   const showLoadMoreButton = posts.length > displayCount
 
-  const sortedPosts = [...posts].slice(0, displayCount)
+  const sortedPosts = [...posts].sort((a, b) => {
+    const dateA = new Date(a.date || a._createdAt).getTime()
+    const dateB = new Date(b.date || b._createdAt).getTime()
+    return dateB - dateA
+  })
+
+  const formattedPosts = [...sortedPosts].slice(0, displayCount)
 
   return (
     <div
@@ -44,8 +50,9 @@ export const Posts = ({ posts }: Props) => {
         <p className="text-center mt-4 mb-4 text-lg text-primaryGray max-w-5xl m-auto">
           Read the latest news, discover stories from the world of IT
         </p>
+
         <div className="flex flex-wrap justify-center text-center align-center">
-          {sortedPosts.map((post: PostType) => (
+          {formattedPosts.map((post: PostType) => (
             <PostCard
               key={post._id}
               post={post}
