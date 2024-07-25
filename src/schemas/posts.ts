@@ -38,6 +38,15 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'date',
+      description: 'Select the date for the post',
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+      },
+    }),
   ],
   preview: {
     select: {
