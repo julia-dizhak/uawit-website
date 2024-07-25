@@ -10,7 +10,7 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post }: PostCardProps) {
-  const date = post.date ? post.date : post._createdAt;
+  const date = post.date ? post.date : post._createdAt
   return (
     <div className="flex flex-col mt-10 lg:w-1/4 p-4 md:w-2/4 sm:w-full">
       {post.slug && (
@@ -39,9 +39,7 @@ export default function PostCard({ post }: PostCardProps) {
 
             {post.excerpt && <p>{post.excerpt}</p>}
 
-            <p className="text-xs pt-4">
-              {date && formatDate(date)}
-            </p>
+            <p className="text-xs pt-4">{date && formatDate(date)}</p>
           </div>
         </a>
       )}
