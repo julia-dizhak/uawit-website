@@ -16,7 +16,7 @@ const MenuItems = ({ path, title }: MenuItemsProps) => {
   )
 }
 
-export const Footer = ({ logo, contacts }) => {
+export const Footer = ({ logo, contacts, showNavigation }) => {
   const { email, linkedIn } = contacts
   const { link } = linkedIn ?? {}
 
@@ -30,7 +30,7 @@ export const Footer = ({ logo, contacts }) => {
               <Logo logo={logo} />
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
-              {navigationItems.length > 0 && (
+              {Boolean(showNavigation) && (
                 <div>
                   <h2 className="mb-3 font-bold">Categories</h2>
                   <ul>
@@ -75,7 +75,7 @@ export const Footer = ({ logo, contacts }) => {
               </div>
               <div className="invisible lg:visible">
                 <div className="text-sm text-gray-500 sm:text-center">
-                  © 2024. All Rights Reserved.
+                  © 2023. All Rights Reserved.
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@ export const Footer = ({ logo, contacts }) => {
           <div className="visible lg:invisible">
             <hr className="my-2 border-gray-100 sm:mx-auto lg:my-8" />
             <div className="text-sm text-gray-500 sm:text-center">
-              © 2024. All Rights Reserved.
+              © 2023. All Rights Reserved.
             </div>
           </div>
         </div>
