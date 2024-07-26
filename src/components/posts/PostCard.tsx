@@ -40,7 +40,7 @@ export default function PostCard({ post }: PostCardProps) {
 
             {post.excerpt && <p>{post.excerpt}</p>}
 
-            <p className="text-xs pt-4">{date && formatDate(date)}</p>
+            <p className="text-sm pt-4">{date && formatDate(date)}</p>
           </div>
         </a>
       )}
