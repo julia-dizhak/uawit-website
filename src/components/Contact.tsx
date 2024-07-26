@@ -6,13 +6,13 @@ export const Contact = ({ email }) => {
     window.location.assign(`mailto:${email}`)
   }
   return (
-    <div className="bg-white pt-28 pb-12">
+    <div className="bg-white py-20">
       <Container>
         <div>
-          <h3 className="w-full md:w-3/5 mb-3 text-xl md:text-5xl leading-none tracking-tight text-gray-900 font-light block ml-auto mr-auto text-center">
+          <h3 className="w-full md:w-3/5 mb-3 text-xl md:text-5xl leading-12 tracking-tight text-gray-900 font-light block ml-auto mr-auto text-center">
             Do you have some interesting ideas or proposals?
           </h3>
-          <p className="text-center pb-9 text-gray-400 text-sm md:text-lg font-light">
+          <p className="text-center pt-4 pb-9 text-gray-400 text-lg font-light">
             Contact us and share your thoughts with our community!
           </p>
         </div>

@@ -1,14 +1,11 @@
 import { PortableText } from '@portabletext/react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
-
 import Container from '~/components/common/Container'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { urlForImage } from '~/lib/sanity.image'
-
 import { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
 import { PostType } from '~/lib/sanity.queries/posts/types'
@@ -17,7 +14,14 @@ import {
   postBySlugQuery,
   postSlugsQuery,
 } from '~/lib/sanity.queries/posts/queries'
-import favicon from '~/assets/images/favicon.ico'
+import Layout from '../../components/common/Layout'
+import { ContactsType } from '~/lib/sanity.queries/settings/types'
+import {
+  contactsQuery,
+  getContacts,
+} from '~/lib/sanity.queries/settings/queries'
+import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
+import { LogoType } from '~/lib/sanity.queries/logo/types'
 
 interface Query {
   [key: string]: string
@@ -26,6 +30,8 @@ interface Query {
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
     post: PostType
+    contacts: ContactsType
+    logo: LogoType
   },
   Query
 > = async ({ draftMode = false, params = {} }) => {
@@ -38,11 +44,17 @@ export const getStaticProps: GetStaticProps<
     }
   }
 
+  const contacts = await getContacts(client)
+  const logo = await getLogoData(client)
+
   return {
     props: {
       draftMode,
       token: draftMode ? readToken : '',
       post,
+      // props for rendering header and footer
+      contacts,
+      logo,
     },
   }
 }
@@ -53,29 +65,52 @@ export default function ProjectSlugRoute(
   const [post] = useLiveQuery(props.post, postBySlugQuery, {
     slug: props.post.slug.current,
   })
+  const date = post.date ? post.date : post._createdAt
+
+  const { contacts, logo } = props
+  const [contactsData] = useLiveQuery(contacts, contactsQuery)
+  const [logoData] = useLiveQuery(logo, logoQuery)
 
   return (
-    <Container>
-      <section className="m-2">
-        {post.mainImage ? (
-          <Image
-            className="object-fill h-200[px]"
-            src={urlForImage(post.mainImage)?.url() || ''}
-            height={231}
-            width={367}
-            alt=""
-          />
-        ) : (
-          <div className="bg-black" />
-        )}
-        <div className="p-4 mt-2">
-          <h1 className="m-4 font-bold">{post.title}</h1>
-          <p>{post.excerpt}</p>
-          <p>{post._createdAt && formatDate(post._createdAt)}</p>
-          <div>{post.body && <PortableText value={post.body} />}</div>
+    <Layout contacts={contactsData} logo={logoData}>
+      <div className="bg-white relative rounded-[28px] mt-10">
+        <Container className="flex flex-col gap-y-2 md:gap-y-10">
+          {post.mainImage && (
+            <div className="w-full overflow-hidden lg:h-[440px] sx:-h-[220px] rounded-2xl">
+              <Image
+                src={urlForImage(post.mainImage)?.url() || ''}
+                layout="responsive"
+                width={400}
+                height={440}
+                alt={post.title || 'UA WIT Stockholm'}
+                className="rounded-2xl"
+              />
+            </div>
+          )}
+
+          <div className="pb-10">
+            <h3 className="text-4xl font-bold leading-10 tracking-tight text-gray-900 text-center">
+              {post.title}
+            </h3>
+          </div>
+        </Container>
+
+        <div className="bg-backgroundColorGray">
+          <Container>
+            <div className="p-10 flex flex-wrap justify-between sm:pt-10p ">
+              <div className="text-lg">
+                {post.body && <PortableText value={post.body} />}
+              </div>
+
+              <div className="pt-10 text-right w-full">
+                {post.excerpt && <p>{post.excerpt}</p>}
+                <p>{date && formatDate(date)}</p>
+              </div>
+            </div>
+          </Container>
         </div>
-      </section>
-    </Container>
+      </div>
+    </Layout>
   )
 }
 

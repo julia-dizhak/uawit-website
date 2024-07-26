@@ -1,5 +1,4 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import Head from 'next/head'
 import { useLiveQuery } from 'next-sanity/preview'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
@@ -132,7 +131,9 @@ export default function HomePage({
             <EventsSection events={events} section={eventsSection} />
           )}
           {email && <Contact email={email} />}
-          {contactsData && <Footer logo={logo} contacts={contactsData} />}
+          {contactsData && (
+            <Footer logo={logo} contacts={contactsData} showNavigation={true} />
+          )}
         </>
       ) : (
         <NoData />
