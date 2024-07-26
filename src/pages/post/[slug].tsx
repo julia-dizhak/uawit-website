@@ -22,7 +22,7 @@ import {
 } from '~/lib/sanity.queries/settings/queries'
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
-
+import { urlFor } from '~/lib/sanity.imageUrlBuilder'
 interface Query {
   [key: string]: string
 }
@@ -67,6 +67,13 @@ export default function ProjectSlugRoute(
   })
   const date = post.date ? post.date : post._createdAt
 
+  const imageUrl = urlFor(post.mainImage)
+    .width(1000)
+    .height(400)
+    .fit('crop')
+    .crop('focalpoint') // Use smart crop
+    .url()
+
   const { contacts, logo } = props
   const [contactsData] = useLiveQuery(contacts, contactsQuery)
   const [logoData] = useLiveQuery(logo, logoQuery)
@@ -78,10 +85,10 @@ export default function ProjectSlugRoute(
           {post.mainImage && (
             <div className="w-full overflow-hidden lg:h-[440px] sx:-h-[220px] rounded-2xl">
               <Image
-                src={urlForImage(post.mainImage)?.url() || ''}
+                src={imageUrl || ''}
                 layout="responsive"
-                width={400}
-                height={440}
+                width={1000}
+                height={400}
                 alt={post.title || 'UA WIT Stockholm'}
                 className="rounded-2xl"
               />
