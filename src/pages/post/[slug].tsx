@@ -23,6 +23,8 @@ import {
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
 import { urlFor } from '~/lib/sanity.imageUrlBuilder'
+import SecondaryButton from '~/components/buttons/SecondaryButton'
+import Link from 'next/link'
 interface Query {
   [key: string]: string
 }
@@ -68,8 +70,8 @@ export default function ProjectSlugRoute(
   const date = post.date ? post.date : post._createdAt
 
   const imageUrl = urlFor(post.mainImage)
-    .width(1000)
-    .height(400)
+    .width(800)
+    .height(300)
     .fit('crop')
     .crop('focalpoint') // Use smart crop
     .url()
@@ -83,20 +85,19 @@ export default function ProjectSlugRoute(
       <div className="bg-white relative rounded-[28px] mt-10">
         <Container className="flex flex-col gap-y-2 md:gap-y-10">
           {post.mainImage && (
-            <div className="w-full overflow-hidden lg:h-[440px] sx:-h-[220px] rounded-2xl">
+            <div className="w-full rounded-2xl text-center">
               <Image
+                className="rounded-2xl m-auto"
                 src={imageUrl || ''}
-                layout="responsive"
-                width={1000}
-                height={400}
+                width={800}
+                height={300}
                 alt={post.title || 'UA WIT Stockholm'}
-                className="rounded-2xl"
               />
             </div>
           )}
 
-          <div className="pb-10">
-            <h3 className="text-4xl font-bold leading-10 tracking-tight text-gray-900 text-center">
+          <div className="pb-10 text-center">
+            <h3 className="pb-10 w-3/4 m-auto text-4xl font-bold leading-10 tracking-tight text-gray-900 ">
               {post.title}
             </h3>
           </div>
@@ -105,13 +106,26 @@ export default function ProjectSlugRoute(
         <div className="bg-backgroundColorGray">
           <Container>
             <div className="p-10 flex flex-wrap justify-between sm:pt-10p ">
-              <div className="text-lg">
-                {post.body && <PortableText value={post.body} />}
-              </div>
+              {post.body && (
+                <div className="text-lg post-page">
+                  {post.body && <PortableText value={post.body} />}
+                </div>
+              )}
 
               <div className="pt-10 text-right w-full">
                 {post.excerpt && <p>{post.excerpt}</p>}
                 <p>{date && formatDate(date)}</p>
+              </div>
+
+              <div className="text-left py-10">
+                <Link
+                  href="/"
+                  className="text-primaryBlue border-primaryBlue px-4 text-sm border py-[16px] text-center rounded-xl
+   hover:scale-[1.01] hover:shadow-md transition-all duration-300
+  active:scale-[0.96] active:duration-300"
+                >
+                  &larr; &nbsp; Return to home page
+                </Link>
               </div>
             </div>
           </Container>

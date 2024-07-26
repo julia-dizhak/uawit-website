@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   --space-0: 0;
   --space-1: 4px;
@@ -71,5 +72,17 @@ select {
   }
   main {
     margin-top: unset;
+  }
+}
+
+.post-page {
+  ol,
+  ul {
+    margin: 10px;
+    padding: 15px 12px;
+    list-style: disc;
+  }
+  p {
+    margin: 0 0 10px 0;
   }
 }
