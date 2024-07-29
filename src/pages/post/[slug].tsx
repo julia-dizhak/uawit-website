@@ -23,6 +23,7 @@ import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
 import { urlFor } from '~/lib/sanity.imageUrlBuilder'
 import Link from 'next/link'
+import decorativeImage from '~/assets/images/bg_image2_yellow.png'
 interface Query {
   [key: string]: string
 }
@@ -134,6 +135,17 @@ export default function ProjectSlugRoute(
               </div>
             </div>
           </Container>
+
+          <div className="absolute bottom-0 right-0 z-1 lg:visible">
+            <div className="w-[200]px h-[90px]">
+              <Image
+                src={decorativeImage}
+                alt="bottom decorative image"
+                width={200}
+                height={90}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

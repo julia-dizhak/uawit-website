@@ -118,7 +118,10 @@ export default function HomePage({
   const [about] = useLiveQuery(aboutData, aboutQuery)
   const [partners] = useLiveQuery(partnersData, partnersQuery)
 
-  const [postsSection] = useLiveQuery<PostsSectionType>(postsSectionData, postsSectionQuery)
+  const [postsSection] = useLiveQuery<PostsSectionType>(
+    postsSectionData,
+    postsSectionQuery
+  )
   const [posts] = useLiveQuery<PostsType>(postsData, postsQuery)
 
   const [sendMessage] = useLiveQuery(sendMessageData, sendMessageQuery)
