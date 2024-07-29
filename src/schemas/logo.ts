@@ -21,7 +21,7 @@ export default {
       name: 'href',
       type: 'url',
       title: 'Link',
-      description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`
+      description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`,
     },
   ],
 }
