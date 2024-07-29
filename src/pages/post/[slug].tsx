@@ -5,7 +5,6 @@ import { useLiveQuery } from 'next-sanity/preview'
 import Container from '~/components/common/Container'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { urlForImage } from '~/lib/sanity.image'
 import { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
 import { PostType } from '~/lib/sanity.queries/posts/types'
@@ -23,7 +22,6 @@ import {
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
 import { urlFor } from '~/lib/sanity.imageUrlBuilder'
-import SecondaryButton from '~/components/buttons/SecondaryButton'
 import Link from 'next/link'
 interface Query {
   [key: string]: string
@@ -105,16 +103,16 @@ export default function ProjectSlugRoute(
 
         <div className="bg-backgroundColorGray">
           <Container>
-            <div className="p-10 flex flex-wrap justify-between sm:pt-10p ">
+            <div className="py-10 px-20 flex flex-wrap justify-between sm:pt-10p ">
               {post.body && (
                 <div className="text-lg post-page">
                   {post.body && <PortableText value={post.body} />}
                 </div>
               )}
 
-              <div className="pt-10 text-right w-full">
+              <div className="pt-20 text-right w-full">
                 {post.excerpt && <p>{post.excerpt}</p>}
-                <p>{date && formatDate(date)}</p>
+                {date && <p className="text-sm text-right pt-4 text-primaryGray">{date && formatDate(date)}</p>}
               </div>
 
               <div className="text-left py-10">

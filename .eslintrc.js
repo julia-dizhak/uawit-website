@@ -40,5 +40,6 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'no-console': 'error',
+    'jsx-no-target-blank': 'off',
   },
 }
