@@ -84,11 +84,11 @@ export default function ProjectSlugRoute(
       <div className="bg-white relative rounded-[28px] mt-10">
         <Container className="flex flex-col gap-y-2 md:gap-y-10">
           {post.mainImage && (
-            <div className="w-full rounded-2xl text-center overflow-hidden lg:h-[300px] sm:-h-[220px]">
+            <div className="w-full rounded-2xl text-center overflow-hidden lg:h-[400px] sm:-h-[220px]">
               <Image
                 className="rounded-2xl m-auto full"
                 width={800}
-                height={300}
+                height={400}
                 src={imageUrl || ''}
                 alt={post.title || 'UA WIT Stockholm'}
                 quality={80}
