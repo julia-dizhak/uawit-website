@@ -41,7 +41,7 @@ import {
   sendMessageQuery,
 } from '~/lib/sanity.queries/sendMessage/queries'
 import FakeWidget from '~/components/FakeWidget'
-import { AboutUs } from '~/components/AboutUs'
+import AboutUs from '~/components/AboutUs'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
