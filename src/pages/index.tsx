@@ -47,14 +47,16 @@ import {
   postsSectionQuery,
 } from '~/lib/sanity.queries/postsSection/queries'
 import PostsSection from '~/components/posts/PostsSection'
+import { PostsSectionType } from '~/lib/sanity.queries/postsSection/types'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-    postsData: PostType[]
     logoData: LogoType
     heroData: HeroType
     aboutData: AboutType
     partnersData: Partner[]
+    postsData: PostType[]
+    postsSectionData: PostsSectionType
     sendMessageData: SendMessageType
     eventsData: EventsListType
     eventsSectionData: EventsSectionType
@@ -73,8 +75,11 @@ export const getStaticProps: GetStaticProps<
   const aboutData = await getAbout(client)
   const partnersData = await getPartnersData(client)
   const sendMessageData = await getSendMessageData(client)
+
+  // events
   const eventsSectionData = await getEventsSectionData(client)
   const eventsData = await getEvents(client)
+
   const contacts = await getContacts(client)
 
   return {
@@ -136,6 +141,8 @@ export default function HomePage({
           )}
 
           {about && partners && <AboutUs about={about} partners={partners} />}
+
+          <FakeWidget />
 
           {postsSection && posts.length > 0 && (
             <PostsSection posts={posts} section={postsSection} />
