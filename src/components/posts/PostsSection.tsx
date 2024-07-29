@@ -1,6 +1,6 @@
 import PostCard from './PostCard'
 import SecondaryButton from '../buttons/SecondaryButton'
-import decorativeImage from '~/assets/images/bg_image2.png'
+import decorativeImage from '~/assets/images/bg_image_for_news.png'
 import Image from 'next/image'
 import Container from '../common/Container'
 import { PortableText } from '@portabletext/react'
@@ -39,7 +39,7 @@ export default function PostsSection({ section, posts }: PostsSectionProps) {
       id="news"
       className="bg-backgroundColorGray relative rounded-[28px] -my-6"
     >
-      {/* <div className="absolute top-[10px] left-0 z-1 invisible md:visible">
+      <div className="absolute top-[10px] left-0 z-1 invisible md:visible">
         <div className="w-[200]px h-[150px]">
           <Image
             src={decorativeImage}
@@ -48,7 +48,7 @@ export default function PostsSection({ section, posts }: PostsSectionProps) {
             height={100}
           />
         </div>
-      </div> */}
+      </div>
 
       <Container className="text-center pt-[100px] relative">
         {postsTitle && (
