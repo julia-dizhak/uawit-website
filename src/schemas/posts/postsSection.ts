@@ -13,6 +13,16 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'postsImage',
+      title: 'Posts Image',
+      type: 'image',
+      description: 'Upload an image for the Posts Section',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'postsDescription',
       title: 'Posts Description',
       type: 'blockContent',

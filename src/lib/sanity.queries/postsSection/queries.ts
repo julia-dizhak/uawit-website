@@ -5,6 +5,7 @@ import { PostsSectionType } from './types'
 export const postsSectionQuery = groq`*[_type == "postsSection"]{
   _id,
   postsTitle,
+  postsImage,
   postsDescription,
   moreButtonText
 }[0]`

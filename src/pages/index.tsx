@@ -39,7 +39,6 @@ import {
   getSendMessageData,
   sendMessageQuery,
 } from '~/lib/sanity.queries/sendMessage/queries'
-import FakeWidget from '~/components/FakeWidget'
 import AboutUs from '~/components/AboutUs'
 import {
   getPostsSectionData,
@@ -105,9 +104,11 @@ export default function HomePage({
   logoData,
   aboutData,
   partnersData,
+  // news
   postsData,
   postsSectionData,
   sendMessageData,
+  // events
   eventsSectionData,
   eventsData,
   contacts,
@@ -117,7 +118,7 @@ export default function HomePage({
   const [about] = useLiveQuery(aboutData, aboutQuery)
   const [partners] = useLiveQuery(partnersData, partnersQuery)
 
-  const [postsSection] = useLiveQuery(postsSectionData, postsSectionQuery)
+  const [postsSection] = useLiveQuery<PostsSectionType>(postsSectionData, postsSectionQuery)
   const [posts] = useLiveQuery<PostsType>(postsData, postsQuery)
 
   const [sendMessage] = useLiveQuery(sendMessageData, sendMessageQuery)
@@ -140,8 +141,6 @@ export default function HomePage({
           )}
 
           {about && partners && <AboutUs about={about} partners={partners} />}
-
-          <FakeWidget />
 
           {postsSection && posts.length > 0 && (
             <PostsSection posts={posts} section={postsSection} />
