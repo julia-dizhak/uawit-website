@@ -110,9 +110,16 @@ export default function ProjectSlugRoute(
                 </div>
               )}
 
-              <div className="pt-20 text-right w-full">
-                {post.excerpt && <p>{post.excerpt}</p>}
-                {date && <p className="text-sm text-right pt-4 text-primaryGray">{date && formatDate(date)}</p>}
+              <div className="pt-10 w-full">
+                {post.extraBody && <p>{post.extraBody}</p>}
+              </div>
+
+              <div className="pt-10 text-right w-full">
+                {date && (
+                  <p className="text-sm text-primaryGray">
+                    {date && formatDate(date)}
+                  </p>
+                )}
               </div>
 
               <div className="text-left py-10">
