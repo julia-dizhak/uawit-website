@@ -21,11 +21,6 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-    }),
-    defineField({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -37,6 +32,13 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      description: 'Add text for the post',
+    }),
+    defineField({
+      name: 'extraBody',
+      title: 'Extra Body',
+      type: 'text',
+      description: 'Add additional text for the inner post page',
     }),
     defineField({
       name: 'date',

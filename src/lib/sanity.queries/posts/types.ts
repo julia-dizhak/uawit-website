@@ -6,7 +6,7 @@ export interface PostType {
   _id?: string
   title?: string
   slug: Slug
-  excerpt?: string
+  extraBody?: string
   mainImage?: ImageAsset
   body?: PortableTextBlock[]
   _createdAt: string
