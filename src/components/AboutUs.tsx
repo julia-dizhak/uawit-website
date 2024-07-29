@@ -19,12 +19,12 @@ export default function AboutUs({ about, partners }: Props) {
         {about.mainImage && (
           <div className="w-full overflow-hidden lg:h-[440px] sx:-h-[220px] rounded-2xl">
             <Image
+              className="rounded-2xl"
               src={urlForImage(about.mainImage)?.url() || ''}
               layout="responsive"
               width={400}
               height={440}
               alt={about.title}
-              className="rounded-2xl"
             />
           </div>
         )}

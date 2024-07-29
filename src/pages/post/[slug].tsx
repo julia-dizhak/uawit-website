@@ -69,8 +69,8 @@ export default function ProjectSlugRoute(
   const date = post.date ? post.date : post._createdAt
 
   const imageUrl = urlFor(post.mainImage)
-    .width(800)
-    .height(300)
+    .width(1600)
+    .height(900)
     .fit('crop')
     .crop('focalpoint') // Use smart crop
     .url()
@@ -84,13 +84,14 @@ export default function ProjectSlugRoute(
       <div className="bg-white relative rounded-[28px] mt-10">
         <Container className="flex flex-col gap-y-2 md:gap-y-10">
           {post.mainImage && (
-            <div className="w-full rounded-2xl text-center">
+            <div className="w-full rounded-2xl text-center overflow-hidden h-[300px]">
               <Image
-                className="rounded-2xl m-auto"
-                src={imageUrl || ''}
+                className="rounded-2xl m-auto full"
                 width={800}
                 height={300}
+                src={imageUrl || ''}
                 alt={post.title || 'UA WIT Stockholm'}
+                quality={80}
               />
             </div>
           )}

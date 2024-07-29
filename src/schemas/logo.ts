@@ -6,7 +6,7 @@ export default {
     {
       name: 'logoImage',
       type: 'image',
-      title: 'Logo UA WIT',
+      title: 'Logo Image for UA WIT',
       options: {
         hotspot: true,
       },
@@ -15,13 +15,17 @@ export default {
       name: 'caption',
       type: 'string',
       title: 'Caption',
-      description: 'Alt text for Logo',
+      description: 'Alt text for a Logo',
     },
     {
       name: 'href',
       type: 'url',
       title: 'Link',
       description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`,
+      validation: (Rule: { uri: (arg0: { scheme: string[] }) => any }) =>
+        Rule.uri({
+          scheme: ['/', 'https'],
+        }),
     },
   ],
 }
