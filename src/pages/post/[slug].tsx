@@ -84,7 +84,7 @@ export default function ProjectSlugRoute(
       <div className="bg-white relative rounded-[28px] mt-10">
         <Container className="flex flex-col gap-y-2 md:gap-y-10">
           {post.mainImage && (
-            <div className="w-full rounded-2xl text-center overflow-hidden h-[300px]">
+            <div className="w-full rounded-2xl text-center overflow-hidden lg:h-[300px] sm:-h-[220px]">
               <Image
                 className="rounded-2xl m-auto full"
                 width={800}
@@ -97,7 +97,7 @@ export default function ProjectSlugRoute(
           )}
 
           <div className="pb-10 text-center">
-            <h3 className="pb-10 w-3/4 m-auto text-4xl font-bold leading-10 tracking-tight text-gray-900 ">
+            <h3 className="lg:pb-10 w-3/4 m-auto lg:text-4xl sm:text-2xl font-bold lg:leading-10 tracking-tight text-gray-900 ">
               {post.title}
             </h3>
           </div>
@@ -105,7 +105,7 @@ export default function ProjectSlugRoute(
 
         <div className="bg-backgroundColorGray">
           <Container>
-            <div className="py-10 px-20 flex flex-wrap justify-between sm:pt-10p ">
+            <div className="py-10 lg:px-20 sm:px-0 flex flex-wrap justify-between sm:pt-10p ">
               {post.body && (
                 <div className="text-lg post-page">
                   {post.body && <PortableText value={post.body} />}
