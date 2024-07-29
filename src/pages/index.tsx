@@ -3,7 +3,6 @@ import { useLiveQuery } from 'next-sanity/preview'
 import Hero from '~/components/Hero'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { Posts } from '~/components/posts/Posts'
 import NoData from '~/components/common/NoData'
 import { getLogoData, logoQuery } from '~/lib/sanity.queries/logo/queries'
 import { LogoType } from '~/lib/sanity.queries/logo/types'
@@ -40,16 +39,22 @@ import {
   getSendMessageData,
   sendMessageQuery,
 } from '~/lib/sanity.queries/sendMessage/queries'
-import FakeWidget from '~/components/FakeWidget'
 import AboutUs from '~/components/AboutUs'
+import {
+  getPostsSectionData,
+  postsSectionQuery,
+} from '~/lib/sanity.queries/postsSection/queries'
+import PostsSection from '~/components/posts/PostsSection'
+import { PostsSectionType } from '~/lib/sanity.queries/postsSection/types'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-    postsData: PostType[]
     logoData: LogoType
     heroData: HeroType
     aboutData: AboutType
     partnersData: Partner[]
+    postsData: PostType[]
+    postsSectionData: PostsSectionType
     sendMessageData: SendMessageType
     eventsData: EventsListType
     eventsSectionData: EventsSectionType
@@ -60,12 +65,19 @@ export const getStaticProps: GetStaticProps<
 
   const heroData = await getHeroData(client)
   const logoData = await getLogoData(client)
-  const postsData = await getPosts(client) // or news
+
+  // or news
+  const postsData = await getPosts(client)
+  const postsSectionData = await getPostsSectionData(client)
+
   const aboutData = await getAbout(client)
   const partnersData = await getPartnersData(client)
   const sendMessageData = await getSendMessageData(client)
+
+  // events
   const eventsSectionData = await getEventsSectionData(client)
   const eventsData = await getEvents(client)
+
   const contacts = await getContacts(client)
 
   return {
@@ -73,11 +85,12 @@ export const getStaticProps: GetStaticProps<
       draftMode,
       token: draftMode ? readToken : '',
       // fetched data from sanity
-      postsData,
       logoData,
       heroData,
       aboutData,
       partnersData,
+      postsData,
+      postsSectionData,
       sendMessageData,
       eventsSectionData,
       eventsData,
@@ -87,24 +100,32 @@ export const getStaticProps: GetStaticProps<
 }
 
 export default function HomePage({
-  postsData,
   heroData,
   logoData,
   aboutData,
   partnersData,
+  // news
+  postsData,
+  postsSectionData,
   sendMessageData,
+  // events
   eventsSectionData,
   eventsData,
   contacts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [posts] = useLiveQuery<PostsType>(postsData, postsQuery)
   const [hero] = useLiveQuery(heroData, heroQuery)
   const [logo] = useLiveQuery(logoData, logoQuery)
   const [about] = useLiveQuery(aboutData, aboutQuery)
   const [partners] = useLiveQuery(partnersData, partnersQuery)
+
+  const [postsSection] = useLiveQuery<PostsSectionType>(postsSectionData, postsSectionQuery)
+  const [posts] = useLiveQuery<PostsType>(postsData, postsQuery)
+
   const [sendMessage] = useLiveQuery(sendMessageData, sendMessageQuery)
-  const [events] = useLiveQuery(eventsData, eventsQuery)
+
   const [eventsSection] = useLiveQuery(eventsSectionData, eventsSectionQuery)
+  const [events] = useLiveQuery(eventsData, eventsQuery)
+
   const [contactsData] = useLiveQuery(contacts, contactsQuery)
 
   const dataShouldBePresent = aboutData && postsData.length > 0
@@ -118,19 +139,26 @@ export default function HomePage({
           {hero && contactsData && (
             <Hero hero={hero} linkedIn={contactsData.linkedIn} logo={logo} />
           )}
+
           {about && partners && <AboutUs about={about} partners={partners} />}
-          <FakeWidget />
-          {posts.length > 0 && <Posts posts={posts} />}
+
+          {postsSection && posts.length > 0 && (
+            <PostsSection posts={posts} section={postsSection} />
+          )}
+
           {sendMessage && contactsData && (
             <SendMessageSection
               sendMessage={sendMessageData}
               email={contactsData.email}
             />
           )}
+
           {eventsSection && events.length > 0 && (
             <EventsSection events={events} section={eventsSection} />
           )}
+
           {email && <Contact email={email} />}
+
           {contactsData && (
             <Footer logo={logo} contacts={contactsData} showNavigation={true} />
           )}
