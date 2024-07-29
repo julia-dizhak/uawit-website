@@ -26,7 +26,7 @@ export default function EventsSection({ section, events }: EventsSectionProps) {
   }
   const showLoadMoreButton = events.length > displayCount
 
-  const sortedItems = [...events].sort(sortByDate).slice(0, displayCount)
+  const sortedEvents = [...events].sort(sortByDate).slice(0, displayCount)
 
   return (
     <div className="bg-backgroundColorGray relative pb-[100px]" id="events">
@@ -36,13 +36,16 @@ export default function EventsSection({ section, events }: EventsSectionProps) {
             {eventsTitle}
           </h2>
         )}
-        <div className="text-primaryGray mt-4 max-w-5xl m-auto text-center mb-10">
-          {eventsDescription && <PortableText value={eventsDescription} />}
-        </div>
+
+        {eventsDescription && (
+          <div className="text-primaryGray mt-4 max-w-5xl m-auto text-center mb-10">
+            {eventsDescription && <PortableText value={eventsDescription} />}
+          </div>
+        )}
 
         <div>
           <ul className="grid grid-cols-1 gap-[24px] md:grid-cols-2 lg:grid-cols-3 mb-20">
-            {sortedItems.map((event: EventType) => (
+            {sortedEvents.map((event: EventType) => (
               <EventCard
                 key={event._id}
                 event={event}

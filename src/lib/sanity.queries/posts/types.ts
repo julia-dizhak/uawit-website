@@ -5,11 +5,11 @@ export interface PostType {
   _type?: 'post'
   _id?: string
   title?: string
+  _createdAt: string
   slug: Slug
   extraBody?: string
   mainImage?: ImageAsset
   body?: PortableTextBlock[]
-  _createdAt: string
   date?: string
 }
 
